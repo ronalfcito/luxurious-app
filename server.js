@@ -190,6 +190,23 @@ app.get('/historia', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'historia.html'));
 });
 
+// Rutas para las 4 sedes
+app.get('/suites/quito', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'suites', 'quito.html'));
+});
+
+app.get('/suites/santo-domingo', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'suites', 'santo-domingo.html'));
+});
+
+app.get('/suites/tonsupa', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'suites', 'tonsupa.html'));
+});
+
+app.get('/suites/banos', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'suites', 'banos.html'));
+});
+
 // Arrancar el servidor
 app.listen(PORT, () => {
     console.log(`=================================`);
