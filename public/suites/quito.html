@@ -3,67 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Deluxe Jungle & Spa | LUXURIOUS Quito</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Sedes Quito | LUXURIOUS Suites & Spa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #fbf9f5; color: #1c1917; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; }
-        header { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e7e5e4; background: #fff; position: sticky; top: 0; z-index: 100; }
-        .logo { font-family: 'Cinzel', serif; font-size: 1.4rem; color: #0c0a09; text-decoration: none; font-weight: 700; letter-spacing: 2px; }
-        .breadcrumb { font-size: 0.85rem; color: #78716c; text-align: center; margin: 30px 0 15px 0; }
-        .title-box { text-align: center; max-width: 800px; margin: 0 auto 30px auto; padding: 0 20px; }
+        :root {
+            --bg-light: #fbf9f5;
+            --text-dark: #1c1917;
+            --text-muted: #78716c;
+            --accent-gold: #d4a373;
+            --accent-green: #143828;
+            --airbnb-red: #ff385c;
+            --border-color: #e7e5e4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 90px; }
+
+        /* HEADER */
+        header { padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.3rem; color: #0c0a09; text-decoration: none; font-weight: 700; letter-spacing: 2px; }
+        .btn-direct-nav { background: var(--accent-green); color: #fff; padding: 10px 20px; text-decoration: none; font-weight: 700; font-size: 0.82rem; border-radius: 3px; }
+
+        /* BREADCRUMB Y TAB SELECTOR */
+        .breadcrumb { font-size: 0.85rem; color: var(--text-muted); text-align: center; margin: 25px 0 15px 0; }
+        
+        .tab-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; padding: 0 20px; }
+        .tab-btn { background: #f5f5f4; border: 1px solid var(--border-color); padding: 12px 24px; font-weight: 700; font-size: 0.9rem; cursor: pointer; border-radius: 4px; transition: all 0.3s; color: var(--text-muted); }
+        .tab-btn.active { background: #0c0a09; color: var(--accent-gold); border-color: #0c0a09; }
+
+        /* VISTA DE PROPIEDAD */
+        .property-content { display: none; }
+        .property-content.active { display: block; }
+
+        .title-box { text-align: center; max-width: 850px; margin: 0 auto 25px auto; padding: 0 20px; }
         .badge-tag { background: #f5f5f4; color: #44403c; padding: 4px 12px; font-size: 0.75rem; font-weight: 700; border-radius: 3px; letter-spacing: 1px; }
         .rating { font-size: 0.9rem; color: #855b32; font-weight: 600; margin-left: 10px; }
-        h1 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: #0c0a09; margin: 15px 0 10px 0; }
-        .action-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        .btn-direct { background: #143828; color: #fff; padding: 12px 28px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border-radius: 3px; border: none; cursor: pointer; }
-        .btn-airbnb { background: #ff385c; color: #fff; padding: 12px 28px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border-radius: 3px; }
-        .gallery { max-width: 1000px; margin: 0 auto 60px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 15px; }
+        h1 { font-family: 'Cinzel', serif; font-size: 2.4rem; color: #0c0a09; margin: 15px 0 10px 0; }
+        .capacity-badge { display: inline-block; background: #fffbeb; color: #92400e; border: 1px solid #fef3c7; padding: 6px 14px; font-size: 0.85rem; font-weight: 600; border-radius: 20px; margin-top: 10px; }
+
+        /* BARRA DE ACCIÓN SUPERIOR */
+        .action-bar { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 35px; flex-wrap: wrap; }
+        .price-tag { border: 1px solid #d6d3d1; padding: 10px 20px; font-weight: 700; font-size: 0.9rem; background: #fff; }
+        .btn-direct { background: var(--accent-green); color: #fff; padding: 12px 24px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border-radius: 3px; border: none; cursor: pointer; }
+        .btn-airbnb { background: var(--airbnb-red); color: #fff; padding: 12px 24px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border-radius: 3px; }
+
+        /* GALERÍA DE FOTOS */
+        .gallery { max-width: 1050px; margin: 0 auto 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 15px; }
         .gallery img { width: 100%; height: 420px; object-fit: cover; border-radius: 8px; }
-        .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid #e7e5e4; padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; }
+        .gallery-side { display: flex; flex-direction: column; gap: 15px; }
+        .gallery-side img { height: 202.5px; }
+
+        /* DETALLES Y AMENIDADES */
+        .details-container { max-width: 1050px; margin: 0 auto 50px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .description-box h3 { font-family: 'Cinzel', serif; font-size: 1.4rem; margin-bottom: 12px; color: #0c0a09; }
+        .description-box p { font-size: 1rem; color: #44403c; line-height: 1.7; margin-bottom: 20px; }
+        .amenities-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .amenities-list li { font-size: 0.9rem; color: #57534e; display: flex; align-items: center; gap: 8px; }
+
+        .promo-banner { background: #fff3ed; border: 1px dashed #fdba74; padding: 18px; border-radius: 6px; margin-top: 25px; font-size: 0.88rem; color: #9a3412; }
+
+        .location-box { background: #fff; border: 1px solid var(--border-color); padding: 25px; border-radius: 8px; }
+        .location-box h4 { font-family: 'Cinzel', serif; margin-bottom: 15px; font-size: 1.1rem; }
+        .location-box ul { list-style: none; }
+        .location-box li { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.4; }
+
+        /* BARRA FLOTANTE INFERIOR */
+        .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; }
+
+        @media (max-width: 768px) {
+            .gallery, .details-container { grid-template-columns: 1fr; }
+            .gallery img { height: 280px; }
+            .gallery-side { display: none; }
+            h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
-        <a href="/" style="text-decoration:none; color:#1c1917; font-weight:600;">&larr; Volver</a>
+        <a href="/" style="text-decoration:none; color:#1c1917; font-weight:600;">&larr; Volver al inicio</a>
         <a href="/" class="logo">LUXURIOUS · QUITO</a>
-        <a href="/" class="btn-direct">Reservar Directo</a>
+        <a href="https://wa.me/593999999999?text=Hola%20Luxurious,%20quisiera%20reservar%20en%20Quito" class="btn-direct-nav">Reservar Directo</a>
     </header>
 
-    <div class="breadcrumb">Inicio / Cave Suites / Suite Deluxe Quito</div>
+    <div class="breadcrumb">Inicio / Quito / Selecciona tu Sede Preferida</div>
 
-    <div class="title-box">
-        <span class="badge-tag">FAVORITO ENTRE HUÉSPEDES</span>
-        <span class="rating">★ 4.93 (43 reseñas) · Sector La Carolina, Quito</span>
-        <h1>Suite Deluxe Jungle & Spa</h1>
-        <p style="color: #57534e; font-size: 1rem;">El alojamiento mejor valorado: ambiente íntimo tipo spa, jacuzzi y detalles de diseño.</p>
+    <!-- PESTAÑAS DE SELECCIÓN DE SEDE EN QUITO -->
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="cambiarSede('bosque', this)">🏢 Sede El Bosque (Spa & Vistas VIP)</button>
+        <button class="tab-btn" onclick="cambiarSede('condado', this)">🛍️ Sede El Condado (Departamento VIP)</button>
     </div>
 
-    <div class="action-bar">
-        <div style="border: 1px solid #d6d3d1; padding: 10px 20px; font-weight: 700; font-size: 0.9rem; background: #fff;">
-            TARIFA OFICIAL <span style="font-size: 1.1rem; color: #0c0a09;">$69</span> / noche
+    <!-- ========================================== -->
+    <!-- 1. SEDE EL BOSQUE                          -->
+    <!-- ========================================== -->
+    <div id="bosque" class="property-content active">
+        <div class="title-box">
+            <span class="badge-tag">FAVORITO ENTRE HUÉSPEDES</span>
+            <span class="rating">★ 4.95 (58 reseñas) · Sector El Bosque, Quito</span>
+            <h1>Sede El Bosque — Spa & Vistas 360° VIP</h1>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">Tu refugio premium en Quito con vistas espectaculares. Una estadía pensada para desconectar estilo SPA VIP.</p>
+            <div class="capacity-badge">👨‍👩‍👧‍👦 Acomodación: 4 adultos + 2 niños O 5 adultos máximo</div>
         </div>
-        <a href="#" class="btn-direct">RESERVAR DIRECTO</a>
-        <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
-    </div>
 
-    <!-- GALERÍA DE FOTOS -->
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80" alt="Habitación">
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" style="height: 202px;" alt="Jacuzzi">
-            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=500&q=80" style="height: 202px;" alt="Baño">
+        <div class="action-bar">
+            <div class="price-tag">TARIFA OFICIAL <span style="font-size: 1.2rem; color: #0c0a09;">$75</span> / noche</div>
+            <a href="https://wa.me/593999999999?text=Hola%20Luxurious,%20quisiera%20reservar%20la%20Sede%20El%20Bosque%20en%20Quito" class="btn-direct">RESERVAR DIRECTO POR WHATSAPP</a>
+            <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
+        </div>
+
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80" alt="Sede El Bosque">
+            <div class="gallery-side">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="Piscina y Jacuzzi">
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=500&q=80" alt="Terraza Vista 360">
+            </div>
+        </div>
+
+        <div class="details-container">
+            <div class="description-box">
+                <h3>Experiencia Spa VIP & Equipamiento</h3>
+                <p>Disfruta de áreas comunales exclusivas con muy pocos usuarios: piscina temperada, 3 hidromasajes, sauna, baño turco y gimnasio equipado. Disfruta de una vista panorámica 360° desde sus 2 terrazas. Relájate junto a la chimenea eléctrica, disfruta de una pantalla gigante o trabaja en el área de coworking.</p>
+                
+                <h3>Amenidades Destacadas</h3>
+                <ul class="amenities-list">
+                    <li>🏊‍♂️ Piscina Temperada & 3 Hidromasajes</li>
+                    <li>🧖‍♀️ Sauna & Baño Turco</li>
+                    <li>🌆 2 Terrazas con Vista Panorámica 360°</li>
+                    <li>🔥 Chimenea Eléctrica & TV Gigante</li>
+                    <li>💻 Área de Coworking & Wi-Fi Alta Velocidad</li>
+                    <li>🏋️ Gimnasio Completo</li>
+                </ul>
+
+                <div class="promo-banner">
+                    🔶 <strong>PROMOS PAGO DIRECTO AL WHATSAPP:</strong> Reserva directamente con Recepción para evitar comisiones de plataformas externas, o paga con tarjeta de crédito en la App de Airbnb (más recargos de la app).
+                </div>
+            </div>
+
+            <div class="location-box">
+                <h4>📍 Ubicación Estratégica</h4>
+                <ul>
+                    <li>🚡 A minutos del Teleférico de Quito</li>
+                    <li>🎾 Cerca de Quito Tenis y Hospital Metropolitano</li>
+                    <li>🏛️ Rápido acceso al Centro Histórico y El Panecillo</li>
+                    <li>🌍 A pocos minutos de la Mitad del Mundo</li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <!-- BARRA INFERIOR DE ACCIÓN RÁPIDA -->
+    <!-- ========================================== -->
+    <!-- 2. SEDE EL CONDADO                         -->
+    <!-- ========================================== -->
+    <div id="condado" class="property-content">
+        <div class="title-box">
+            <span class="badge-tag">DEPARTAMENTO VIP EXCLUSIVO</span>
+            <span class="rating">★ 4.92 (47 reseñas) · El Condado / Carcelén, Quito</span>
+            <h1>Sede El Condado — Departamento VIP & Jacuzzi Privado</h1>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">Departamento VIP a dos cuadras del Condado Shopping. Vista única desde su terraza privada.</p>
+            <div class="capacity-badge">👨‍👩‍👧‍👦 Acomodación Ideal para hasta 7 Personas</div>
+        </div>
+
+        <div class="action-bar">
+            <div class="price-tag">TARIFA OFICIAL <span style="font-size: 1.2rem; color: #0c0a09;">$79</span> / noche</div>
+            <a href="https://wa.me/593999999999?text=Hola%20Luxurious,%20quisiera%20reservar%20la%20Sede%20El%20Condado%20en%20Quito" class="btn-direct">RESERVAR DIRECTO POR WHATSAPP</a>
+            <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
+        </div>
+
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80" alt="Sede El Condado">
+            <div class="gallery-side">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" alt="Jacuzzi Privado">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="BBQ en Balcón">
+            </div>
+        </div>
+
+        <div class="details-container">
+            <div class="description-box">
+                <h3>Confort 100% Amoblado Nuevo</h3>
+                <p>Espacio ideal para parejas, familias, viajes de negocios o turismo. Incluye Jacuzzi privado para 6 personas y BBQ en el balcón dentro del departamento, además de cocina completamente equipada y Wi-Fi de alta velocidad.</p>
+                
+                <h3>Amenidades Privadas & Comunales</h3>
+                <ul class="amenities-list">
+                    <li>🛁 Jacuzzi Privado en Dpto (hasta 6 pers)</li>
+                    <li>🍖 BBQ Privado en Balcón</li>
+                    <li>🫧 Hidromasaje Comunal para 8 personas</li>
+                    <li>🎱 Área de Billar, Ping Pong y Futbolín</li>
+                    <li>🍿 Sala de Cine (Previa reserva 24h)</li>
+                    <li>🌐 Wi-Fi Alta Velocidad & Cocina Equipada</li>
+                </ul>
+
+                <div class="promo-banner">
+                    🔶 <strong>PROMOS PAGO DIRECTO AL WHATSAPP:</strong> Aprovecha tarifas especiales de reserva directa o ingresa al link de la galería para pago con tarjeta en Airbnb.
+                </div>
+            </div>
+
+            <div class="location-box">
+                <h4>📍 Puntos Cercanos</h4>
+                <ul>
+                    <li>🛍️ A 1 min de Condado Shopping</li>
+                    <li>🚌 A 8 min de la Terminal Carcelén</li>
+                    <li>🌍 A 20 min de la Mitad del Mundo</li>
+                    <li>🌋 A 25 min del Mirador Pululahua</li>
+                    <li>🚡 A 20 min del Teleférico</li>
+                    <li>🏛️ A 25 min del Centro Histórico y Panecillo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- BARRA DE ACCIÓN FLOTANTE (INFERIOR) -->
     <div class="bottom-bar">
-        <div style="font-weight: 700; font-size: 0.9rem;">Suite Deluxe Jungle & Spa — $69 USD</div>
+        <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito</div>
         <div style="display: flex; gap: 10px;">
-            <a href="https://wa.me/593999999999" class="btn-direct">RESERVAR DIRECTO</a>
+            <a href="https://wa.me/593999999999?text=Hola%20Luxurious,%20deseo%20reservar%20en%20Quito" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">AIRBNB</a>
         </div>
     </div>
 
+    <script>
+        function cambiarSede(sedeId, element) {
+            // Ocultar todas las sedes
+            document.querySelectorAll('.property-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+            // Mostrar la sede seleccionada
+            document.getElementById(sedeId).classList.add('active');
+            element.classList.add('active');
+
+            // Actualizar título de la barra inferior
+            if (sedeId === 'bosque') {
+                document.getElementById('bottomBarTitle').innerText = "Sede El Bosque — Quito ($75/noche)";
+            } else {
+                document.getElementById('bottomBarTitle').innerText = "Sede El Condado — Quito ($79/noche)";
+            }
+        }
+    </script>
 </body>
 </html>
