@@ -590,41 +590,79 @@
         </div>
     </div>
 
-    <!-- MODAL DE RESERVA -->
+    <!-- MODAL DE RESERVA FIDEDIGNO -->
     <div class="modal-overlay" id="modalReserva">
-        <div class="modal-box">
-            <span class="modal-close" onclick="cerrarModalReserva()">&times;</span>
-            <h2 style="font-family:'Cinzel', serif; margin-bottom: 10px;">Reserva tu Cave Suite</h2>
-
+        <div style="background: #faf8f5; color: #1c1917; width: 92%; max-width: 580px; max-height: 90vh; overflow-y: auto; border-radius: 4px; padding: 32px 28px; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
+            <span onclick="cerrarModalReserva()" style="position: absolute; top: 18px; right: 22px; font-size: 1.6rem; cursor: pointer; color: #78716c; line-height: 1;">&times;</span>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; color: #292524; margin-bottom: 8px;">
+                <span>RESERVA DIRECTA SIN COMISIONES</span>
+                <span style="background: #855b32; color: #ffffff; padding: 2px 7px; font-size: 0.68rem; font-weight: 600; border-radius: 2px;">TARIFAS OFICIALES</span>
+            </div>
+            <h2 style="font-family: 'Cinzel', serif; font-size: 2.1rem; color: #0c0a09; font-weight: 400; margin-bottom: 8px; line-height: 1.1;">Reserva tu Cave Suite</h2>
+            <p style="font-size: 0.88rem; color: #78716c; margin-bottom: 18px; line-height: 1.4;">Cotiza tu estadía, aplica cupones de descuento y coordina al instante con Recepción vía WhatsApp.</p>
+            <div style="background: #fffbeb; border: 1px solid #fef3c7; padding: 12px 14px; font-size: 0.82rem; color: #78350f; margin-bottom: 22px; border-radius: 3px; line-height: 1.45;">
+                <strong>Atención exclusiva con reserva previa:</strong> No disponemos de lobby para llegadas directas. Cada suite se prepara y sanitiza con anticipación.
+            </div>
             <form onsubmit="procesarReserva(event)">
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size:0.85rem; font-weight:700;">Suite Deseada</label>
-                    <select id="selectSuite" style="width:100%; padding:10px; margin-top:5px;" onchange="actualizarCalculoModal()">
-                        <option value="Suite Cueva De Lujo" data-precio="69">Suite Cueva De Lujo ($69 / noche)</option>
-                        <option value="Suite Premium Jacuzzi Piedra" data-precio="75">Suite Premium Jacuzzi Piedra ($75 / noche)</option>
-                        <option value="Luxury Green Suite" data-precio="65">Luxury Green Suite ($65 / noche)</option>
+                <div style="margin-bottom: 16px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #292524; margin-bottom: 6px;">Cave Suite Deseada</label>
+                    <select id="selectSuite" onchange="actualizarCalculoModal()" style="width: 100%; padding: 11px 12px; border: 1px solid #d6d3d1; border-radius: 3px; background: #ffffff; font-size: 0.88rem; color: #1c1917; outline: none;">
+                        <option value="Suite Cueva De Lujo" data-precio="69">Suite Cueva De Lujo — $69 USD/noche (Jacuzzi Gruta con Cascada)</option>
+                        <option value="Suite Premium Jacuzzi Piedra" data-precio="75">Suite Premium Jacuzzi Tipo Piedra — $75 USD/noche</option>
+                        <option value="Luxury Green Suite" data-precio="65">Luxury Green Suite — $65 USD/noche</option>
                     </select>
                 </div>
-
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom: 12px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
                     <div>
-                        <label style="font-size:0.85rem; font-weight:700;">Check-In</label>
-                        <input type="date" id="inputCheckIn" style="width:100%; padding:10px; margin-top:5px;" required onchange="actualizarCalculoModal()">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #292524; margin-bottom: 6px;">📅 Entrada (2:00 pm)</label>
+                        <input type="date" id="inputCheckIn" required onchange="actualizarCalculoModal()" style="width: 100%; padding: 10px 12px; border: 1px solid #d6d3d1; border-radius: 3px; background: #ffffff; font-size: 0.85rem; color: #1c1917; outline: none;">
                     </div>
                     <div>
-                        <label style="font-size:0.85rem; font-weight:700;">Check-Out</label>
-                        <input type="date" id="inputCheckOut" style="width:100%; padding:10px; margin-top:5px;" required onchange="actualizarCalculoModal()">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #292524; margin-bottom: 6px;">📅 Salida (11 am)</label>
+                        <input type="date" id="inputCheckOut" required onchange="actualizarCalculoModal()" style="width: 100%; padding: 10px 12px; border: 1px solid #d6d3d1; border-radius: 3px; background: #ffffff; font-size: 0.85rem; color: #1c1917; outline: none;">
                     </div>
                 </div>
-
-                <div style="background:#f5f5f4; padding:15px; border-radius:4px; margin: 15px 0;">
-                    <div style="display:flex; justify-content:space-between; font-weight:700; font-size:1.1rem;">
-                        <span>Total Estimado:</span>
-                        <span id="totalMonto">$69.00 USD</span>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #292524; margin-bottom: 6px;">👤 Huéspedes</label>
+                        <select id="selectHuespedes" style="width: 100%; padding: 11px 12px; border: 1px solid #d6d3d1; border-radius: 3px; background: #ffffff; font-size: 0.88rem; color: #1c1917; outline: none;">
+                            <option value="2 Huéspedes (Pareja)">2 Huéspedes (Pareja)</option>
+                            <option value="1 Huésped">1 Huésped</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #292524; margin-bottom: 6px;">✨ Motivo</label>
+                        <select id="selectMotivo" style="width: 100%; padding: 11px 12px; border: 1px solid #d6d3d1; border-radius: 3px; background: #ffffff; font-size: 0.88rem; color: #1c1917; outline: none;">
+                            <option value="Escapada Romántica">Escapada Romántica</option>
+                            <option value="Aniversario / Cumpleaños">Aniversario / Cumpleaños</option>
+                            <option value="Descanso &amp; Relajación">Descanso &amp; Relajación</option>
+                        </select>
                     </div>
                 </div>
-
-                <button type="submit" class="btn-submit-whatsapp">CONTINUAR A WHATSAPP DE RECEPCIÓN &rarr;</button>
+                <div style="border: 1px dashed #d6d3d1; background: #fafaf9; padding: 14px; border-radius: 3px; margin-bottom: 20px;">
+                    <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #292524; letter-spacing: 0.5px;">🎟️ ¿TIENES UN CUPÓN DE DESCUENTO?</label>
+                    <div style="display: flex; gap: 8px; margin-top: 8px;">
+                        <input type="text" id="inputCupon" placeholder="EJ: LUXURIOUS10 O BIENVENIDO15" style="flex: 1; padding: 9px 12px; border: 1px solid #d6d3d1; border-radius: 2px; font-size: 0.82rem; background: #f5f5f4; text-transform: uppercase; outline: none;">
+                        <button type="button" onclick="aplicarCuponBackend()" style="background: #9ca3af; color: #ffffff; border: none; padding: 0 18px; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.5px; border-radius: 2px; cursor: pointer;">APLICAR</button>
+                    </div>
+                    <div id="mensajeCupon" style="font-size: 0.78rem; margin-top: 6px;"></div>
+                </div>
+                <div style="background: #f5f5f4; border: 1px solid #e7e5e4; padding: 16px; border-radius: 3px; margin-bottom: 22px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #57534e; margin-bottom: 12px;">
+                        <span id="detalleNoches">Tarifa (1 noche x $69 USD):</span>
+                        <span id="subtotalMonto">$69.00 USD</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #e7e5e4; padding-top: 10px;">
+                        <div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #1c1917;">TOTAL ESTIMADO:</div>
+                            <div style="font-size: 0.72rem; color: #78716c;">Tarifa oficial directa sin comisiones</div>
+                        </div>
+                        <div id="totalMonto" style="font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 700; color: #0c0a09;">$69.00 USD</div>
+                    </div>
+                </div>
+                <button type="submit" style="width: 100%; background: #143828; color: #ffffff; padding: 15px; font-size: 0.88rem; font-weight: 700; border: none; border-radius: 3px; cursor: pointer; letter-spacing: 0.5px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    CONTINUAR A WHATSAPP DE RECEPCIÓN &rarr;
+                </button>
             </form>
         </div>
     </div>
@@ -636,6 +674,7 @@
 
     <!-- LÓGICA JAVASCRIPT -->
     <script>
+        let descuentoPorcentaje = 0;
         let precioFinalCalculado = 69;
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -671,7 +710,8 @@
 
         function actualizarCalculoModal() {
             const selectSuite = document.getElementById('selectSuite');
-            const precioNoche = parseFloat(selectSuite.options[selectSuite.selectedIndex].getAttribute('data-precio')) || 69;
+            const optionSeleccionada = selectSuite.options[selectSuite.selectedIndex];
+            const precioNoche = parseFloat(optionSeleccionada.getAttribute('data-precio')) || 69;
             
             const checkInInput = document.getElementById('inputCheckIn').value;
             const checkOutInput = document.getElementById('inputCheckOut').value;
@@ -684,26 +724,73 @@
             }
             if (isNaN(diffDias) || diffDias <= 0) diffDias = 1;
 
-            precioFinalCalculado = precioNoche * diffDias;
+            const subtotal = precioNoche * diffDias;
+            const descuentoMonto = subtotal * descuentoPorcentaje;
+            precioFinalCalculado = subtotal - descuentoMonto;
+
+            document.getElementById('detalleNoches').innerText = `Tarifa (${diffDias} noche${diffDias > 1 ? 's' : ''} x $${precioNoche} USD):`;
+            document.getElementById('subtotalMonto').innerText = `$${subtotal.toFixed(2)} USD`;
             document.getElementById('totalMonto').innerText = `$${precioFinalCalculado.toFixed(2)} USD`;
         }
 
+        async function aplicarCuponBackend() {
+            const cupon = document.getElementById('inputCupon').value.trim();
+            const msgBox = document.getElementById('mensajeCupon');
+            if (!cupon) {
+                msgBox.style.color = '#b91c1c';
+                msgBox.innerText = 'Ingresa un código válido.';
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/coupons/validate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ cupon })
+                });
+                const data = await res.json();
+
+                if (data.valid) {
+                    descuentoPorcentaje = data.descuento;
+                    msgBox.style.color = '#15803d';
+                    msgBox.innerText = data.mensaje;
+                } else {
+                    descuentoPorcentaje = 0;
+                    msgBox.style.color = '#b91c1c';
+                    msgBox.innerText = data.mensaje;
+                }
+                actualizarCalculoModal();
+            } catch (err) {
+                msgBox.style.color = '#b91c1c';
+                msgBox.innerText = 'Error al validar el cupón.';
+            }
+        }
+
         async function procesarReserva(e) {
-            e.preventDefault();
+            if (e && e.preventDefault) e.preventDefault();
+
             const suite = document.getElementById('selectSuite').value;
             const checkIn = document.getElementById('inputCheckIn').value;
             const checkOut = document.getElementById('inputCheckOut').value;
+            const huespedes = document.getElementById('selectHuespedes').value;
+            const motivo = document.getElementById('selectMotivo').value;
 
             try {
                 await fetch('/api/bookings', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ suite, checkIn, checkOut, precioTotal: precioFinalCalculado })
+                    body: JSON.stringify({ suite, checkIn, checkOut, huespedes, motivo, precioTotal: precioFinalCalculado })
                 });
             } catch (err) {}
 
             const numeroTelefono = "593999999999"; 
-            const textoWhatsApp = `*¡Hola Luxurious! Quisiera reservar:* \n• Suite: ${suite}\n• Entrada: ${checkIn}\n• Salida: ${checkOut}\n• Total: $${precioFinalCalculado.toFixed(2)} USD`;
+            const textoWhatsApp = `*¡Hola Luxurious! Quisiera reservar:*
+• *Suite:* ${suite}
+• *Entrada:* ${checkIn}
+• *Salida:* ${checkOut}
+• *Huéspedes:* ${huespedes}
+• *Motivo:* ${motivo}
+• *Total Estimado:* $${precioFinalCalculado.toFixed(2)} USD`;
 
             window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(textoWhatsApp)}`, '_blank');
             cerrarModalReserva();
