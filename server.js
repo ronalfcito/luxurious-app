@@ -185,6 +185,11 @@ app.post('/api/coupons/validate', (req, res) => {
     }
 });
 
+// Ruta para la página de Historia
+app.get('/historia', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'historia.html'));
+});
+
 // Arrancar el servidor
 app.listen(PORT, () => {
     console.log(`=================================`);
