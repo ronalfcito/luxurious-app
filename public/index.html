@@ -622,7 +622,7 @@
                 <span style="background: #855b32; color: #ffffff; padding: 2px 7px; font-size: 0.68rem; font-weight: 600; border-radius: 2px;">TARIFAS OFICIALES</span>
             </div>
             <h2 style="font-family: 'Cinzel', serif; font-size: 2.1rem; color: #0c0a09; font-weight: 400; margin-bottom: 8px; line-height: 1.1;">Reserva tu Cave Suite</h2>
-            <p style="font-size: 0.88rem; color: #78716c; margin-bottom: 18px; line-height: 1.4;">Cotiza tu estadía, aplica cupones de descuento y coordina al instante con Recepción vía WhatsApp.</p>
+            <p style="font-size: 0.88rem; color: #78716c; margin-bottom: 18px; line-height: 1.4;">Cotiza tu estadía y coordina al instante con Recepción vía WhatsApp.</p>
             <div style="background: #fffbeb; border: 1px solid #fef3c7; padding: 12px 14px; font-size: 0.82rem; color: #78350f; margin-bottom: 22px; border-radius: 3px; line-height: 1.45;">
                 <strong>Atención exclusiva con reserva previa:</strong> No disponemos de lobby para llegadas directas. Cada suite se prepara y sanitiza con anticipación.
             </div>
@@ -630,9 +630,11 @@
                 <div style="margin-bottom: 16px;">
                     <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #292524; margin-bottom: 6px;">Cave Suite Deseada</label>
                     <select id="selectSuite" onchange="actualizarCalculoModal()" style="width: 100%; padding: 11px 12px; border: 1px solid #d6d3d1; border-radius: 3px; background: #ffffff; font-size: 0.88rem; color: #1c1917; outline: none;">
-                        <option value="Suite Cueva De Lujo" data-precio="69">Suite Cueva De Lujo — $69 USD/noche (Jacuzzi Gruta con Cascada)</option>
-                        <option value="Suite Premium Jacuzzi Piedra" data-precio="75">Suite Premium Jacuzzi Tipo Piedra — $75 USD/noche</option>
-                        <option value="Luxury Green Suite" data-precio="65">Luxury Green Suite — $65 USD/noche</option>
+                        <option value="Sede Quito — El Bosque (Spa VIP &amp; Vista 360°)">Sede Quito — El Bosque (Spa VIP &amp; Vista 360°)</option>
+                        <option value="Sede Quito — Condado Shopping (Dpto VIP &amp; Jacuzzi)">Sede Quito — Condado Shopping (Dpto VIP &amp; Jacuzzi)</option>
+                        <option value="Sede Tonsupa — Suite Playa &amp; Relax">Sede Tonsupa — Suite Playa &amp; Relax</option>
+                        <option value="Sede Baños de Agua Santa — Spa &amp; Montaña">Sede Baños de Agua Santa — Spa &amp; Montaña</option>
+                        <option value="Consulta General / Varias Sedes">Consulta General / Varias Sedes</option>
                     </select>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
@@ -648,9 +650,12 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
                     <div>
                         <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #292524; margin-bottom: 6px;">👤 Huéspedes</label>
-                        <select id="selectHuespedes" style="width: 100%; padding: 11px 12px; border: 1px solid #d6d3d1; border-radius: 3px; background: #ffffff; font-size: 0.88rem; color: #1c1917; outline: none;">
-                            <option value="2 Huéspedes (Pareja)">2 Huéspedes (Pareja)</option>
-                            <option value="1 Huésped">1 Huésped</option>
+                        <select id="selectHuespedes" onchange="actualizarCalculoModal()" style="width: 100%; padding: 11px 12px; border: 1px solid #d6d3d1; border-radius: 3px; background: #ffffff; font-size: 0.88rem; color: #1c1917; outline: none;">
+                            <option value="Pareja (2 Huéspedes) — $55/noche" data-tipo="pareja">2 Huéspedes (Pareja) — $55/noche</option>
+                            <option value="3 Personas — $20 p/p por noche" data-tipo="3pers">3 Personas — $20 p/p por noche</option>
+                            <option value="4 Personas — $18 p/p por noche" data-tipo="4pers">4 Personas — $18 p/p por noche</option>
+                            <option value="5 Personas — $18 p/p por noche" data-tipo="5pers">5 Personas — $18 p/p por noche</option>
+                            <option value="6+ Personas — $16 p/p por noche" data-tipo="6mas">6+ Personas — $16 p/p por noche</option>
                         </select>
                     </div>
                     <div>
@@ -662,25 +667,17 @@
                         </select>
                     </div>
                 </div>
-                <div style="border: 1px dashed #d6d3d1; background: #fafaf9; padding: 14px; border-radius: 3px; margin-bottom: 20px;">
-                    <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #292524; letter-spacing: 0.5px;">🎟️ ¿TIENES UN CUPÓN DE DESCUENTO?</label>
-                    <div style="display: flex; gap: 8px; margin-top: 8px;">
-                        <input type="text" id="inputCupon" placeholder="EJ: LUXURIOUS10 O BIENVENIDO15" style="flex: 1; padding: 9px 12px; border: 1px solid #d6d3d1; border-radius: 2px; font-size: 0.82rem; background: #f5f5f4; text-transform: uppercase; outline: none;">
-                        <button type="button" onclick="aplicarCuponBackend()" style="background: #9ca3af; color: #ffffff; border: none; padding: 0 18px; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.5px; border-radius: 2px; cursor: pointer;">APLICAR</button>
-                    </div>
-                    <div id="mensajeCupon" style="font-size: 0.78rem; margin-top: 6px;"></div>
-                </div>
                 <div style="background: #f5f5f4; border: 1px solid #e7e5e4; padding: 16px; border-radius: 3px; margin-bottom: 22px;">
                     <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #57534e; margin-bottom: 12px;">
-                        <span id="detalleNoches">Tarifa (1 noche x $69 USD):</span>
-                        <span id="subtotalMonto">$69.00 USD</span>
+                        <span id="detalleNoches">Tarifa (1 noche):</span>
+                        <span id="subtotalMonto">$55.00 USD</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #e7e5e4; padding-top: 10px;">
                         <div>
                             <div style="font-size: 0.85rem; font-weight: 700; color: #1c1917;">TOTAL ESTIMADO:</div>
                             <div style="font-size: 0.72rem; color: #78716c;">Tarifa oficial directa sin comisiones</div>
                         </div>
-                        <div id="totalMonto" style="font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 700; color: #0c0a09;">$69.00 USD</div>
+                        <div id="totalMonto" style="font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 700; color: #0c0a09;">$55.00 USD</div>
                     </div>
                 </div>
                 <button type="submit" style="width: 100%; background: #143828; color: #ffffff; padding: 15px; font-size: 0.88rem; font-weight: 700; border: none; border-radius: 3px; cursor: pointer; letter-spacing: 0.5px; display: flex; justify-content: center; align-items: center; gap: 8px;">
@@ -697,8 +694,7 @@
 
     <!-- LÓGICA JAVASCRIPT -->
     <script>
-        let descuentoPorcentaje = 0;
-        let precioFinalCalculado = 69;
+        let precioFinalCalculado = 55;
 
         window.addEventListener('DOMContentLoaded', () => {
             const hoy = new Date();
@@ -732,9 +728,15 @@
         }
 
         function actualizarCalculoModal() {
-            const selectSuite = document.getElementById('selectSuite');
-            const optionSeleccionada = selectSuite.options[selectSuite.selectedIndex];
-            const precioNoche = parseFloat(optionSeleccionada.getAttribute('data-precio')) || 69;
+            const selectHuespedes = document.getElementById('selectHuespedes');
+            const optionHuespedes = selectHuespedes.options[selectHuespedes.selectedIndex];
+            const tipo = optionHuespedes.getAttribute('data-tipo');
+
+            let tarifaPorNoche = 55;
+            if (tipo === '3pers') tarifaPorNoche = 3 * 20;
+            else if (tipo === '4pers') tarifaPorNoche = 4 * 18;
+            else if (tipo === '5pers') tarifaPorNoche = 5 * 18;
+            else if (tipo === '6mas') tarifaPorNoche = 6 * 16;
             
             const checkInInput = document.getElementById('inputCheckIn').value;
             const checkOutInput = document.getElementById('inputCheckOut').value;
@@ -747,46 +749,12 @@
             }
             if (isNaN(diffDias) || diffDias <= 0) diffDias = 1;
 
-            const subtotal = precioNoche * diffDias;
-            const descuentoMonto = subtotal * descuentoPorcentaje;
-            precioFinalCalculado = subtotal - descuentoMonto;
+            const subtotal = tarifaPorNoche * diffDias;
+            precioFinalCalculado = subtotal;
 
-            document.getElementById('detalleNoches').innerText = `Tarifa (${diffDias} noche${diffDias > 1 ? 's' : ''} x $${precioNoche} USD):`;
+            document.getElementById('detalleNoches').innerText = `Tarifa (${diffDias} noche${diffDias > 1 ? 's' : ''}):`;
             document.getElementById('subtotalMonto').innerText = `$${subtotal.toFixed(2)} USD`;
             document.getElementById('totalMonto').innerText = `$${precioFinalCalculado.toFixed(2)} USD`;
-        }
-
-        async function aplicarCuponBackend() {
-            const cupon = document.getElementById('inputCupon').value.trim();
-            const msgBox = document.getElementById('mensajeCupon');
-            if (!cupon) {
-                msgBox.style.color = '#b91c1c';
-                msgBox.innerText = 'Ingresa un código válido.';
-                return;
-            }
-
-            try {
-                const res = await fetch('/api/coupons/validate', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ cupon })
-                });
-                const data = await res.json();
-
-                if (data.valid) {
-                    descuentoPorcentaje = data.descuento;
-                    msgBox.style.color = '#15803d';
-                    msgBox.innerText = data.mensaje;
-                } else {
-                    descuentoPorcentaje = 0;
-                    msgBox.style.color = '#b91c1c';
-                    msgBox.innerText = data.mensaje;
-                }
-                actualizarCalculoModal();
-            } catch (err) {
-                msgBox.style.color = '#b91c1c';
-                msgBox.innerText = 'Error al validar el cupón.';
-            }
         }
 
         async function procesarReserva(e) {
@@ -808,12 +776,16 @@
 
             const numeroTelefono = "593986605398";
             const textoWhatsApp = `*¡Hola Luxurious! Quisiera reservar:*
-• *Suite:* ${suite}
-• *Entrada:* ${checkIn}
-• *Salida:* ${checkOut}
-• *Huéspedes:* ${huespedes}
-• *Motivo:* ${motivo}
-• *Total Estimado:* $${precioFinalCalculado.toFixed(2)} USD`;
+🌿 SOLICITUD DE RESERVA DIRECTA | LUXURIOUS 🌿
+
+🛎️ Suite: ${suite}
+📅 Entrada (2:00 pm): ${checkIn}
+📅 Salida (11 am del día siguiente): ${checkOut}
+👥 Huéspedes: ${huespedes}
+🥂 Ocasión / Detalles: ${motivo}
+💰 Total Estimado: $${precioFinalCalculado.toFixed(2)} USD
+
+Hola, quiero consultar la disponibilidad para estas fechas y los datos de cuenta bancaria para transferir y confirmar mi reserva.`;
 
             window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(textoWhatsApp)}`, '_blank');
             cerrarModalReserva();

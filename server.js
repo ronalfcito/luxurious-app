@@ -55,11 +55,7 @@ const database = {
             comentario: "Atención impecable. La iluminación cálida y la cascada crean una atmósfera de desconexión total.",
             fecha: "2026-10-20"
         }
-    ],
-    cupones: {
-        "LUXURIOUS10": 0.10, // 10% de descuento
-        "BIENVENIDO15": 0.15  // 15% de descuento
-    }
+    ]
 };
 
 // ==========================================
@@ -83,7 +79,7 @@ app.get('/api/bookings', (req, res) => {
 // C. Crear una nueva reserva
 app.post('/api/bookings', (req, res) => {
     try {
-        const { suite, checkIn, checkOut, huespedes, motivo, precioTotal, cupon } = req.body;
+        const { suite, checkIn, checkOut, huespedes, motivo, precioTotal } = req.body;
 
         // Validaciones básicas de backend
         if (!suite || !checkIn || !checkOut || !precioTotal) {
@@ -102,7 +98,6 @@ app.post('/api/bookings', (req, res) => {
             huespedes: sanitizeText(huespedes || '2 Huéspedes'),
             motivo: sanitizeText(motivo || 'Escapada'),
             precioTotal: parseFloat(precioTotal),
-            cuponAplicado: sanitizeText(cupon || 'Ninguno'),
             estado: 'Pendiente',
             fechaCreacion: new Date()
         };
@@ -162,26 +157,6 @@ app.post('/api/reviews', (req, res) => {
 
     } catch (error) {
         res.status(500).json({ success: false, mensaje: 'Error al publicar la reseña.' });
-    }
-});
-
-// F. Validar cupón de descuento
-app.post('/api/coupons/validate', (req, res) => {
-    const { cupon } = req.body;
-    const codigoSanitizado = sanitizeText(cupon).toUpperCase();
-
-    if (database.cupones[codigoSanitizado]) {
-        res.json({
-            valid: true,
-            descuento: database.cupones[codigoSanitizado],
-            mensaje: `¡Cupón ${codigoSanitizado} aplicado con éxito!`
-        });
-    } else {
-        res.json({
-            valid: false,
-            descuento: 0,
-            mensaje: 'El cupón ingresado no es válido o ya ha expirado.'
-        });
     }
 });
 
