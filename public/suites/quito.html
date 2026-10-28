@@ -27,7 +27,7 @@
         /* BREADCRUMB Y TAB SELECTOR */
         .breadcrumb { font-size: 0.85rem; color: var(--text-muted); text-align: center; margin: 25px 0 15px 0; }
         
-        .tab-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; padding: 0 20px; }
+        .tab-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; padding: 0 20px; flex-wrap: wrap; }
         .tab-btn { background: #f5f5f4; border: 1px solid var(--border-color); padding: 12px 24px; font-weight: 700; font-size: 0.9rem; cursor: pointer; border-radius: 4px; transition: all 0.3s; color: var(--text-muted); }
         .tab-btn.active { background: #0c0a09; color: var(--accent-gold); border-color: #0c0a09; }
 
@@ -57,10 +57,10 @@
         .details-container { max-width: 1050px; margin: 0 auto 50px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
         .description-box h3 { font-family: 'Cinzel', serif; font-size: 1.4rem; margin-bottom: 12px; color: #0c0a09; }
         .description-box p { font-size: 1rem; color: #44403c; line-height: 1.7; margin-bottom: 20px; }
-        .amenities-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .amenities-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
         .amenities-list li { font-size: 0.9rem; color: #57534e; display: flex; align-items: center; gap: 8px; }
 
-        .promo-banner { background: #fff3ed; border: 1px dashed #fdba74; padding: 18px; border-radius: 6px; margin-top: 25px; font-size: 0.88rem; color: #9a3412; }
+        .promo-banner { background: #fff3ed; border: 1px dashed #fdba74; padding: 18px; border-radius: 6px; margin-top: 25px; font-size: 0.88rem; color: #9a3412; line-height: 1.5; }
 
         .location-box { background: #fff; border: 1px solid var(--border-color); padding: 25px; border-radius: 8px; }
         .location-box h4 { font-family: 'Cinzel', serif; margin-bottom: 15px; font-size: 1.1rem; }
@@ -74,6 +74,7 @@
             .gallery, .details-container { grid-template-columns: 1fr; }
             .gallery img { height: 280px; }
             .gallery-side { display: none; }
+            .amenities-list { grid-template-columns: 1fr; }
             h1 { font-size: 1.8rem; }
         }
     </style>
@@ -91,8 +92,8 @@
 
     <!-- PESTAÑAS DE SELECCIÓN DE SEDE EN QUITO -->
     <div class="tab-container">
-        <button class="tab-btn active" onclick="cambiarSede('bosque', this)">🏢 Sede El Bosque (Spa & Vistas VIP)</button>
-        <button class="tab-btn" onclick="cambiarSede('condado', this)">🛍️ Sede El Condado (Departamento VIP)</button>
+        <button class="tab-btn active" onclick="cambiarSede('bosque', this)">🏔️ Sede El Bosque (Vista 360° & Spa VIP)</button>
+        <button class="tab-btn" onclick="cambiarSede('condado', this)">🏠 Sede Condado Shopping (Departamento VIP)</button>
     </div>
 
     <!-- ========================================== -->
@@ -100,54 +101,59 @@
     <!-- ========================================== -->
     <div id="bosque" class="property-content active">
         <div class="title-box">
-            <span class="badge-tag">FAVORITO ENTRE HUÉSPEDES</span>
-            <span class="rating">★ 4.95 (58 reseñas) · Sector El Bosque, Quito</span>
-            <h1>Sede El Bosque — Spa & Vistas 360° VIP</h1>
-            <p style="color: var(--text-muted); font-size: 1.05rem;">Tu refugio premium en Quito con vistas espectaculares. Una estadía pensada para desconectar estilo SPA VIP.</p>
-            <div class="capacity-badge">👨‍👩‍👧‍👦 Acomodación: 4 adultos + 2 niños O 5 adultos máximo</div>
+            <span class="badge-tag">RENOVADO · VISTA 360° VIP</span>
+            <span class="rating">★ 4.95 (58 reseñas) · Frente a C.C. El Bosque, Quito</span>
+            <h1>Sede El Bosque — Refugio Spa & Vista 360°</h1>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">Tu refugio en Quito con vista panorámica 360° y experiencia tipo spa VIP. Moderno departamento totalmente amoblado frente al Centro Comercial El Bosque.</p>
+            <div class="capacity-badge">🛏️ Capacidad: hasta 5 adultos O 4 adultos + 2 niños (Camas y sofás cama)</div>
         </div>
 
         <div class="action-bar">
             <div class="price-tag">TARIFA OFICIAL <span style="font-size: 1.2rem; color: #0c0a09;">$75</span> / noche</div>
-            <a href="https://wa.me/593999999999?text=Hola%20Luxurious,%20quisiera%20reservar%20la%20Sede%20El%20Bosque%20en%20Quito" class="btn-direct">RESERVAR DIRECTO POR WHATSAPP</a>
+            <a href="https://wa.me/593999999999?text=Hola%20Luxurious,%20quisiera%20reservar%20la%20Sede%20El%20Bosque" class="btn-direct">RESERVAR DIRECTO POR WHATSAPP</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
         <div class="gallery">
             <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80" alt="Sede El Bosque">
             <div class="gallery-side">
-                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="Piscina y Jacuzzi">
-                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=500&q=80" alt="Terraza Vista 360">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="Zonas húmedas tipo spa">
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=500&q=80" alt="Vista 360° Quito y Pichincha">
             </div>
         </div>
 
         <div class="details-container">
             <div class="description-box">
-                <h3>Experiencia Spa VIP & Equipamiento</h3>
-                <p>Disfruta de áreas comunales exclusivas con muy pocos usuarios: piscina temperada, 3 hidromasajes, sauna, baño turco y gimnasio equipado. Disfruta de una vista panorámica 360° desde sus 2 terrazas. Relájate junto a la chimenea eléctrica, disfruta de una pantalla gigante o trabaja en el área de coworking.</p>
+                <h3>Características del Espacio</h3>
+                <p>Ideal para familias, viajes de negocios o grupos. Disfruta de instalaciones modernas con Alexa para controlar luces y audio, chimenea eléctrica, Smart TVs Android y batas tipo spa incluidas para tu máximo confort.</p>
                 
-                <h3>Amenidades Destacadas</h3>
+                <h3>✨ ¿Qué incluye tu estadía?</h3>
                 <ul class="amenities-list">
-                    <li>🏊‍♂️ Piscina Temperada & 3 Hidromasajes</li>
-                    <li>🧖‍♀️ Sauna & Baño Turco</li>
-                    <li>🌆 2 Terrazas con Vista Panorámica 360°</li>
-                    <li>🔥 Chimenea Eléctrica & TV Gigante</li>
-                    <li>💻 Área de Coworking & Wi-Fi Alta Velocidad</li>
-                    <li>🏋️ Gimnasio Completo</li>
+                    <li>🏔️ Vista panorámica 360° de Quito y Pichincha</li>
+                    <li>🧖‍♀️ Zonas húmedas tipo spa (Sin límite ni reserva previa dentro del horario)</li>
+                    <li>🏋️ Gimnasio equipado con vista a la ciudad</li>
+                    <li>🗣️ Alexa para control inteligente de luces y audio</li>
+                    <li>🔥 Chimenea eléctrica & Smart TVs Android</li>
+                    <li>🧸 Terrazas panorámicas con juegos infantiles</li>
+                    <li>👘 Batas y gorros tipo spa incluidos</li>
+                    <li>🚗 Parqueadero privado cerrado con seguridad 24/7</li>
+                    <li>📶 Wi-Fi de alta velocidad & amenities completos</li>
                 </ul>
 
                 <div class="promo-banner">
-                    🔶 <strong>PROMOS PAGO DIRECTO AL WHATSAPP:</strong> Reserva directamente con Recepción para evitar comisiones de plataformas externas, o paga con tarjeta de crédito en la App de Airbnb (más recargos de la app).
+                    🔥 <strong>OPCIONALES CON RESERVA PREVIA:</strong> Zona de BBQ privada y área social de juegos disponibles para eventos especiales.<br><br>
+                    🔶 <strong>PROMOS PAGO DIRECTO AL WHATSAPP:</strong> Reserva directamente con Recepción para evitar comisiones de la app.
                 </div>
             </div>
 
             <div class="location-box">
-                <h4>📍 Ubicación Estratégica</h4>
+                <h4>📍 Ubicación Privilegiada</h4>
+                <p style="font-size: 0.88rem; color: #57534e; margin-bottom: 12px;">Frente a C.C. El Bosque, rodeado de supermercados, restaurantes y servicios de primer nivel.</p>
                 <ul>
                     <li>🚡 A minutos del Teleférico de Quito</li>
                     <li>🎾 Cerca de Quito Tenis y Hospital Metropolitano</li>
-                    <li>🏛️ Rápido acceso al Centro Histórico y El Panecillo</li>
-                    <li>🌍 A pocos minutos de la Mitad del Mundo</li>
+                    <li>🏛️ A pocos minutos del Centro Histórico y Panecillo</li>
+                    <li>🌍 Fácil acceso hacia la Mitad del Mundo</li>
                 </ul>
             </div>
         </div>
@@ -158,56 +164,62 @@
     <!-- ========================================== -->
     <div id="condado" class="property-content">
         <div class="title-box">
-            <span class="badge-tag">DEPARTAMENTO VIP EXCLUSIVO</span>
-            <span class="rating">★ 4.92 (47 reseñas) · El Condado / Carcelén, Quito</span>
-            <h1>Sede El Condado — Departamento VIP & Jacuzzi Privado</h1>
-            <p style="color: var(--text-muted); font-size: 1.05rem;">Departamento VIP a dos cuadras del Condado Shopping. Vista única desde su terraza privada.</p>
-            <div class="capacity-badge">👨‍👩‍👧‍👦 Acomodación Ideal para hasta 7 Personas</div>
+            <span class="badge-tag">DEPARTAMENTO VIP · EXCLUSIVO</span>
+            <span class="rating">★ 4.93 (62 reseñas) · C.C. Condado Shopping, Quito</span>
+            <h1>Sede Condado Shopping — Departamento VIP & Jacuzzi Privado</h1>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">Departamento VIP diseñado para una experiencia exclusiva. Moderno, 100% amoblado, con sistema Alexa y hermosa vista al norte de Quito.</p>
+            <div class="capacity-badge">❤️ Ideal para Parejas, Familias, Negocios o Grupos de hasta 7 huéspedes</div>
         </div>
 
         <div class="action-bar">
             <div class="price-tag">TARIFA OFICIAL <span style="font-size: 1.2rem; color: #0c0a09;">$79</span> / noche</div>
-            <a href="https://wa.me/593999999999?text=Hola%20Luxurious,%20quisiera%20reservar%20la%20Sede%20El%20Condado%20en%20Quito" class="btn-direct">RESERVAR DIRECTO POR WHATSAPP</a>
+            <a href="https://wa.me/593999999999?text=Hola%20Luxurious,%20quisiera%20reservar%20la%20Sede%20Condado%20Shopping" class="btn-direct">RESERVAR DIRECTO POR WHATSAPP</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
         <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80" alt="Sede El Condado">
+            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80" alt="Sede Condado">
             <div class="gallery-side">
                 <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" alt="Jacuzzi Privado">
-                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="BBQ en Balcón">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="BBQ Privado Balcón">
             </div>
         </div>
 
         <div class="details-container">
             <div class="description-box">
-                <h3>Confort 100% Amoblado Nuevo</h3>
-                <p>Espacio ideal para parejas, familias, viajes de negocios o turismo. Incluye Jacuzzi privado para 6 personas y BBQ en el balcón dentro del departamento, además de cocina completamente equipada y Wi-Fi de alta velocidad.</p>
+                <h3>Características del Espacio</h3>
+                <p>Ubicado a dos cuadras de Condado Shopping (subida a Carcelén). Cuenta con ropa de cama premium, toallas, batas tipo spa, shampoo, jabón, utensilios de cocina completos y equipamiento para BBQ.</p>
                 
-                <h3>Amenidades Privadas & Comunales</h3>
+                <h3>✨ Equipamiento Privado & Comunal</h3>
                 <ul class="amenities-list">
-                    <li>🛁 Jacuzzi Privado en Dpto (hasta 6 pers)</li>
-                    <li>🍖 BBQ Privado en Balcón</li>
-                    <li>🫧 Hidromasaje Comunal para 8 personas</li>
-                    <li>🎱 Área de Billar, Ping Pong y Futbolín</li>
-                    <li>🍿 Sala de Cine (Previa reserva 24h)</li>
-                    <li>🌐 Wi-Fi Alta Velocidad & Cocina Equipada</li>
+                    <li>🛁 Jacuzzi privado temperado (hasta 6 pers - 1 uso por noche)</li>
+                    <li>🍖 BBQ privado en balcón con hermosa vista</li>
+                    <li>🗣️ Sistema Alexa integrado para ambientación</li>
+                    <li>🔥 Chimenea eléctrica & Smart TV Android</li>
+                    <li>📶 Wi-Fi de alta velocidad & Cocina equipada</li>
+                    <li>🛏️ Incluye batas tipo spa, toallas y amenidades de aseo</li>
+                    <li>🫧 Hidromasaje comunal para 8 personas (Bajo reserva)</li>
+                    <li>⚽ Cancha multiusos, ping pong, futbolín & billar</li>
+                    <li>🍿 Sala de cine comunal & Terraza con BBQ</li>
+                    <li>🚗 Parqueadero privado & Ascensor con seguridad 24/7</li>
                 </ul>
 
                 <div class="promo-banner">
-                    🔶 <strong>PROMOS PAGO DIRECTO AL WHATSAPP:</strong> Aprovecha tarifas especiales de reserva directa o ingresa al link de la galería para pago con tarjeta en Airbnb.
+                    📲 <strong>Check-in flexible & Atención personalizada:</strong> Normas claras para garantizar una estadía cómoda, segura y tranquila.<br><br>
+                    🔶 <strong>PROMOS PAGO DIRECTO AL WHATSAPP:</strong> Cotiza directo por WhatsApp para obtener tarifas oficiales sin recargos.
                 </div>
             </div>
 
             <div class="location-box">
                 <h4>📍 Puntos Cercanos</h4>
+                <p style="font-size: 0.88rem; color: #57534e; margin-bottom: 12px;">Ubicación privilegiada cerca de supermercados, restaurantes y comercios.</p>
                 <ul>
-                    <li>🛍️ A 1 min de Condado Shopping</li>
+                    <li>🛍️ A 1 min del Condado Shopping</li>
                     <li>🚌 A 8 min de la Terminal Carcelén</li>
                     <li>🌍 A 20 min de la Mitad del Mundo</li>
                     <li>🌋 A 25 min del Mirador Pululahua</li>
                     <li>🚡 A 20 min del Teleférico</li>
-                    <li>🏛️ A 25 min del Centro Histórico y Panecillo</li>
+                    <li>🏛️ A 25 min del Centro Histórico y El Panecillo</li>
                 </ul>
             </div>
         </div>
@@ -215,7 +227,7 @@
 
     <!-- BARRA DE ACCIÓN FLOTANTE (INFERIOR) -->
     <div class="bottom-bar">
-        <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito</div>
+        <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito ($75/noche)</div>
         <div style="display: flex; gap: 10px;">
             <a href="https://wa.me/593999999999?text=Hola%20Luxurious,%20deseo%20reservar%20en%20Quito" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">AIRBNB</a>
@@ -224,19 +236,16 @@
 
     <script>
         function cambiarSede(sedeId, element) {
-            // Ocultar todas las sedes
             document.querySelectorAll('.property-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
 
-            // Mostrar la sede seleccionada
             document.getElementById(sedeId).classList.add('active');
             element.classList.add('active');
 
-            // Actualizar título de la barra inferior
             if (sedeId === 'bosque') {
                 document.getElementById('bottomBarTitle').innerText = "Sede El Bosque — Quito ($75/noche)";
             } else {
-                document.getElementById('bottomBarTitle').innerText = "Sede El Condado — Quito ($79/noche)";
+                document.getElementById('bottomBarTitle').innerText = "Sede Condado Shopping — Quito ($79/noche)";
             }
         }
     </script>
