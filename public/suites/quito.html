@@ -109,7 +109,7 @@
         </div>
 
         <div class="action-bar">
-            <div class="price-tag">TARIFA OFICIAL <span style="font-size: 1.2rem; color: #0c0a09;">$75</span> / noche</div>
+            <div class="price-tag">DESDE <span style="font-size: 1.2rem; color: #0c0a09;">$55</span> / noche</div>
             <a href="/?reserva=el-bosque" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
@@ -172,7 +172,7 @@
         </div>
 
         <div class="action-bar">
-            <div class="price-tag">TARIFA OFICIAL <span style="font-size: 1.2rem; color: #0c0a09;">$79</span> / noche</div>
+            <div class="price-tag">DESDE <span style="font-size: 1.2rem; color: #0c0a09;">$55</span> / noche</div>
             <a href="/?reserva=condado" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
@@ -227,7 +227,7 @@
 
     <!-- BARRA DE ACCIÓN FLOTANTE (INFERIOR) -->
     <div class="bottom-bar">
-        <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito ($75/noche)</div>
+        <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito (desde $55/noche)</div>
         <div style="display: flex; gap: 10px;">
             <a id="bottomBarReserveLink" href="/?reserva=el-bosque" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">AIRBNB</a>
@@ -243,10 +243,10 @@
             element.classList.add('active');
 
             if (sedeId === 'bosque') {
-                document.getElementById('bottomBarTitle').innerText = "Sede El Bosque — Quito ($75/noche)";
+                document.getElementById('bottomBarTitle').innerText = "Sede El Bosque — Quito (desde $55/noche)";
                 document.getElementById('bottomBarReserveLink').href = '/?reserva=el-bosque';
             } else {
-                document.getElementById('bottomBarTitle').innerText = "Sede Condado Shopping — Quito ($79/noche)";
+                document.getElementById('bottomBarTitle').innerText = "Sede Condado Shopping — Quito (desde $55/noche)";
                 document.getElementById('bottomBarReserveLink').href = '/?reserva=condado';
             }
         }
