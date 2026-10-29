@@ -52,6 +52,21 @@
         .gallery img { width: 100%; height: 420px; object-fit: cover; border-radius: 8px; }
         .gallery-side { display: flex; flex-direction: column; gap: 15px; }
         .gallery-side img { height: 202.5px; }
+        #modalGaleriaFotos { position: fixed; inset: 0; z-index: 2000; display: none; overflow-y: auto; background: var(--bg-light); }
+        #modalGaleriaFotos.is-open { display: block; }
+        .gallery-modal-header { position: sticky; top: 0; z-index: 10; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 15px 5%; border-bottom: 1px solid var(--border-color); background: var(--bg-light); }
+        .gallery-modal-header h2 { margin: 0; color: #0c0a09; font-family: 'Cinzel', serif; font-size: 1.1rem; text-align: center; }
+        .gallery-modal-header span { display: block; margin-top: 3px; color: var(--text-muted); font-size: 0.75rem; text-align: center; }
+        .gallery-modal-back, .gallery-modal-close { border: 0; background: transparent; color: var(--text-dark); cursor: pointer; }
+        .gallery-modal-back { justify-self: start; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; }
+        .gallery-modal-close { justify-self: end; font-size: 1.6rem; }
+        .gallery-filters { display: flex; max-width: 900px; gap: 10px; margin: 20px auto 0; padding: 0 20px 10px; overflow-x: auto; }
+        .filtro-btn { padding: 8px 18px; border: 1px solid var(--border-color); border-radius: 30px; background: #fff; color: #57534e; cursor: pointer; font-size: 0.85rem; font-weight: 600; white-space: nowrap; transition: background 0.2s, color 0.2s; }
+        .filtro-btn.active, .filtro-btn:hover:not(:disabled) { border-color: #0c0a09; background: #0c0a09; color: #fff; }
+        .filtro-btn:disabled { cursor: not-allowed; opacity: 0.48; }
+        .gallery-modal-content { display: grid; max-width: 850px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 30px auto; padding: 0 20px 36px; }
+        .gallery-modal-content img { width: 100%; aspect-ratio: 4 / 3; border-radius: 6px; object-fit: cover; }
+        .gallery-empty { grid-column: 1 / -1; padding: 36px 20px; color: var(--text-muted); text-align: center; }
 
         /* DETALLES Y AMENIDADES */
         .section-header-title { font-family: 'Cinzel', serif; font-size: 1.8rem; margin: 40px 0 20px; color: #0c0a09; text-align: left; }
@@ -73,11 +88,14 @@
         .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; }
 
         @media (max-width: 768px) {
-            .gallery { grid-template-columns: 1fr; }
-            .gallery img { height: 280px; }
-            .gallery-side { display: none; }
+            .gallery { grid-template-columns: 1fr !important; }
+            .gallery img { height: 280px !important; }
+            .gallery-side { display: none !important; }
             .amenities-list { grid-template-columns: 1fr; }
             h1 { font-size: 1.8rem; }
+            .gallery-modal-header { grid-template-columns: 1fr auto; }
+            .gallery-modal-title { grid-column: 1 / -1; grid-row: 2; justify-self: center; }
+            .gallery-modal-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -117,11 +135,19 @@
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
-        <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80" alt="Sede El Bosque">
-            <div class="gallery-side">
-                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="Zonas húmedas tipo spa">
-                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=500&q=80" alt="Vista 360° Quito y Pichincha">
+        <div style="max-width: 1050px; margin: 0 auto 40px auto; padding: 0 20px; position: relative;">
+            <div class="gallery-container" style="position: relative; border-radius: 12px; overflow: hidden;">
+                <div class="gallery" data-gallery-sede="bosque" style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px;">
+                    <img data-gallery-category="habitacion" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80" alt="Habitación principal de El Bosque" style="width: 100%; height: 420px; object-fit: cover; border-radius: 8px;">
+                    <div class="gallery-side" style="display: flex; flex-direction: column; gap: 15px;">
+                        <img data-gallery-category="jacuzzi" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" alt="Spa y jacuzzi privado de El Bosque" style="width: 100%; height: 202.5px; object-fit: cover; border-radius: 8px;">
+                        <img data-gallery-category="bano" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=500&q=80" alt="Baño y detalles de El Bosque" style="width: 100%; height: 202.5px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                </div>
+                <button type="button" class="btn-mostrar-fotos" onclick="abrirGaleriaEspecial()" style="position: absolute; bottom: 20px; right: 35px; background: #ffffff; color: #1c1917; border: 1px solid rgba(0,0,0,0.1); padding: 9px 18px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10; transition: transform 0.2s ease;">
+                    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;"><path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1z"/></svg>
+                    Mostrar <span data-gallery-photo-count>28</span> fotos
+                </button>
             </div>
         </div>
 
@@ -199,11 +225,19 @@
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
-        <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80" alt="Sede Condado">
-            <div class="gallery-side">
-                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" alt="Jacuzzi Privado">
-                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="BBQ Privado Balcón">
+        <div style="max-width: 1050px; margin: 0 auto 40px auto; padding: 0 20px; position: relative;">
+            <div class="gallery-container" style="position: relative; border-radius: 12px; overflow: hidden;">
+                <div class="gallery" data-gallery-sede="condado" style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px;">
+                    <img data-gallery-category="habitacion" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80" alt="Habitación principal de Condado" style="width: 100%; height: 420px; object-fit: cover; border-radius: 8px;">
+                    <div class="gallery-side" style="display: flex; flex-direction: column; gap: 15px;">
+                        <img data-gallery-category="jacuzzi" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" alt="Jacuzzi privado de Condado" style="width: 100%; height: 202.5px; object-fit: cover; border-radius: 8px;">
+                        <img data-gallery-category="cocina" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="BBQ y detalles de Condado" style="width: 100%; height: 202.5px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                </div>
+                <button type="button" class="btn-mostrar-fotos" onclick="abrirGaleriaEspecial()" style="position: absolute; bottom: 20px; right: 35px; background: #ffffff; color: #1c1917; border: 1px solid rgba(0,0,0,0.1); padding: 9px 18px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10; transition: transform 0.2s ease;">
+                    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;"><path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6v8a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-6v8a1 1 0 0 0 1 1z"/></svg>
+                    Mostrar <span data-gallery-photo-count>3</span> fotos
+                </button>
             </div>
         </div>
 
@@ -264,6 +298,25 @@
 
     </div>
 
+    <div id="modalGaleriaFotos" role="dialog" aria-modal="true" aria-labelledby="galleryDialogTitle" aria-hidden="true" onclick="if (event.target === this) cerrarGaleriaEspecial()">
+        <div class="gallery-modal-header">
+            <button type="button" class="gallery-modal-back" onclick="cerrarGaleriaEspecial()">&lt; VOLVER A LA SUITE</button>
+            <div class="gallery-modal-title">
+                <h2 id="galleryDialogTitle">Luxurious Suite</h2>
+                <span id="galleryModalCount">Fotos organizadas por espacios</span>
+            </div>
+            <button type="button" class="gallery-modal-close" onclick="cerrarGaleriaEspecial()" aria-label="Cerrar galería">&times;</button>
+        </div>
+        <div class="gallery-filters" role="group" aria-label="Filtrar fotos por espacio">
+            <button type="button" class="filtro-btn active" data-gallery-filter="todas" onclick="filtrarGaleria('todas', this)">🔲 Todas (<span id="countTodas">0</span>)</button>
+            <button type="button" class="filtro-btn" data-gallery-filter="habitacion" onclick="filtrarGaleria('habitacion', this)">🛏️ Habitación (<span id="countHabitacion">0</span>)</button>
+            <button type="button" class="filtro-btn" data-gallery-filter="jacuzzi" onclick="filtrarGaleria('jacuzzi', this)">♨️ Jacuzzi (<span id="countJacuzzi">0</span>)</button>
+            <button type="button" class="filtro-btn" data-gallery-filter="cocina" onclick="filtrarGaleria('cocina', this)">🍳 Cocina (<span id="countCocina">0</span>)</button>
+            <button type="button" class="filtro-btn" data-gallery-filter="bano" onclick="filtrarGaleria('bano', this)">🚿 Baño completo (<span id="countBano">0</span>)</button>
+        </div>
+        <div id="contenedorFotosEspecial" class="gallery-modal-content" aria-live="polite"></div>
+    </div>
+
     <!-- BARRA DE ACCIÓN FLOTANTE (INFERIOR) -->
     <div class="bottom-bar">
         <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito (desde $55/noche)</div>
@@ -274,6 +327,126 @@
     </div>
 
     <script>
+        const listaFotosSuite = [
+            { src: '/suites/img-bosque/bosque-cuarto-principal.jpg.jpeg', categoria: 'habitacion', titulo: 'Cuarto Principal' },
+            { src: '/suites/img-bosque/bosque-cuarto-principal-vista.jpg.jpeg', categoria: 'habitacion', titulo: 'Cuarto Principal con Vista Panorámica' },
+            { src: '/suites/img-bosque/bosque-imagen-guia.jpg.jpeg', categoria: 'habitacion', titulo: 'Detalles de Acomodación' },
+            { src: '/suites/img-bosque/bosque-imagenes-combo-6.jpg.jpeg', categoria: 'habitacion', titulo: 'Vista Panorámica de Habitación' },
+            { src: '/suites/img-bosque/bosque-piscina-dia.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Piscina Temperada (Día)' },
+            { src: '/suites/img-bosque/bosque-piscina-atardecer.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Piscina Temperada (Atardecer)' },
+            { src: '/suites/img-bosque/bosque-piscina-noche.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Piscina Temperada (Noche)' },
+            { src: '/suites/img-bosque/bosque-jacuzzi-noche.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Jacuzzi & Hidromasaje Nocturno' },
+            { src: '/suites/img-bosque/bosque-sauna.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Sauna & Baño Turco' },
+            { src: '/suites/img-bosque/bosque-fuente.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Fuente & Espejo de Agua' },
+            { src: '/suites/img-bosque/bosque-areas-agua.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Áreas Húmedas & Relajación' },
+            { src: '/suites/img-bosque/bosque-sala-1.jpg.jpeg', categoria: 'habitacion', titulo: 'Sala de Estar Principal' },
+            { src: '/suites/img-bosque/bosque-sala-2.jpg.jpeg', categoria: 'habitacion', titulo: 'Sala de Estar Lounge' },
+            { src: '/suites/img-bosque/bosque-sala-3.jpg.jpeg', categoria: 'habitacion', titulo: 'Área Social Confort' },
+            { src: '/suites/img-bosque/bosque-sala-4.jpg.jpeg', categoria: 'habitacion', titulo: 'Zona Rincón de Lectura' },
+            { src: '/suites/img-bosque/bosque-chimenea.jpg.jpeg', categoria: 'habitacion', titulo: 'Chimenea Eléctrica' },
+            { src: '/suites/img-bosque/bosque-chimenea-velas.jpg.jpeg', categoria: 'habitacion', titulo: 'Chimenea & Velas Ambientales' },
+            { src: '/suites/img-bosque/bosque-comedor.jpg.jpeg', categoria: 'cocina', titulo: 'Gran Comedor' },
+            { src: '/suites/img-bosque/bosque-cocina-1.jpg.jpeg', categoria: 'cocina', titulo: 'Cocina Totalmente Equipada' },
+            { src: '/suites/img-bosque/bosque-cocina-2.jpg.jpeg', categoria: 'cocina', titulo: 'Área de Preparación & Artefactos' },
+            { src: '/suites/img-bosque/bosque-utensilios.jpg.jpeg', categoria: 'cocina', titulo: 'Utensilios de Cocina Completos' },
+            { src: '/suites/img-bosque/bosque-bocadillos.jpg.jpeg', categoria: 'cocina', titulo: 'Bocadillos & Bienvenida' },
+            { src: '/suites/img-bosque/bosque-banos.jpg.jpeg', categoria: 'bano', titulo: 'Baño Completo & Amenidades Spa' },
+            { src: '/suites/img-bosque/bosque-areas-comunes.jpg.jpeg', categoria: 'habitacion', titulo: 'Áreas Comunes & Terrazas' },
+            { src: '/suites/img-bosque/bosque-area-ninos.jpg.jpeg', categoria: 'habitacion', titulo: 'Área Social & Juegos Infantiles' },
+            { src: '/suites/img-bosque/bosque-gym.jpg.jpeg', categoria: 'habitacion', titulo: 'Gimnasio Equipado' },
+            { src: '/suites/img-bosque/bosque-gym-mas.jpg.jpeg', categoria: 'habitacion', titulo: 'Gimnasio & Vista a la Ciudad' },
+            { src: '/suites/img-bosque/bosque-quito-guia.jpg.jpeg', categoria: 'habitacion', titulo: 'Vista Panorámica 360° de Quito' }
+        ];
+
+        let fotosGaleriaActiva = [];
+        let elementoQueAbrioGaleria = null;
+
+        const categoriasGaleria = {
+            todas: { countId: 'countTodas', label: 'Todas' },
+            habitacion: { countId: 'countHabitacion', label: 'Habitación' },
+            jacuzzi: { countId: 'countJacuzzi', label: 'Jacuzzi' },
+            cocina: { countId: 'countCocina', label: 'Cocina' },
+            bano: { countId: 'countBano', label: 'Baño completo' }
+        };
+
+        function abrirGaleriaEspecial() {
+            const sedeActiva = document.querySelector('.property-content.active');
+            const galeria = sedeActiva?.querySelector('[data-gallery-sede]');
+            if (!galeria) return;
+
+            elementoQueAbrioGaleria = document.activeElement;
+            fotosGaleriaActiva = galeria.dataset.gallerySede === 'bosque'
+                ? listaFotosSuite
+                : Array.from(galeria.querySelectorAll('img[data-gallery-category]'), (image) => ({
+                    src: image.src,
+                    categoria: image.dataset.galleryCategory,
+                    titulo: image.alt
+                }));
+            document.getElementById('galleryDialogTitle').innerText = sedeActiva.querySelector('h1')?.innerText || 'Luxurious Suite';
+            actualizarContadoresGaleria();
+            document.body.style.overflow = 'hidden';
+            const modal = document.getElementById('modalGaleriaFotos');
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            filtrarGaleria('todas', document.querySelector('[data-gallery-filter="todas"]'));
+            modal.querySelector('.gallery-modal-close').focus();
+        }
+
+        function actualizarContadoresGaleria() {
+            const totalFotos = fotosGaleriaActiva.length;
+            document.getElementById('galleryModalCount').innerText = `${totalFotos} ${totalFotos === 1 ? 'foto' : 'fotos'} organizadas por espacios`;
+
+            Object.entries(categoriasGaleria).forEach(([categoria, datos]) => {
+                const count = categoria === 'todas'
+                    ? totalFotos
+                    : fotosGaleriaActiva.filter((foto) => foto.categoria === categoria).length;
+                document.getElementById(datos.countId).innerText = count;
+                const button = document.querySelector(`[data-gallery-filter="${categoria}"]`);
+                button.disabled = categoria !== 'todas' && count === 0;
+            });
+        }
+
+        function filtrarGaleria(categoria, button) {
+            const galleryContent = document.getElementById('contenedorFotosEspecial');
+            galleryContent.replaceChildren();
+            document.querySelectorAll('.filtro-btn').forEach((filterButton) => filterButton.classList.remove('active'));
+            button.classList.add('active');
+
+            const fotosFiltradas = categoria === 'todas'
+                ? fotosGaleriaActiva
+                : fotosGaleriaActiva.filter((foto) => foto.categoria === categoria);
+
+            if (fotosFiltradas.length === 0) {
+                const emptyMessage = document.createElement('p');
+                emptyMessage.className = 'gallery-empty';
+                emptyMessage.innerText = 'Todavía no hay fotos disponibles para esta categoría.';
+                galleryContent.appendChild(emptyMessage);
+                return;
+            }
+
+            fotosFiltradas.forEach((foto) => {
+                const image = document.createElement('img');
+                image.src = foto.src;
+                image.alt = foto.titulo;
+                galleryContent.appendChild(image);
+            });
+        }
+
+        function cerrarGaleriaEspecial() {
+            const modal = document.getElementById('modalGaleriaFotos');
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            elementoQueAbrioGaleria?.focus();
+            elementoQueAbrioGaleria = null;
+        }
+
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && document.getElementById('modalGaleriaFotos').classList.contains('is-open')) {
+                cerrarGaleriaEspecial();
+            }
+        });
+
         function cambiarSede(sedeId, element) {
             document.querySelectorAll('.property-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
