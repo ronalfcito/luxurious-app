@@ -225,18 +225,24 @@
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
+        <!-- GALERÍA PRINCIPAL CON FOTOS REALES DE CON DADO SHOPPING -->
         <div style="max-width: 1050px; margin: 0 auto 40px auto; padding: 0 20px; position: relative;">
-            <div class="gallery-container" style="position: relative; border-radius: 12px; overflow: hidden;">
-                <div class="gallery" data-gallery-sede="condado" style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px;">
-                    <img data-gallery-category="habitacion" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80" alt="Habitación principal de Condado" style="width: 100%; height: 420px; object-fit: cover; border-radius: 8px;">
+            <div style="position: relative; border-radius: 12px; overflow: hidden;">
+                <div class="gallery" style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px;">
+                    <!-- Foto principal grande (Jacuzzi Privado) -->
+                    <img src="/img-condado/condado-jacuzzi-dia.png" alt="Jacuzzi Privado Condado Shopping" style="width: 100%; height: 420px; object-fit: cover; border-radius: 8px;">
+                    
+                    <!-- Fotos laterales derechas (Cuarto Principal y Sala) -->
                     <div class="gallery-side" style="display: flex; flex-direction: column; gap: 15px;">
-                        <img data-gallery-category="jacuzzi" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" alt="Jacuzzi privado de Condado" style="width: 100%; height: 202.5px; object-fit: cover; border-radius: 8px;">
-                        <img data-gallery-category="cocina" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80" alt="BBQ y detalles de Condado" style="width: 100%; height: 202.5px; object-fit: cover; border-radius: 8px;">
+                        <img src="/img-condado/condado-cuarto-principal.png" alt="Cuarto Principal Condado" style="width: 100%; height: 202.5px; object-fit: cover; border-radius: 8px;">
+                        <img src="/img-condado/condado-sala-de-estar.png" alt="Sala de Estar Condado" style="width: 100%; height: 202.5px; object-fit: cover; border-radius: 8px;">
                     </div>
                 </div>
-                <button type="button" class="btn-mostrar-fotos" onclick="abrirGaleriaEspecial()" style="position: absolute; bottom: 20px; right: 35px; background: #ffffff; color: #1c1917; border: 1px solid rgba(0,0,0,0.1); padding: 9px 18px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10; transition: transform 0.2s ease;">
-                    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;"><path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6v8a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-6v8a1 1 0 0 0 1 1z"/></svg>
-                    Mostrar <span data-gallery-photo-count>3</span> fotos
+
+                <!-- BOTÓN FLOTANTE MUESTRA 20 FOTOS -->
+                <button onclick="abrirGaleriaCondado()" style="position: absolute; bottom: 20px; right: 35px; background: #ffffff; color: #1c1917; border: 1px solid rgba(0,0,0,0.1); padding: 9px 18px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10;">
+                    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;"><path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1z"/></svg>
+                    Mostrar 20 fotos
                 </button>
             </div>
         </div>
@@ -358,6 +364,33 @@
             { src: '/suites/img-bosque/bosque-quito-guia.jpg.jpeg', categoria: 'habitacion', titulo: 'Vista Panorámica 360° de Quito' }
         ];
 
+        const listaFotosCondado = [
+            { src: '/img-condado/condado-cuarto-principal.png', categoria: 'habitacion', titulo: 'Cuarto Principal' },
+            { src: '/img-condado/condado-cuarto-pequeno.png', categoria: 'habitacion', titulo: 'Habitación Secundaria' },
+            { src: '/img-condado/condado-imagen-combo.png', categoria: 'habitacion', titulo: 'Vista General del Departamento' },
+            { src: '/img-condado/condado-imagen-combo-2.png', categoria: 'habitacion', titulo: 'Distribución de Ambientes' },
+            { src: '/img-condado/condado-imagen-combo-3.png', categoria: 'habitacion', titulo: 'Ambiente Nocturno' },
+            { src: '/img-condado/condado-jacuzzi.png', categoria: 'jacuzzi', titulo: 'Jacuzzi Privado' },
+            { src: '/img-condado/condado-jacuzzi-dia.png', categoria: 'jacuzzi', titulo: 'Jacuzzi Privado con Luz Natural' },
+            { src: '/img-condado/condado-jacuzzi-dia-1.png', categoria: 'jacuzzi', titulo: 'Jacuzzi al Atardecer' },
+            { src: '/img-condado/condado-sala-de-estar.png', categoria: 'habitacion', titulo: 'Sala de Estar' },
+            { src: '/img-condado/condado-sala-de-estar-2.png', categoria: 'habitacion', titulo: 'Área Social Lounge' },
+            { src: '/img-condado/condado-vista-sala.png', categoria: 'habitacion', titulo: 'Vista desde la Sala' },
+            { src: '/img-condado/condado-comedor.png', categoria: 'cocina', titulo: 'Comedor Principal' },
+            { src: '/img-condado/condado-comedor-2.png', categoria: 'cocina', titulo: 'Mesa de Comedor' },
+            { src: '/img-condado/condado-comedor-cocina.png', categoria: 'cocina', titulo: 'Barra de Comedor y Cocina' },
+            { src: '/img-condado/condado-comedor-cocina-2.png', categoria: 'cocina', titulo: 'Vista Integrada Social' },
+            { src: '/img-condado/condado-cosina.png', categoria: 'cocina', titulo: 'Cocina Totalmente Equipada' },
+            { src: '/img-condado/condado-area-bbq.png', categoria: 'cocina', titulo: 'Área de BBQ Privada' },
+            { src: '/img-condado/condado-bano-principal.png', categoria: 'bano', titulo: 'Baño Principal' },
+            { src: '/img-condado/condado-paisaje.png', categoria: 'habitacion', titulo: 'Vista Panorámica Exterior' }
+        ];
+
+        function abrirGaleriaCondado() {
+            window.listaFotosActual = listaFotosCondado;
+            abrirGaleriaEspecial();
+        }
+
         let fotosGaleriaActiva = [];
         let elementoQueAbrioGaleria = null;
 
@@ -372,16 +405,18 @@
         function abrirGaleriaEspecial() {
             const sedeActiva = document.querySelector('.property-content.active');
             const galeria = sedeActiva?.querySelector('[data-gallery-sede]');
-            if (!galeria) return;
+            const listaFotosActual = window.listaFotosActual;
+            window.listaFotosActual = null;
+            if (!sedeActiva || (!galeria && !listaFotosActual)) return;
 
             elementoQueAbrioGaleria = document.activeElement;
-            fotosGaleriaActiva = galeria.dataset.gallerySede === 'bosque'
+            fotosGaleriaActiva = listaFotosActual || (galeria.dataset.gallerySede === 'bosque'
                 ? listaFotosSuite
                 : Array.from(galeria.querySelectorAll('img[data-gallery-category]'), (image) => ({
                     src: image.src,
                     categoria: image.dataset.galleryCategory,
                     titulo: image.alt
-                }));
+                })));
             document.getElementById('galleryDialogTitle').innerText = sedeActiva.querySelector('h1')?.innerText || 'Luxurious Suite';
             actualizarContadoresGaleria();
             document.body.style.overflow = 'hidden';
