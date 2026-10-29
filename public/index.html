@@ -798,19 +798,21 @@
             } catch (err) {}
 
             const numeroTelefono = "593986605398";
-            const textoWhatsApp = `*¡Hola Luxurious! Quisiera reservar:*
-🌿 SOLICITUD DE RESERVA DIRECTA | LUXURIOUS 🌿
+            const textoMensaje = `🌿 SOLICITUD DE RESERVA DIRECTA | LUXURIOUS 🌿
 
 🛎️ Suite: ${suite}
 📅 Entrada (2:00 pm): ${checkIn}
 📅 Salida (11 am del día siguiente): ${checkOut}
 👥 Huéspedes: ${huespedes}
 🥂 Ocasión / Detalles: ${motivo}
-💰 Total Estimado: $${precioFinalCalculado.toFixed(2)} USD
+ 
+💰 Total estimado: $${precioFinalCalculado.toFixed(2)} USD
 
-Hola, quiero consultar la disponibilidad para estas fechas y los datos de cuenta bancaria para transferir y confirmar mi reserva.`;
+_Hola, quiero consultar la disponibilidad para estas fechas y los datos de cuenta bancaria para transferir y confirmar mi reserva._`;
 
-            window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(textoWhatsApp)}`, '_blank');
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${encodeURIComponent(textoMensaje)}`;
+
+            window.open(urlWhatsApp, '_blank');
             cerrarModalReserva();
         }
 
