@@ -85,7 +85,7 @@
     <header>
         <a href="/" style="text-decoration:none; color:#1c1917; font-weight:600;">&larr; Volver al inicio</a>
         <a href="/" class="logo">LUXURIOUS · QUITO</a>
-        <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20quisiera%20reservar%20en%20Quito" class="btn-direct-nav">Reservar Directo</a>
+        <a href="/?reserva=el-bosque" class="btn-direct-nav">Reservar Directo</a>
     </header>
 
     <div class="breadcrumb">Inicio / Quito / Selecciona tu Sede Preferida</div>
@@ -110,7 +110,7 @@
 
         <div class="action-bar">
             <div class="price-tag">TARIFA OFICIAL <span style="font-size: 1.2rem; color: #0c0a09;">$75</span> / noche</div>
-            <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20quisiera%20reservar%20la%20Sede%20El%20Bosque" class="btn-direct">RESERVAR DIRECTO POR WHATSAPP</a>
+            <a href="/?reserva=el-bosque" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
@@ -173,7 +173,7 @@
 
         <div class="action-bar">
             <div class="price-tag">TARIFA OFICIAL <span style="font-size: 1.2rem; color: #0c0a09;">$79</span> / noche</div>
-            <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20quisiera%20reservar%20la%20Sede%20Condado%20Shopping" class="btn-direct">RESERVAR DIRECTO POR WHATSAPP</a>
+            <a href="/?reserva=condado" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
@@ -229,7 +229,7 @@
     <div class="bottom-bar">
         <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito ($75/noche)</div>
         <div style="display: flex; gap: 10px;">
-            <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20deseo%20reservar%20en%20Quito" class="btn-direct">RESERVAR DIRECTO</a>
+            <a id="bottomBarReserveLink" href="/?reserva=el-bosque" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://airbnb.com" target="_blank" class="btn-airbnb">AIRBNB</a>
         </div>
     </div>
@@ -244,8 +244,10 @@
 
             if (sedeId === 'bosque') {
                 document.getElementById('bottomBarTitle').innerText = "Sede El Bosque — Quito ($75/noche)";
+                document.getElementById('bottomBarReserveLink').href = '/?reserva=el-bosque';
             } else {
                 document.getElementById('bottomBarTitle').innerText = "Sede Condado Shopping — Quito ($79/noche)";
+                document.getElementById('bottomBarReserveLink').href = '/?reserva=condado';
             }
         }
     </script>
