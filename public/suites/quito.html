@@ -406,7 +406,7 @@
             <button type="button" class="filtro-btn" data-gallery-filter="habitacion" onclick="filtrarGaleria('habitacion', this)">🛏️ Habitación (<span id="countHabitacion">0</span>)</button>
             <button type="button" class="filtro-btn" data-gallery-filter="jacuzzi" onclick="filtrarGaleria('jacuzzi', this)">♨️ Jacuzzi (<span id="countJacuzzi">0</span>)</button>
             <button type="button" class="filtro-btn" data-gallery-filter="cocina" onclick="filtrarGaleria('cocina', this)">🍳 Cocina (<span id="countCocina">0</span>)</button>
-            <button type="button" class="filtro-btn" data-gallery-filter="bano" onclick="filtrarGaleria('bano', this)">🚿 Baño completo (<span id="countBano">0</span>)</button>
+            <button type="button" class="filtro-btn" data-gallery-filter="bano" onclick="filtrarGaleria('bano', this)">🚿 Baños &amp; Exteriores (<span id="countBano">0</span>)</button>
         </div>
         <div id="contenedorFotosEspecial" class="gallery-modal-content" aria-live="polite"></div>
     </div>
@@ -422,10 +422,6 @@
 
     <script>
         const listaFotosSuite = [
-            { src: '/suites/img-bosque/bosque-cuarto-principal.jpg.jpeg', categoria: 'habitacion', titulo: 'Cuarto Principal' },
-            { src: '/suites/img-bosque/bosque-cuarto-principal-vista.jpg.jpeg', categoria: 'habitacion', titulo: 'Cuarto Principal con Vista Panorámica' },
-            { src: '/suites/img-bosque/bosque-imagen-guia.jpg.jpeg', categoria: 'habitacion', titulo: 'Detalles de Acomodación' },
-            { src: '/suites/img-bosque/bosque-imagenes-combo-6.jpg.jpeg', categoria: 'habitacion', titulo: 'Vista Panorámica de Habitación' },
             { src: '/suites/img-bosque/bosque-piscina-dia.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Piscina Temperada (Día)' },
             { src: '/suites/img-bosque/bosque-piscina-atardecer.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Piscina Temperada (Atardecer)' },
             { src: '/suites/img-bosque/bosque-piscina-noche.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Piscina Temperada (Noche)' },
@@ -433,6 +429,10 @@
             { src: '/suites/img-bosque/bosque-sauna.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Sauna & Baño Turco' },
             { src: '/suites/img-bosque/bosque-fuente.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Fuente & Espejo de Agua' },
             { src: '/suites/img-bosque/bosque-areas-agua.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Áreas Húmedas & Relajación' },
+            { src: '/suites/img-bosque/bosque-cuarto-principal.jpg.jpeg', categoria: 'habitacion', titulo: 'Cuarto Principal' },
+            { src: '/suites/img-bosque/bosque-cuarto-principal-vista.jpg.jpeg', categoria: 'habitacion', titulo: 'Cuarto Principal con Vista Panorámica' },
+            { src: '/suites/img-bosque/bosque-imagen-guia.jpg.jpeg', categoria: 'habitacion', titulo: 'Detalles de Acomodación' },
+            { src: '/suites/img-bosque/bosque-imagenes-combo-6.jpg.jpeg', categoria: 'habitacion', titulo: 'Vista Panorámica de Habitación' },
             { src: '/suites/img-bosque/bosque-sala-1.jpg.jpeg', categoria: 'habitacion', titulo: 'Sala de Estar Principal' },
             { src: '/suites/img-bosque/bosque-sala-2.jpg.jpeg', categoria: 'habitacion', titulo: 'Sala de Estar Lounge' },
             { src: '/suites/img-bosque/bosque-sala-3.jpg.jpeg', categoria: 'habitacion', titulo: 'Área Social Confort' },
@@ -445,22 +445,22 @@
             { src: '/suites/img-bosque/bosque-utensilios.jpg.jpeg', categoria: 'cocina', titulo: 'Utensilios de Cocina Completos' },
             { src: '/suites/img-bosque/bosque-bocadillos.jpg.jpeg', categoria: 'cocina', titulo: 'Bocadillos & Bienvenida' },
             { src: '/suites/img-bosque/bosque-banos.jpg.jpeg', categoria: 'bano', titulo: 'Baño Completo & Amenidades Spa' },
-            { src: '/suites/img-bosque/bosque-areas-comunes.jpg.jpeg', categoria: 'habitacion', titulo: 'Áreas Comunes & Terrazas' },
-            { src: '/suites/img-bosque/bosque-area-ninos.jpg.jpeg', categoria: 'habitacion', titulo: 'Área Social & Juegos Infantiles' },
-            { src: '/suites/img-bosque/bosque-gym.jpg.jpeg', categoria: 'habitacion', titulo: 'Gimnasio Equipado' },
-            { src: '/suites/img-bosque/bosque-gym-mas.jpg.jpeg', categoria: 'habitacion', titulo: 'Gimnasio & Vista a la Ciudad' },
-            { src: '/suites/img-bosque/bosque-quito-guia.jpg.jpeg', categoria: 'habitacion', titulo: 'Vista Panorámica 360° de Quito' }
+            { src: '/suites/img-bosque/bosque-areas-comunes.jpg.jpeg', categoria: 'bano', titulo: 'Áreas Comunes & Terrazas' },
+            { src: '/suites/img-bosque/bosque-area-ninos.jpg.jpeg', categoria: 'bano', titulo: 'Área Social & Juegos Infantiles' },
+            { src: '/suites/img-bosque/bosque-gym.jpg.jpeg', categoria: 'bano', titulo: 'Gimnasio Equipado' },
+            { src: '/suites/img-bosque/bosque-gym-mas.jpg.jpeg', categoria: 'bano', titulo: 'Gimnasio & Vista a la Ciudad' },
+            { src: '/suites/img-bosque/bosque-quito-guia.jpg.jpeg', categoria: 'bano', titulo: 'Vista Panorámica 360° de Quito' }
         ];
 
         const listaFotosCondado = [
+            { src: '/suites/img-condado/condado-jacuzzi.png.jpeg', categoria: 'jacuzzi', titulo: 'Jacuzzi Privado' },
+            { src: '/suites/img-condado/condado-jacuzzi-dia.png.jpeg', categoria: 'jacuzzi', titulo: 'Jacuzzi Privado con Luz Natural' },
+            { src: '/suites/img-condado/condado-jacuzzi-dia-1.png.jpeg', categoria: 'jacuzzi', titulo: 'Jacuzzi al Atardecer' },
             { src: '/suites/img-condado/condado-cuarto-principal.png.jpeg', categoria: 'habitacion', titulo: 'Cuarto Principal' },
             { src: '/suites/img-condado/condado-cuarto-pequeno.png.jpeg', categoria: 'habitacion', titulo: 'Habitación Secundaria' },
             { src: '/suites/img-condado/condado-imagen-combo.png.jpeg', categoria: 'habitacion', titulo: 'Vista General del Departamento' },
             { src: '/suites/img-condado/condado-imagen-combo-2.png.jpeg', categoria: 'habitacion', titulo: 'Distribución de Ambientes' },
             { src: '/suites/img-condado/condado-imagen-combo-3.png.jpeg', categoria: 'habitacion', titulo: 'Ambiente Nocturno' },
-            { src: '/suites/img-condado/condado-jacuzzi.png.jpeg', categoria: 'jacuzzi', titulo: 'Jacuzzi Privado' },
-            { src: '/suites/img-condado/condado-jacuzzi-dia.png.jpeg', categoria: 'jacuzzi', titulo: 'Jacuzzi Privado con Luz Natural' },
-            { src: '/suites/img-condado/condado-jacuzzi-dia-1.png.jpeg', categoria: 'jacuzzi', titulo: 'Jacuzzi al Atardecer' },
             { src: '/suites/img-condado/condado-sala-de-estar.png.jpeg', categoria: 'habitacion', titulo: 'Sala de Estar' },
             { src: '/suites/img-condado/condado-sala-de-estar-2.png.jpeg', categoria: 'habitacion', titulo: 'Área Social Lounge' },
             { src: '/suites/img-condado/condado-vista-sala.png.jpeg', categoria: 'habitacion', titulo: 'Vista desde la Sala' },
@@ -471,7 +471,7 @@
             { src: '/suites/img-condado/condado-cosina.png.jpeg', categoria: 'cocina', titulo: 'Cocina Totalmente Equipada' },
             { src: '/suites/img-condado/condado-area-bbq.png.jpeg', categoria: 'cocina', titulo: 'Área de BBQ Privada' },
             { src: '/suites/img-condado/condado-bano-principal.png.jpeg', categoria: 'bano', titulo: 'Baño Principal' },
-            { src: '/suites/img-condado/condado-paisaje.png.jpeg', categoria: 'habitacion', titulo: 'Vista Panorámica Exterior' }
+            { src: '/suites/img-condado/condado-paisaje.png.jpeg', categoria: 'bano', titulo: 'Vista Panorámica Exterior' }
         ];
 
         function abrirGaleriaCondado() {

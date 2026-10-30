@@ -42,6 +42,10 @@
         .gallery img { width: 100%; height: 420px; object-fit: cover; border-radius: 8px; }
         .gallery-side { display: flex; flex-direction: column; gap: 15px; }
         .gallery-side img { height: 202.5px; }
+        .gallery-modal-content { display: grid; max-width: 850px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 30px auto; padding: 0 20px 36px; }
+        .gallery-modal-content img { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: 6px; object-fit: cover; }
+        .gallery-photo-card { min-width: 0; }
+        .gallery-photo-card h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; color: #0c0a09; }
 
         /* SECCIONES & TARJETAS (ESTILO EL BOSQUE) */
         .section-header-title { font-family: 'Cinzel', serif; font-size: 1.8rem; margin: 40px 0 20px 0; color: #0c0a09; text-align: left; }
@@ -259,11 +263,11 @@
             <button class="filtro-btn active" onclick="filtrarGaleria('todas', this)">🔲 Todas (13)</button>
             <button class="filtro-btn" onclick="filtrarGaleria('habitacion', this)">🛏️ Habitaciones (4)</button>
             <button class="filtro-btn" onclick="filtrarGaleria('jacuzzi', this)">🏊 Piscina & Jacuzzi (6)</button>
-            <button class="filtro-btn" onclick="filtrarGaleria('cocina', this)">🍳 Cocina & Baño (2)</button>
-            <button class="filtro-btn" onclick="filtrarGaleria('exteriores', this)">🌴 Exteriores (1)</button>
+            <button class="filtro-btn" onclick="filtrarGaleria('cocina', this)">🍳 Cocina (1)</button>
+            <button class="filtro-btn" onclick="filtrarGaleria('exteriores', this)">🚿 Baños & Exteriores (2)</button>
         </div>
 
-        <div style="max-width: 850px; margin: 30px auto; padding: 0 20px;" id="contenedorFotosEspecial"></div>
+        <div id="contenedorFotosEspecial" class="gallery-modal-content"></div>
     </div>
 
     <!-- BARRA INFERIOR FLOTANTE -->
@@ -345,7 +349,7 @@
             { src: '/suites/img-tonsupa/tonsupa-sala-de-descanso.jpg.jpeg', categoria: 'habitacion', titulo: 'Sala de Descanso Lounge' },
             { src: '/suites/img-tonsupa/tonsupa-comedor.png.png', categoria: 'habitacion', titulo: 'Comedor Principal' },
             { src: '/suites/img-tonsupa/tonsupa-cosina.jpg.jpeg', categoria: 'cocina', titulo: 'Cocina Equipada' },
-            { src: '/suites/img-tonsupa/tonsupa-baño.jpg.jpeg', categoria: 'cocina', titulo: 'Baño Completo' },
+            { src: '/suites/img-tonsupa/tonsupa-baño.jpg.jpeg', categoria: 'exteriores', titulo: 'Baño Completo' },
             { src: '/suites/img-tonsupa/tonsupa-porton.jpg.jpeg', categoria: 'exteriores', titulo: 'Acceso & Exteriores' }
         ];
 
@@ -368,12 +372,7 @@
                 : listaFotosTonsupa.filter(f => f.categoria === categoriaFiltro);
 
             fotosFiltradas.forEach(foto => {
-                contenedor.innerHTML += `
-                    <div style="margin-bottom: 35px;">
-                        <h4 style="font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 12px; color: #0c0a09;">${foto.titulo}</h4>
-                        <img src="${foto.src}" alt="${foto.titulo}" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06);" loading="lazy">
-                    </div>
-                `;
+                contenedor.innerHTML += `<div class="gallery-photo-card"><img src="${foto.src}" alt="${foto.titulo}" loading="lazy"></div>`;
             });
         }
 

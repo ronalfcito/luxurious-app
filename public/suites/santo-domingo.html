@@ -42,6 +42,10 @@
         .gallery img { width: 100%; height: 420px; object-fit: cover; border-radius: 8px; }
         .gallery-side { display: flex; flex-direction: column; gap: 15px; }
         .gallery-side img { height: 202.5px; }
+        .gallery-modal-content { display: grid; max-width: 850px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 30px auto; padding: 0 20px 36px; }
+        .gallery-modal-content img { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: 6px; object-fit: cover; }
+        .gallery-photo-card { min-width: 0; }
+        .gallery-photo-card h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; color: #0c0a09; }
 
         .section-header-title { font-family: 'Cinzel', serif; font-size: 1.8rem; margin: 40px 0 20px 0; color: #0c0a09; text-align: left; }
         
@@ -174,7 +178,7 @@
             <button class="filtro-btn" onclick="filtrarGaleria('cocina', this)">🍳 Sala &amp; Cocina (8)</button>
             <button class="filtro-btn" onclick="filtrarGaleria('bano', this)">🚿 Baños &amp; Exteriores (6)</button>
         </div>
-        <div style="max-width: 850px; margin: 30px auto; padding: 0 20px;" id="contenedorFotosEspecial"></div>
+        <div id="contenedorFotosEspecial" class="gallery-modal-content"></div>
     </div>
 
     <!-- BARRA FLOTANTE -->
@@ -273,7 +277,7 @@
 
             fotosFiltradas.forEach(foto => {
                 const imageSrc = foto.src.replace('/img-santo-domingo/', '/suites/img-santo-domingo/').replace(/\.jpg$/, '.jpg.jpeg');
-                contenedor.innerHTML += `<div style="margin-bottom: 35px;"><h4 style="font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 12px; color: #0c0a09;">${foto.titulo}</h4><img src="${imageSrc}" alt="${foto.titulo}" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06);" loading="lazy"></div>`;
+                contenedor.innerHTML += `<div class="gallery-photo-card"><img src="${imageSrc}" alt="${foto.titulo}" loading="lazy"></div>`;
             });
         }
 
