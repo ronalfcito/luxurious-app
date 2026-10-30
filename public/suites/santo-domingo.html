@@ -46,6 +46,27 @@
         .gallery-modal-content img { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: 6px; object-fit: cover; }
         .gallery-photo-card { min-width: 0; }
         .gallery-photo-card h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; color: #0c0a09; }
+        .filtro-btn {
+            appearance: none;
+            -webkit-appearance: none;
+            background: #ffffff !important;
+            border: 1px solid #e7e5e4 !important;
+            color: #57534e !important;
+            padding: 8px 18px !important;
+            border-radius: 30px !important;
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            white-space: nowrap !important;
+            outline: none !important;
+            box-shadow: none !important;
+            transition: all 0.2s ease !important;
+        }
+        .filtro-btn.active, .filtro-btn:hover {
+            background: #0c0a09 !important;
+            color: #ffffff !important;
+            border-color: #0c0a09 !important;
+        }
 
         .section-header-title { font-family: 'Cinzel', serif; font-size: 1.8rem; margin: 40px 0 20px 0; color: #0c0a09; text-align: left; }
         
@@ -172,11 +193,11 @@
             <button onclick="cerrarGaleriaEspecial()" style="border: none; background: transparent; font-size: 1.6rem; cursor: pointer; color: #1c1917;">&times;</button>
         </div>
         <div style="max-width: 900px; margin: 20px auto 0 auto; padding: 0 20px; display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px;">
-            <button class="filtro-btn active" onclick="filtrarGaleria('todas', this)">🔲 Todas (29)</button>
-            <button class="filtro-btn" onclick="filtrarGaleria('habitacion', this)">🛏️ Habitación (5)</button>
-            <button class="filtro-btn" onclick="filtrarGaleria('jacuzzi', this)">🛁 Jacuzzi &amp; Spa (10)</button>
-            <button class="filtro-btn" onclick="filtrarGaleria('cocina', this)">🍳 Sala &amp; Cocina (8)</button>
-            <button class="filtro-btn" onclick="filtrarGaleria('bano', this)">🚿 Baños &amp; Exteriores (6)</button>
+            <button type="button" class="filtro-btn active" onclick="filtrarGaleria('todas', this)">🔲 Todas (29)</button>
+            <button type="button" class="filtro-btn" onclick="filtrarGaleria('habitacion', this)">🛏️ Habitación (5)</button>
+            <button type="button" class="filtro-btn" onclick="filtrarGaleria('jacuzzi', this)">🛁 Jacuzzi &amp; Spa (10)</button>
+            <button type="button" class="filtro-btn" onclick="filtrarGaleria('cocina', this)">🍳 Sala &amp; Cocina (8)</button>
+            <button type="button" class="filtro-btn" onclick="filtrarGaleria('bano', this)">🚿 Baños &amp; Exteriores (6)</button>
         </div>
         <div id="contenedorFotosEspecial" class="gallery-modal-content"></div>
     </div>
@@ -214,6 +235,7 @@
                 <p style="font-size: 0.8rem; color: #71717a; margin-bottom: 20px;">Estadías exclusivamente bajo reserva previa y programada.</p>
                 <div style="display: grid; gap: 12px;">
                     <a href="https://wa.me/593986605398" target="_blank" rel="noopener noreferrer" style="color: #fff;">WhatsApp Oficial Directo · +593 98 660 5398</a>
+                    <a href="https://www.airbnb.com.ec/rooms/1640189058166955456?search_mode=regular_search&amp;adults=1&amp;check_in=2026-11-01&amp;check_out=2026-11-06&amp;children=0&amp;infants=0&amp;pets=0&amp;photo_id=2780758178&amp;source_impression_id=p3_8f4c07da-7671-458e-98f7-04a65016b085_b4d7f353-3e24-4efe-8cc9-e11f2c4f6eb3_0_1640189058166955456_1&amp;previous_page_section_name=1000&amp;federated_search_id=8f4c07da-7671-458e-98f7-04a65016b085" target="_blank" rel="noopener noreferrer" style="color: #fff;">Airbnb Superhost · Perfil verificado</a>
                     <a href="https://www.instagram.com/luxurious_lodging_ec" target="_blank" rel="noopener noreferrer" style="color: #fff;">Instagram · @luxurious_lodging_ec</a>
                 </div>
             </div>
