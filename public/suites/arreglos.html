@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arreglos y detalles personalizados para sorprender durante tu estadía en Quito o Santo Domingo.">
+    <title>Arreglos y Detalles | Luxurious Lodging Ecuador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #fbf9f5;
+            --text-dark: #1c1917;
+            --text-muted: #78716c;
+            --accent-gold: #d4a373;
+            --accent-green: #143828;
+            --border-color: #e7e5e4;
+        }
+
+        * { box-sizing: border-box; margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { padding-bottom: 88px; background: var(--bg-light); color: var(--text-dark); }
+        a { color: inherit; }
+
+        .page-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: flex;
+            min-height: 72px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 5%;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.96);
+        }
+        .back-link { color: var(--text-dark); font-size: 0.86rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+        .logo { color: #0c0a09; font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 1.5px; text-align: center; text-decoration: none; }
+        .header-cta, .btn-contact {
+            display: inline-flex;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 18px;
+            border: 0;
+            border-radius: 3px;
+            background: var(--accent-green);
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: center;
+            text-decoration: none;
+        }
+        .breadcrumb { margin: 24px 20px 16px; color: var(--text-muted); font-size: 0.84rem; text-align: center; }
+        main { width: min(100% - 40px, 1050px); margin: 0 auto; }
+        .title-box { max-width: 850px; margin: 0 auto 25px; text-align: center; }
+        .badge-tag { display: inline-block; padding: 5px 12px; border-radius: 3px; background: #f5f5f4; color: #44403c; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; }
+        h1, h2, h3 { font-family: 'Cinzel', serif; }
+        h1 { margin: 15px 0 10px; color: #0c0a09; font-size: 2.4rem; line-height: 1.2; }
+        .title-box p { color: var(--text-muted); font-size: 1.02rem; line-height: 1.7; }
+        .service-label { display: inline-block; margin-top: 16px; padding: 7px 14px; border: 1px solid #fef3c7; border-radius: 20px; background: #fffbeb; color: #92400e; font-size: 0.84rem; font-weight: 600; }
+
+        .action-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-bottom: 30px; }
+        .price-tag { padding: 10px 20px; border: 1px solid #d6d3d1; background: #fff; font-size: 0.9rem; font-weight: 700; }
+        .price-tag strong { color: #0c0a09; font-size: 1.2rem; }
+
+        .gallery-wrap { position: relative; margin: 0 auto 42px; }
+        .gallery { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 15px; overflow: hidden; border-radius: 12px; }
+        .gallery img { display: block; width: 100%; height: 420px; border-radius: 8px; object-fit: cover; }
+        .gallery-side { display: flex; min-width: 0; flex-direction: column; gap: 15px; }
+        .gallery-side img { height: 202.5px; }
+        .gallery-side .promo-image { background: #080706; object-fit: contain; }
+        .show-photos {
+            position: absolute;
+            right: 18px;
+            bottom: 18px;
+            display: inline-flex;
+            min-height: 44px;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 7px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            color: var(--text-dark);
+            cursor: pointer;
+            font-size: 0.84rem;
+            font-weight: 600;
+        }
+        .show-photos svg { width: 17px; height: 17px; fill: currentColor; }
+
+        .section-title { margin: 38px 0 18px; color: #0c0a09; font-size: 1.8rem; }
+        .details-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+        .detail-card { display: flex; flex-direction: column; gap: 10px; padding: 22px; border: 1px solid var(--border-color); border-radius: 6px; background: #fff; }
+        .detail-icon { font-size: 1.35rem; }
+        .detail-card h3 { color: #1c1917; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.96rem; }
+        .detail-card p, .coordination-note { color: var(--text-muted); font-size: 0.86rem; line-height: 1.6; }
+        .coordination-note { margin-top: 22px; padding: 18px 20px; border: 1px dashed #fdba74; border-radius: 6px; background: #fff3ed; color: #9a3412; }
+
+        .bottom-bar {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 12px 5%;
+            border-top: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+        }
+        .bottom-title { font-size: 0.9rem; font-weight: 700; }
+
+        .gallery-dialog { width: min(100%, 1000px); max-width: none; max-height: min(92dvh, 900px); margin: auto; padding: 0; overflow: auto; border: 0; background: var(--bg-light); color: var(--text-dark); }
+        .gallery-dialog::backdrop { background: rgba(12, 10, 9, 0.78); }
+        .dialog-header { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--border-color); background: var(--bg-light); }
+        .dialog-header h2 { font-size: 1.05rem; text-align: center; }
+        .dialog-header button { min-height: 44px; padding: 8px 10px; border: 0; background: transparent; color: var(--text-dark); cursor: pointer; font-size: 0.9rem; font-weight: 700; }
+        .dialog-header .dialog-close { font-size: 1.5rem; }
+        .dialog-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: 20px; }
+        .dialog-gallery img { width: 100%; max-height: 70vh; border-radius: 6px; background: #080706; object-fit: contain; }
+        .dialog-gallery img:first-child { grid-column: 1 / -1; }
+        .site-footer {
+            margin-top: 56px;
+            padding: 56px 5% 26px;
+            border-top: 1px solid rgba(212, 163, 115, 0.15);
+            background: #0c1a14;
+            color: #a3a3a3;
+        }
+        .footer-grid {
+            display: grid;
+            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+            gap: 32px;
+            margin: 0 auto 42px;
+        }
+        .footer-brand { margin-bottom: 18px; }
+        .footer-brand h2 { margin-bottom: 4px; color: #fff; font-size: 1.55rem; letter-spacing: 3px; }
+        .footer-country { color: var(--accent-gold); font-size: 0.68rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; }
+        .footer-description { max-width: 360px; margin-bottom: 18px; color: #a1a1aa; font-size: 0.88rem; font-weight: 300; line-height: 1.65; }
+        .footer-locations { display: flex; align-items: center; gap: 8px; color: var(--accent-gold); font-size: 0.82rem; }
+        .footer-heading { margin-bottom: 18px; color: var(--accent-gold); font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .footer-links { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+        .footer-links a { color: #d4d4d8; font-size: 0.88rem; text-decoration: none; }
+        .footer-links a:hover { color: var(--accent-gold); }
+        .footer-contact-intro { margin-bottom: 16px; color: #92908d; font-size: 0.78rem; line-height: 1.5; }
+        .footer-contact-list { display: grid; gap: 10px; }
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 13px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer-contact svg { width: 20px; height: 20px; flex: 0 0 20px; fill: none; stroke: var(--accent-gold); stroke-width: 1.8; }
+        .footer-contact span { font-size: 0.84rem; font-weight: 700; }
+        .footer-contact small { color: #a1a1aa; font-weight: 400; }
+        .footer-bottom {
+            display: flex;
+            max-width: 1200px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #71717a;
+            font-size: 0.78rem;
+        }
+
+        @media (max-width: 768px) {
+            body { padding-bottom: 126px; }
+            .page-header { flex-wrap: wrap; gap: 10px; padding: 12px 16px; }
+            .back-link { order: 1; }
+            .logo { order: 0; width: 100%; font-size: 1rem; }
+            .header-cta { order: 2; flex: 1 1 100%; }
+            main { width: min(100% - 32px, 1050px); }
+            h1 { font-size: 1.85rem; }
+            .title-box p { font-size: 0.94rem; }
+            .action-bar { display: grid; grid-template-columns: 1fr; padding: 0 8px; }
+            .price-tag, .action-bar .btn-contact { width: 100%; text-align: center; }
+            .gallery { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+            .gallery > img { height: 340px; }
+            .gallery-side { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+            .gallery-side img { height: 180px; }
+            .show-photos { right: 10px; bottom: 10px; }
+            .details-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .bottom-bar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 9px 12px calc(9px + env(safe-area-inset-bottom)); }
+            .bottom-title { font-size: 0.78rem; }
+            .bottom-bar .btn-contact { width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .details-grid { grid-template-columns: minmax(0, 1fr); }
+            .gallery > img { height: 280px; }
+            .gallery-side img { height: 145px; }
+            .show-photos { min-height: 42px; padding: 8px 11px; font-size: 0.76rem; }
+            .dialog-header { display: grid; grid-template-columns: 1fr auto; }
+            .dialog-header h2 { grid-column: 1 / -1; grid-row: 2; }
+            .dialog-gallery { grid-template-columns: minmax(0, 1fr); padding: 14px; }
+            .dialog-gallery img:first-child { grid-column: auto; }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <a class="back-link" href="/#suites">&larr; Volver a sedes</a>
+        <a class="logo" href="/">LUXURIOUS LODGING · ECUADOR</a>
+        <a class="header-cta" href="/?reserva=arreglos">CONSULTAR DISPONIBILIDAD</a>
+    </header>
+
+    <div class="breadcrumb">Inicio / Servicios / Arreglos y Detalles</div>
+
+    <main>
+        <section aria-labelledby="service-title">
+            <div class="title-box">
+                <span class="badge-tag">EXCLUSIVO PARA HUÉSPEDES · QUITO Y SANTO DOMINGO</span>
+                <h1 id="service-title">Arreglos y detalles para momentos inolvidables</h1>
+                <p>Un servicio exclusivo para nuestros huéspedes en Quito y Santo Domingo. Sorprende a quien más quieres con una bienvenida especial. Preparamos tu Airbnb con decoración y detalles personalizados para cumpleaños, aniversarios, escapadas románticas, pedidas de mano y otras ocasiones especiales.</p>
+                <span class="service-label">Tú eliges el motivo; nosotros preparamos la sorpresa.</span>
+            </div>
+
+            <div class="action-bar">
+                <div class="price-tag">SERVICIO ADICIONAL · <strong>$45 USD</strong></div>
+                <a class="btn-contact" href="/?reserva=arreglos">CONSULTAR Y RESERVAR DECORACIÓN</a>
+            </div>
+
+            <div class="gallery-wrap">
+                <div class="gallery" aria-label="Fotos de arreglos y detalles">
+                    <img src="/suites/img-arreglos/evento-condado.jpeg" alt="Decoración romántica con globos y pétalos en una habitación">
+                    <div class="gallery-side">
+                        <img src="/suites/img-arreglos/evento-condado-3.jpeg" alt="Decoración de cumpleaños preparada para una huésped">
+                        <img class="promo-image" src="/suites/img-arreglos/evento-condado-2.jpeg" alt="Servicio de arreglos para cumpleaños y ocasiones especiales">
+                    </div>
+                </div>
+                <button class="show-photos" id="openGallery" type="button" aria-haspopup="dialog" aria-controls="galleryDialog">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h7v7H4zm9 0h7v7h-7zM4 12h7v9H4zm9 0h7v9h-7z"/></svg>
+                    Mostrar 3 fotos
+                </button>
+            </div>
+
+            <h2 class="section-title">Un detalle pensado para sorprender</h2>
+            <div class="details-grid">
+                <article class="detail-card">
+                    <span class="detail-icon" aria-hidden="true">🎉</span>
+                    <h3>Para toda ocasión</h3>
+                    <p>Cumpleaños, aniversarios, escapadas románticas, pedidas de mano y otras celebraciones especiales.</p>
+                </article>
+                <article class="detail-card">
+                    <span class="detail-icon" aria-hidden="true">✨</span>
+                    <h3>Decoración personalizada</h3>
+                    <p>Cuéntanos qué quieres celebrar y coordinamos los detalles para crear una bienvenida especial.</p>
+                </article>
+                <article class="detail-card">
+                    <span class="detail-icon" aria-hidden="true">📍</span>
+                    <h3>Quito y Santo Domingo</h3>
+                    <p>Servicio disponible para huéspedes de nuestras sedes en Quito y Santo Domingo.</p>
+                </article>
+            </div>
+
+            <p class="coordination-note"><strong>Coordinación y disponibilidad:</strong> es un servicio adicional al hospedaje, tiene costo extra y debe coordinarse con anticipación. Sujeto a disponibilidad. Haz especial tu estadía: consulta y reserva tu decoración por WhatsApp.</p>
+        </section>
+    </main>
+
+    <dialog class="gallery-dialog" id="galleryDialog" aria-labelledby="galleryTitle">
+        <div class="dialog-header">
+            <button type="button" id="closeGalleryBack">&larr; VOLVER</button>
+            <h2 id="galleryTitle">Arreglos y detalles VIP</h2>
+            <button class="dialog-close" type="button" id="closeGallery" aria-label="Cerrar galería">&times;</button>
+        </div>
+        <div class="dialog-gallery">
+            <img src="/suites/img-arreglos/evento-condado.jpeg" alt="Decoración romántica con globos y pétalos en una habitación">
+            <img src="/suites/img-arreglos/evento-condado-3.jpeg" alt="Decoración de cumpleaños preparada para una huésped">
+            <img src="/suites/img-arreglos/evento-condado-2.jpeg" alt="Servicio de arreglos para cumpleaños y ocasiones especiales">
+        </div>
+    </dialog>
+
+    <div class="bottom-bar">
+        <div class="bottom-title">Arreglos y detalles VIP · servicio adicional</div>
+        <a class="btn-contact" href="/?reserva=arreglos">CONSULTAR Y RESERVAR</a>
+    </div>
+
+    <footer class="site-footer">
+    <div class="footer-grid">
+        <div>
+            <div class="footer-brand">
+                <h2>LUXURIOUS LODGING</h2>
+                <span class="footer-country">ECUADOR</span>
+            </div>
+            <p class="footer-description">El lujo de estar en calma. Departamentos y suites para descansar con confort, privacidad y atención personalizada.</p>
+            <div class="footer-locations">
+                <svg viewBox="0 0 24 24" aria-hidden="true" style="width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                Quito · Santo Domingo · Tonsupa · Baños
+            </div>
+        </div>
+        <div>
+            <h3 class="footer-heading">Navegación</h3>
+            <ul class="footer-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/historia">Sobre nosotros</a></li>
+                <li><a href="/#suites">Nuestras sedes</a></li>
+                <li><a href="/suites/quito">Quito · El Bosque y Condado</a></li>
+                <li><a href="/suites/santo-domingo">Santo Domingo</a></li>
+                <li><a href="/suites/tonsupa">Tonsupa</a></li>
+                <li><a href="/suites/banos">Baños de Agua Santa</a></li>
+                <li><a href="/#resenas">Reseñas</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="footer-heading">Canales oficiales</h3>
+            <p class="footer-contact-intro">Atención directa para consultas y reservas.</p>
+            <div class="footer-contact-list">
+                <a class="footer-contact" href="https://wa.me/593986605398" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.9A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 9c.7 2.2 2.3 3.8 4.5 4.5"/></svg>
+                    <span>WhatsApp Oficial Directo<br><small>+593 98 660 5398</small></span>
+                </a>
+                <a class="footer-contact" href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" style="stroke:#ff385c;"><path d="M12 3c1 3 3 4 6 4"/></svg>
+                    <span>Airbnb Superhost<br><small>Perfil verificado</small></span>
+                </a>
+                <a class="footer-contact" href="https://www.instagram.com/luxurious_lodging_ec" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+                    <span>Instagram<br><small>@luxurious_lodging_ec</small></span>
+                </a>
+                <a class="footer-contact" href="https://www.tiktok.com/@luxurious_lodging_ec?_r=1" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v11a4 4 0 1 1-4-4M14 4c1 3 3 4 6 4"/></svg>
+                    <span>TikTok<br><small>@luxurious_lodging_ec</small></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 Luxurious Lodging Ecuador. Todos los derechos reservados.</span>
+        <span>Experiencias Temáticas Boutique</span>
+    </div>
+    </footer>
+
+    <script>
+        const galleryDialog = document.getElementById('galleryDialog');
+
+        document.getElementById('openGallery').addEventListener('click', function() {
+            galleryDialog.showModal();
+        });
+
+        document.getElementById('closeGallery').addEventListener('click', function() {
+            galleryDialog.close();
+        });
+
+        document.getElementById('closeGalleryBack').addEventListener('click', function() {
+            galleryDialog.close();
+        });
+
+        galleryDialog.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                galleryDialog.close();
+            }
+        });
+
+        galleryDialog.addEventListener('click', function(event) {
+            if (event.target === galleryDialog) {
+                galleryDialog.close();
+            }
+        });
+    </script>
+</body>
+</html>
