@@ -460,6 +460,29 @@
         }
 
         @media (max-width: 768px) {
+            .navbar,
+            .navbar.scrolled {
+                padding: 12px 5%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .logo {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+                line-height: 1.15;
+                white-space: nowrap;
+            }
+            nav {
+                width: 100%;
+                justify-content: space-between;
+                gap: 8px;
+            }
+            .navbar .btn-gold {
+                padding: 8px 12px;
+                font-size: 0.72rem;
+                white-space: nowrap;
+            }
             .location-grid { grid-template-columns: 1fr; }
             .hero-section {
                 min-height: calc(100svh - 60px);
