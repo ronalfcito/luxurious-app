@@ -301,6 +301,72 @@
             font-size: 0.9rem;
         }
 
+        .banos-gallery {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+            grid-template-rows: repeat(2, 121px);
+            gap: 8px;
+            position: relative;
+            padding: 10px 10px 48px;
+            background: var(--bg-card);
+        }
+
+        .banos-gallery img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .banos-gallery-main {
+            grid-row: 1 / span 2;
+        }
+
+        .banos-gallery-details {
+            position: absolute;
+            right: 18px;
+            bottom: 12px;
+            z-index: 2;
+        }
+
+        .banos-gallery-details summary {
+            padding: 8px 13px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            background: #fff;
+            color: #1c1917;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            list-style: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .banos-gallery-details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .banos-gallery-details[open] {
+            position: relative;
+            right: auto;
+            bottom: auto;
+            z-index: auto;
+            grid-column: 1 / -1;
+        }
+
+        .banos-gallery-more {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            padding-top: 8px;
+        }
+
+        .banos-gallery-more img {
+            aspect-ratio: 4 / 3;
+        }
+
         /* ACORDEÓN DE FAQS */
         .faq-item {
             background: var(--bg-card);
@@ -378,6 +444,123 @@
             border-radius: 4px;
             margin-bottom: 15px;
             outline: none;
+        }
+
+        .reviews-section {
+            padding: 64px 20px;
+            background: linear-gradient(135deg, #17110e, #0c0a09 68%);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .reviews-container {
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+
+        .reviews-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .reviews-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            color: #ff385c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .reviews-header h2 {
+            margin-bottom: 10px;
+            color: var(--text-main);
+            font-size: 2rem;
+        }
+
+        .reviews-header p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 16px;
+        }
+
+        .review-card {
+            min-width: 0;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .review-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .review-avatar-text {
+            display: grid;
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            place-items: center;
+            border-radius: 50%;
+            background: #2a211b;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .review-user-info h4 {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .review-user-info span,
+        .review-date {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        .review-stars {
+            margin-bottom: 10px;
+            color: #ff385c;
+            letter-spacing: 0;
+        }
+
+        .review-text {
+            margin-bottom: 14px;
+            color: #e7e2dc;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            overflow-wrap: anywhere;
+        }
+
+        .reviews-footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 28px;
+        }
+
+        .btn-airbnb {
+            display: inline-flex;
+            max-width: 100%;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 4px;
+            background: #ff385c;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
         }
 
         /* MODAL DE RESERVA */
@@ -487,10 +670,6 @@
                 grid-template-columns: minmax(0, 1fr);
                 gap: 18px;
             }
-            #reviewsContainer {
-                grid-template-columns: minmax(0, 1fr) !important;
-                gap: 16px !important;
-            }
             footer {
                 padding: 44px 20px 24px !important;
             }
@@ -521,13 +700,74 @@
             .hero-title { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1rem; }
             .social-nav { display: none; }
+            .reviews-section { padding: 48px 20px; }
+            .reviews-header h2 { font-size: 1.7rem; }
+            .reviews-grid { grid-template-columns: minmax(0, 1fr); }
         }
 
         @media (max-width: 420px) {
+            .banos-gallery {
+                grid-template-columns: minmax(0, 1fr);
+                grid-template-rows: 220px;
+            }
+            .banos-gallery-main { grid-row: auto; }
+            .banos-gallery-side { display: none !important; }
+            .banos-gallery-more { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             #modalReserva form > div[style*="grid-template-columns"] {
                 grid-template-columns: minmax(0, 1fr) !important;
                 gap: 12px !important;
             }
+        }
+        .suite-section {
+            padding: 72px 5%;
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(140deg, #17110e, #0c0a09 72%);
+        }
+
+        .suite-container { max-width: 1160px; margin: 0 auto; }
+        .suite-header { max-width: 840px; margin: 0 auto 34px; text-align: center; }
+        .suite-header .suite-badge {
+            position: static;
+            display: inline-flex;
+            margin-bottom: 14px;
+            border-radius: 3px;
+            background: rgba(212, 163, 115, 0.12);
+            font-size: 0.76rem;
+        }
+        .suite-header h2 { margin-bottom: 14px; color: var(--text-main); font-size: 2rem; line-height: 1.25; }
+        .suite-intro { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+        .info-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+        .info-card {
+            min-width: 0;
+            padding: 22px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.035);
+        }
+        .info-card h3 { margin-bottom: 12px; color: var(--accent-gold); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; line-height: 1.5; }
+        .card-desc { margin-bottom: 14px; color: #d6d3d1; font-size: 0.88rem; line-height: 1.6; }
+        .card-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+        .card-list li { color: var(--text-muted); font-size: 0.84rem; line-height: 1.6; overflow-wrap: anywhere; }
+        .card-list strong { color: #f5f5f4; }
+        .amenities-wrapper { margin-top: 44px; }
+        .amenities-title { margin-bottom: 20px; color: var(--text-main); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; text-align: center; }
+        .amenities-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+        .amenity-card { min-width: 0; padding: 20px; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-card); }
+        .amenity-icon { display: grid; width: 36px; height: 36px; margin-bottom: 10px; place-items: center; font-size: 1.75rem; line-height: 1; }
+        #sede-banos .amenity-icon svg,
+        #sede-santo-domingo .amenity-icon svg { width: 32px; height: 32px; fill: none; stroke: #0c0a09; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        .amenity-card h4 { margin-bottom: 7px; color: var(--accent-gold); font-size: 0.92rem; }
+        .amenity-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.55; }
+
+        @media (max-width: 768px) {
+            .suite-section { padding: 52px 20px; }
+            .suite-header h2 { font-size: 1.7rem; }
+            .info-grid { grid-template-columns: minmax(0, 1fr); }
+            .amenities-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 420px) {
+            .amenities-grid { grid-template-columns: minmax(0, 1fr); }
         }
     </style>
 </head>
@@ -551,7 +791,6 @@
                 </div>
             </div>
             <a href="#resenas">Reseñas</a>
-            
             <!-- Redes Sociales Oficiales -->
             <div class="social-nav">
                 <a href="https://www.instagram.com/luxurious_lodging_ec" target="_blank" rel="noopener noreferrer" title="Instagram @luxurious_lodging_ec">
@@ -676,34 +915,21 @@
             </div>
 
             <div class="suite-card">
-                <span class="suite-badge">BAÑOS DE AGUA SANTA · SPA &amp; MONTAÑA</span>
-                <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=800&q=80" class="suite-img" alt="Alojamiento Luxurious en Baños de Agua Santa">
+                <span class="suite-badge">BAÑOS DE AGUA SANTA · REFUGIO DE MONTAÑA</span>
+                <img src="/img/banos/banos-habitacion-1.jpg" class="suite-img" alt="Habitación de la sede Baños de Agua Santa">
                 <div class="suite-info">
                     <h3>Sede Baños de Agua Santa</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Un refugio entre montañas para combinar bienestar, naturaleza y descanso.</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Casa independiente de dos plantas, con tres dormitorios, baño privado y vistas a las montañas.</p>
                     <div class="suite-price-box">
                         <span class="suite-price">Desde $55 USD/noche</span>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
                         <a href="/suites/banos" style="text-align: center; text-decoration: none; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 10px; border-radius: 4px; font-weight: 600; font-size: 0.82rem; transition: background 0.3s;">VER DETALLES</a>
-                        <button class="btn-gold" style="padding: 10px; font-size: 0.82rem;" onclick="abrirModalReserva('Sede Baños de Agua Santa — Spa &amp; Montaña', 55)">RESERVAR DIRECTO</button>
+                        <button class="btn-gold" style="padding: 10px; font-size: 0.82rem;" onclick="abrirModalReserva('Sede Baños de Agua Santa — Casa de Montaña', 55)">RESERVAR DIRECTO</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- RESEÑAS & FORMULARIO -->
-    <div class="container" id="resenas">
-        <div class="section-title">
-            <span>Experiencias Reales</span>
-            <h2>Reseñas de Huéspedes</h2>
-        </div>
-
-        <div id="reviewsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-            <!-- Cargas dinámicas de la API -->
-        </div>
-
     </div>
 
     <!-- MODAL DE RESERVA FIDEDIGNO -->
@@ -723,7 +949,7 @@
                         <option value="Sede Quito — El Bosque (Spa VIP &amp; Vista 360°)">Sede Quito — El Bosque (Spa VIP &amp; Vista 360°)</option>
                         <option value="Sede Quito — Condado Shopping (Dpto VIP &amp; Jacuzzi)">Sede Quito — Condado Shopping (Dpto VIP &amp; Jacuzzi)</option>
                         <option value="Sede Tonsupa — Suite Playa &amp; Relax">Sede Tonsupa — Suite Playa &amp; Relax</option>
-                        <option value="Sede Baños de Agua Santa — Spa &amp; Montaña">Sede Baños de Agua Santa — Spa &amp; Montaña</option>
+                        <option value="Sede Baños de Agua Santa — Casa de Montaña">Sede Baños de Agua Santa — Casa de Montaña</option>
                         <option value="Consulta General / Varias Sedes">Consulta General / Varias Sedes</option>
                     </select>
                 </div>
@@ -802,7 +1028,6 @@
                 document.getElementById('modalReserva').classList.add('active');
             }
             
-            cargarResenasDesdeBackend();
         });
 
         function toggleFaq(element) {
@@ -889,96 +1114,155 @@ _Hola, quiero consultar la disponibilidad para estas fechas y los datos de cuent
             cerrarModalReserva();
         }
 
-        async function cargarResenasDesdeBackend() {
-            try {
-                const res = await fetch('/api/reviews');
-                const data = await res.json();
-                const container = document.getElementById('reviewsContainer');
-                container.innerHTML = '';
-
-                data.reseñas.forEach(r => {
-                    container.innerHTML += `
-                        <div style="background:var(--bg-card); padding:20px; border-radius:8px; border:1px solid var(--border-color);">
-                            <div style="color:#f59e0b; margin-bottom:8px;">★★★★★</div>
-                            <p style="font-size:0.95rem; font-style:italic;">"${r.comentario}"</p>
-                            <div style="margin-top:12px; font-weight:700; color:var(--accent-gold); font-size:0.85rem;">
-                                ${r.nombre} — <span style="color:var(--text-muted); font-weight:400;">${r.suite}</span>
-                            </div>
-                        </div>
-                    `;
-                });
-            } catch (err) {}
-        }
-
-        async function publicarResenaBackend(e) {
-            e.preventDefault();
-            const nombre = document.getElementById('revNombre').value;
-            const suite = document.getElementById('revSuite').value;
-            const comentario = document.getElementById('revComentario').value;
-
-            try {
-                await fetch('/api/reviews', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nombre, suite, comentario, calificacion: 5 })
-                });
-                
-                document.getElementById('revNombre').value = '';
-                document.getElementById('revComentario').value = '';
-                cargarResenasDesdeBackend();
-                alert("¡Gracias! Tu reseña ha sido enviada.");
-            } catch (err) {
-                alert("Ocurrió un error al enviar tu reseña.");
-            }
-        }
     </script>
+
+    <!-- SECCIÓN RESEÑAS AIRBNB -->
+    <section class="reviews-section" id="resenas">
+        <div class="reviews-container">
+            <div class="reviews-header">
+                <span class="reviews-badge">
+                    <svg width="18" height="18" viewBox="0 0 32 32" fill="#FF385C" aria-hidden="true">
+                        <path d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.353c.667 1.591.91 2.472.96 3.396l.011.315c0 4.308-3.321 7.806-7.5 7.806-3.195 0-5.962-2.023-7.5-4.873-1.538 2.85-4.305 4.873-7.5 4.873-4.179 0-7.5-3.498-7.5-7.806 0-1.229.308-2.387.971-3.711l.145-.286c.986-2.296 5.146-11.006 7.1-14.836l.533-1.025C12.537 1.963 13.992 1 16 1z"/>
+                    </svg>
+                    Evaluado en Airbnb
+                </span>
+                <h2>Lo que dicen nuestros huéspedes</h2>
+                <p>Experiencias reales de quienes se han hospedado con nosotros.</p>
+            </div>
+
+            <div class="reviews-grid">
+                <article class="review-card">
+                    <div class="review-user">
+                        <div class="review-avatar-text" aria-hidden="true">D</div>
+                        <div class="review-user-info">
+                            <h4>Deibie</h4>
+                            <span>Ambato, Ecuador</span>
+                        </div>
+                    </div>
+                    <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                    <p class="review-text">"Buen servicio"</p>
+                    <span class="review-date">Airbnb · Hace 2 semanas</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-user">
+                        <div class="review-avatar-text" aria-hidden="true">A</div>
+                        <div class="review-user-info">
+                            <h4>Albaro</h4>
+                            <span>Tegucigalpa, Honduras</span>
+                        </div>
+                    </div>
+                    <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                    <p class="review-text">"Muy bonito y moderno lugar de hospedaje, con muy buenas vistas y lugares cercanos de comida!"</p>
+                    <span class="review-date">Airbnb · Hace 3 semanas</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-user">
+                        <div class="review-avatar-text" aria-hidden="true">N</div>
+                        <div class="review-user-info">
+                            <h4>Nidia Vanessa</h4>
+                            <span>Ciudad de México, México</span>
+                        </div>
+                    </div>
+                    <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                    <p class="review-text">"Excelentes anfitriones y alojamiento, los tengo en mis favoritos cada que visito el sector! Muy recomendado!"</p>
+                    <span class="review-date">Airbnb · Octubre 2026</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-user">
+                        <div class="review-avatar-text" aria-hidden="true">O</div>
+                        <div class="review-user-info">
+                            <h4>Oscar</h4>
+                            <span>Washington, D.C.</span>
+                        </div>
+                    </div>
+                    <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                    <p class="review-text">"Bonito lugar, fácil acceso"</p>
+                    <span class="review-date">Airbnb · Septiembre 2026</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-user">
+                        <div class="review-avatar-text" aria-hidden="true">W</div>
+                        <div class="review-user-info">
+                            <h4>Weston</h4>
+                            <span>Clearwater, Florida</span>
+                        </div>
+                    </div>
+                    <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                    <p class="review-text">"Nuestro anfitrión hizo todo lo posible por ayudarnos. Se aseguraron de que tuviéramos un medio de transporte confiable, nos ayudaron con las reservas de restaurantes, etc. Recomendamos ampliamente hospedarse."</p>
+                    <span class="review-date">Airbnb · Septiembre 2026</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-user">
+                        <div class="review-avatar-text" aria-hidden="true">R</div>
+                        <div class="review-user-info">
+                            <h4>Robson Morais Rossoni</h4>
+                            <span>São Paulo, Brasil</span>
+                        </div>
+                    </div>
+                    <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                    <p class="review-text">"Sensacional 👏👏👏 agradecer também ao Jesus que me recebeu no apartamento e me deu todo auxílio e informações sobre o local."</p>
+                    <span class="review-date">Airbnb · Hace 1 mes</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-user">
+                        <div class="review-avatar-text" aria-hidden="true">A</div>
+                        <div class="review-user-info">
+                            <h4>Alejandro</h4>
+                            <span>Monterrey, México</span>
+                        </div>
+                    </div>
+                    <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                    <p class="review-text">"Es un lugar muy bueno y la zona es espectacular"</p>
+                    <span class="review-date">Airbnb · Hace 1 mes</span>
+                </article>
+            </div>
+
+            <div class="reviews-footer">
+                <a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" class="btn-airbnb">
+                    Ver todas las reseñas en Airbnb ↗
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- PIE DE PÁGINA (FOOTER "DARK LUXURY") -->
-    <footer style="background-color: #0c1a14; color: #a3a3a3; padding: 70px 5% 30px 5%; border-top: 1px solid rgba(212, 163, 115, 0.15); font-family: 'Plus Jakarta Sans', sans-serif;">
-        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr 1.1fr; gap: 40px; margin-bottom: 60px;">
-            <div>
-                <div style="margin-bottom: 20px;">
-                    <h2 style="font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 4px; color: #ffffff; margin: 0 0 4px 0; font-weight: 700;">LUXURIOUS LODGING</h2>
-                    <span style="font-size: 0.7rem; letter-spacing: 2.5px; color: #d4a373; text-transform: uppercase; font-weight: 600; display: block;">ECUADOR</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #d4a373; font-weight: 500;">
-                    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>Quito · Santo Domingo · Tonsupa · Baños</span>
-                </div>
-            </div>
-            <div>
-                <h4 style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #d4a373; margin-bottom: 25px; font-weight: 700;">NAVEGACIÓN</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
-                    <li><a href="/historia" style="color: #d4d4d8; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">Sobre Nosotros (6 Años)</a></li>
-                    <li><a href="/suites/quito" style="color: #d4d4d8; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">Sedes Quito (El Bosque &amp; Condado)</a></li>
-                    <li><a href="#resenas" style="color: #d4d4d8; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">Experiencias &amp; Reseñas</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #d4a373; margin-bottom: 10px; font-weight: 700;">CANALES OFICIALES</h4>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="https://wa.me/593986605398" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: background 0.3s;">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #d4a373;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                        <div><div style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">WhatsApp Oficial Directo</div><div style="font-size: 0.75rem; color: #a1a1aa;">+593 98 660 5398</div></div>
-                    </a>
-                    <a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: background 0.3s;">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #ff385c;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                        <div><div style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">Airbnb Superhost</div><div style="font-size: 0.75rem; color: #a1a1aa;">Perfil Verificado en Airbnb</div></div>
-                    </a>
-                    <a href="https://www.instagram.com/luxurious_lodging_ec" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: background 0.3s;">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #d4a373;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        <div><div style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">Instagram</div><div style="font-size: 0.75rem; color: #a1a1aa;">@luxurious_lodging_ec</div></div>
-                    </a>
-                    <a href="https://www.tiktok.com/@luxurious_lodging_ec?_r=1" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: background 0.3s;">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #d4a373;"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.54-1.28 2.53.02 1.13.71 2.17 1.74 2.62 1.05.47 2.33.32 3.25-.37.73-.54 1.16-1.4 1.18-2.31.03-3.66.01-7.32.02-10.98z"/></svg>
-                        <div><div style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">TikTok</div><div style="font-size: 0.75rem; color: #a1a1aa;">@luxurious_lodging_ec</div></div>
-                    </a>
-                </div>
-            </div>
+    <footer style="background:#0c1a14;color:#a3a3a3;padding:56px 5% 26px;border-top:1px solid rgba(212,163,115,.15);font-family:'Plus Jakarta Sans',sans-serif;">
+      <div style="max-width:1200px;margin:0 auto 42px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px;">
+        <div>
+          <div style="margin-bottom:18px;"><h2 style="font-family:'Cinzel',serif;font-size:1.55rem;letter-spacing:3px;color:#fff;margin:0 0 4px;font-weight:700;">LUXURIOUS LODGING</h2><span style="font-size:.68rem;letter-spacing:2.5px;color:#d4a373;text-transform:uppercase;font-weight:600;">ECUADOR</span></div>
+          <p style="font-size:.88rem;line-height:1.65;color:#a1a1aa;margin:0 0 18px;font-weight:300;max-width:360px;">El lujo de estar en calma. Departamentos y suites para descansar con confort, privacidad y atención personalizada.</p>
+          <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:#d4a373;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Quito · Santo Domingo · Tonsupa · Baños</div>
         </div>
-        <div style="max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.8rem; color: #71717a;">
-            <div>© 2026 Luxurious Lodging Ecuador. Todos los derechos reservados.</div>
-            <div>Experiencias Temáticas Boutique</div>
+        <div>
+          <h3 style="font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#d4a373;margin:0 0 18px;font-weight:700;">NAVEGACIÓN</h3>
+          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;">
+            <li><a href="/historia" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Sobre Nosotros</a></li>
+            <li><a href="/#suites" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Nuestras Sedes</a></li>
+            <li><a href="/suites/quito" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Quito · El Bosque y Condado</a></li>
+            <li><a href="/suites/santo-domingo" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Santo Domingo</a></li>
+            <li><a href="/suites/tonsupa" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Tonsupa</a></li>
+            <li><a href="/suites/banos" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Baños de Agua Santa</a></li>
+            <li><a href="/#resenas" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Reseñas</a></li>
+          </ul>
         </div>
+        <div>
+          <h3 style="font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#d4a373;margin:0 0 10px;font-weight:700;">CANALES OFICIALES</h3>
+          <p style="font-size:.78rem;color:#92908d;margin:0 0 16px;line-height:1.5;">Atención directa para consultas y reservas.</p>
+          <div style="display:grid;gap:10px;">
+            <a href="https://wa.me/593986605398" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:none;stroke:#d4a373;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.9A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 9c.7 2.2 2.3 3.8 4.5 4.5"/></svg><span style="font-size:.84rem;font-weight:700;">WhatsApp Oficial Directo<br><small style="color:#a1a1aa;font-weight:400;">+593 98 660 5398</small></span></a>
+            <a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:none;stroke:#ff385c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M12 3c1 3 3 4 6 4"/></svg><span style="font-size:.84rem;font-weight:700;">Airbnb Superhost<br><small style="color:#a1a1aa;font-weight:400;">Perfil verificado</small></span></a>
+            <a href="https://www.instagram.com/luxurious_lodging_ec" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:none;stroke:#d4a373;stroke-width:1.8;"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#d4a373"/></svg><span style="font-size:.84rem;font-weight:700;">Instagram<br><small style="color:#a1a1aa;font-weight:400;">@luxurious_lodging_ec</small></span></a>
+            <a href="https://www.tiktok.com/@luxurious_lodging_ec?_r=1" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:none;stroke:#d4a373;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M14 4v11a4 4 0 1 1-4-4M14 4c1 3 3 4 6 4"/></svg><span style="font-size:.84rem;font-weight:700;">TikTok<br><small style="color:#a1a1aa;font-weight:400;">@luxurious_lodging_ec</small></span></a>
+          </div>
+        </div>
+      </div>
+      <div style="max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;color:#71717a;"><span>© 2026 Luxurious Lodging Ecuador. Todos los derechos reservados.</span><span>Experiencias Temáticas Boutique</span></div>
     </footer>
     <script>
         window.addEventListener('scroll', function() {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suite Deluxe Jungle & Spa | Luxurious Lodging Ecuador</title>
+    <title>Sede Baños de Agua Santa | Luxurious Lodging Ecuador</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { background-color: #fbf9f5; color: #1c1917; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; }
@@ -17,79 +17,252 @@
         .action-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
         .btn-direct { background: #143828; color: #fff; padding: 12px 28px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border-radius: 3px; border: none; cursor: pointer; }
         .btn-airbnb { background: #ff385c; color: #fff; padding: 12px 28px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border-radius: 3px; }
-        .gallery { max-width: 1000px; margin: 0 auto 60px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 15px; }
-        .gallery img { width: 100%; height: 420px; object-fit: cover; border-radius: 8px; }
+        .gallery { max-width: 1050px; margin: 0 auto 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 15px; position: relative; }
+        .gallery img { display: block; width: 100%; height: 420px; object-fit: cover; border-radius: 8px; }
+        .gallery-side { display: flex; flex-direction: column; gap: 15px; }
+        .gallery-side img { height: 202.5px; }
+        .gallery-open { position: absolute; right: 35px; bottom: 20px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; background: #fff; color: #1c1917; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer; font-size: 0.85rem; font-weight: 600; }
+        #banosGalleryModal { position: fixed; inset: 0; z-index: 2000; display: none; overflow-y: auto; background: #fbf9f5; }
+        #banosGalleryModal.is-open { display: block; }
+        .gallery-modal-header { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 15px 5%; border-bottom: 1px solid #e7e5e4; background: #fbf9f5; }
+        .gallery-modal-header h2 { margin: 0; color: #0c0a09; font-family: 'Cinzel', serif; font-size: 1.1rem; text-align: center; }
+        .gallery-modal-header span { display: block; margin-top: 3px; color: #78716c; font-size: 0.75rem; text-align: center; }
+        .gallery-modal-header button { border: 0; background: transparent; color: #1c1917; cursor: pointer; }
+        .gallery-filters { display: flex; max-width: 900px; gap: 10px; margin: 20px auto 0; padding: 0 20px 10px; overflow-x: auto; }
+        .filtro-btn { padding: 8px 18px; border: 1px solid #e7e5e4; border-radius: 30px; background: #fff; color: #57534e; cursor: pointer; font-size: 0.85rem; font-weight: 600; white-space: nowrap; transition: background 0.2s, color 0.2s; }
+        .filtro-btn.active, .filtro-btn:hover { border-color: #0c0a09; background: #0c0a09; color: #fff; }
+        .gallery-modal-content { display: grid; max-width: 900px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 30px auto; padding: 0 20px 36px; }
+        .gallery-modal-content img { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: 6px; object-fit: cover; }
+        .stay-details { max-width: 1050px; margin: 0 auto 60px; padding: 0 20px; }
+        .stay-section-title { margin: 40px 0 20px; color: #0c0a09; font-family: 'Cinzel', serif; font-size: 1.8rem; }
+        .stay-info-grid, .stay-amenities-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+        .stay-info-card, .stay-amenity-card { min-width: 0; padding: 22px 20px; border: 1px solid #e7e5e4; border-radius: 6px; background: #fff; }
+        .stay-info-card h3 { margin-bottom: 12px; color: #0c0a09; font-size: 0.95rem; line-height: 1.5; }
+        .stay-info-icon { margin-bottom: 8px; font-size: 1.2rem; }
+        .stay-info-icon svg, .stay-amenity-icon svg { display: block; width: 32px; height: 32px; fill: none; stroke: #0c0a09; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        .stay-info-intro { margin: -8px 0 22px; color: #57534e; font-size: 0.95rem; line-height: 1.6; }
+        .stay-info-card p, .stay-info-card li, .stay-amenity-card p { color: #57534e; font-size: 0.84rem; line-height: 1.6; }
+        .stay-info-card p { margin-bottom: 12px; }
+        .stay-info-card ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+        .stay-info-card strong { color: #1c1917; }
+        .stay-amenities-grid { margin-top: 20px; }
+        .stay-amenity-icon { margin-bottom: 10px; font-size: 1.45rem; }
+        .stay-amenity-card h4 { margin-bottom: 7px; color: #0c0a09; font-size: 0.95rem; }
         .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid #e7e5e4; padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; }
+        @media (max-width: 768px) {
+            header { gap: 12px; }
+            header .logo { font-size: 0.95rem; text-align: center; }
+            header .btn-direct { padding: 10px 12px; font-size: 0.75rem; }
+            .gallery { grid-template-columns: 1fr; }
+            .gallery img { height: 280px; }
+            .gallery-side { display: none; }
+            .gallery-filters { margin-top: 16px; }
+            .gallery-modal-content { grid-template-columns: 1fr; }
+            .stay-info-grid, .stay-amenities-grid { grid-template-columns: minmax(0, 1fr); }
+            .stay-section-title { font-size: 1.55rem; }
+            .bottom-bar { gap: 10px; }
+            .bottom-bar > div:first-child { font-size: 0.75rem !important; }
+            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb { padding: 9px 10px; font-size: 0.7rem; }
+            footer { padding: 44px 20px 24px !important; }
+            footer > div:first-child { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; margin-bottom: 32px !important; }
+            footer > div:last-child { align-items: flex-start !important; flex-direction: column; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <a href="/" style="text-decoration:none; color:#1c1917; font-weight:600;">&larr; Volver</a>
-        <a href="/" class="logo">LUXURIOUS LODGING · QUITO</a>
-        <a href="/" class="btn-direct">Reservar Directo</a>
+        <a href="/" class="logo">LUXURIOUS LODGING · BAÑOS</a>
+        <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20quisiera%20reservar%20en%20Ba%C3%B1os" class="btn-direct">Reservar Directo</a>
     </header>
 
-    <div class="breadcrumb">Inicio / Cave Suites / Suite Deluxe Quito</div>
+    <div class="breadcrumb">Inicio / Baños de Agua Santa / Suite de Montaña</div>
 
     <div class="title-box">
-        <span class="badge-tag">FAVORITO ENTRE HUÉSPEDES</span>
-        <span class="rating">★ 4.93 (43 reseñas) · Sector La Carolina, Quito</span>
-        <h1>Suite Deluxe Jungle & Spa</h1>
-        <p style="color: #57534e; font-size: 1rem;">El alojamiento mejor valorado: ambiente íntimo tipo spa, jacuzzi y detalles de diseño.</p>
+        <span class="badge-tag">BAÑOS DE AGUA SANTA · SUITE DE MONTAÑA</span>
+        <h1>Sede Baños de Agua Santa</h1>
+        <p style="color: #57534e; font-size: 1rem;">Una suite cómoda para descansar y disfrutar de la naturaleza, con habitación, sala, cocina y baño privado.</p>
     </div>
 
     <div class="action-bar">
         <div style="border: 1px solid #d6d3d1; padding: 10px 20px; font-weight: 700; font-size: 0.9rem; background: #fff;">
-            TARIFA OFICIAL <span style="font-size: 1.1rem; color: #0c0a09;">$69</span> / noche
+            TARIFA DESDE <span style="font-size: 1.1rem; color: #0c0a09;">$55</span> / noche
         </div>
-        <a href="#" class="btn-direct">RESERVAR DIRECTO</a>
-        <a href="https://airbnb.com" target="_blank" class="btn-airbnb">VER EN AIRBNB</a>
+        <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20quisiera%20reservar%20en%20Ba%C3%B1os" class="btn-direct">RESERVAR DIRECTO</a>
+        <a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" class="btn-airbnb">VER EN AIRBNB</a>
     </div>
 
     <!-- GALERÍA DE FOTOS -->
     <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80" alt="Habitación">
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80" style="height: 202px;" alt="Jacuzzi">
-            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=500&q=80" style="height: 202px;" alt="Baño">
+        <img src="/img/banos/banos-habitacion-1.jpg" alt="Habitación de la suite en Baños de Agua Santa">
+        <div class="gallery-side">
+            <img src="/img/banos/banos-sala-1.jpg" alt="Sala de estar de la suite">
+            <img src="/img/banos/banos-bano-1.jpg" alt="Baño privado con ducha">
+        </div>
+        <button type="button" class="gallery-open" onclick="abrirGaleriaBanos()">Mostrar las 14 fotos</button>
+    </div>
+
+    <div id="banosGalleryModal" role="dialog" aria-modal="true" aria-labelledby="banosGalleryTitle" aria-hidden="true" onclick="if (event.target === this) cerrarGaleriaBanos()">
+        <div class="gallery-modal-header">
+            <button type="button" onclick="cerrarGaleriaBanos()">&larr; Volver a la sede</button>
+            <div>
+                <h2 id="banosGalleryTitle">Sede Baños de Agua Santa</h2>
+                <span id="banosGalleryCount">14 fotos de la suite</span>
+            </div>
+            <button type="button" onclick="cerrarGaleriaBanos()" aria-label="Cerrar galería">&times;</button>
+        </div>
+        <div class="gallery-filters" role="group" aria-label="Filtrar fotos por espacio">
+            <button type="button" class="filtro-btn active" data-category="todas" onclick="filtrarGaleriaBanos('todas', this)">Todas (14)</button>
+            <button type="button" class="filtro-btn" data-category="habitacion" onclick="filtrarGaleriaBanos('habitacion', this)">Habitación (3)</button>
+            <button type="button" class="filtro-btn" data-category="sala" onclick="filtrarGaleriaBanos('sala', this)">Sala (3)</button>
+            <button type="button" class="filtro-btn" data-category="bano" onclick="filtrarGaleriaBanos('bano', this)">Baño y ducha (3)</button>
+            <button type="button" class="filtro-btn" data-category="cocina" onclick="filtrarGaleriaBanos('cocina', this)">Cocina (2)</button>
+            <button type="button" class="filtro-btn" data-category="comedor" onclick="filtrarGaleriaBanos('comedor', this)">Comedor (2)</button>
+            <button type="button" class="filtro-btn" data-category="vista" onclick="filtrarGaleriaBanos('vista', this)">Vista (1)</button>
+        </div>
+        <div class="gallery-modal-content">
+            <img src="/img/banos/banos-habitacion-1.jpg" alt="Habitación de la suite en Baños de Agua Santa" data-gallery-category="habitacion">
+            <img src="/img/banos/banos-habitacion-2.jpg" alt="Otra vista de la habitación de la suite" data-gallery-category="habitacion" loading="lazy">
+            <img src="/img/banos/banos-habitacion-3.jpg" alt="Detalles de la habitación de la suite" data-gallery-category="habitacion" loading="lazy">
+            <img src="/img/banos/banos-sala-1.jpg" alt="Sala de estar de la suite" data-gallery-category="sala">
+            <img src="/img/banos/banos-sala-2.jpg" alt="Otra vista de la sala de estar" data-gallery-category="sala" loading="lazy">
+            <img src="/img/banos/banos-sala-3.jpg" alt="Detalles de la sala de estar" data-gallery-category="sala" loading="lazy">
+            <img src="/img/banos/banos-bano-1.jpg" alt="Baño privado con ducha" data-gallery-category="bano">
+            <img src="/img/banos/banos-bano-2.jpg" alt="Otra vista del baño privado" data-gallery-category="bano" loading="lazy">
+            <img src="/img/banos/banos-bano-3.jpg" alt="Detalles del baño privado" data-gallery-category="bano" loading="lazy">
+            <img src="/img/banos/banos-cocina-1.jpg" alt="Cocina equipada de la suite" data-gallery-category="cocina">
+            <img src="/img/banos/banos-cocina-2.jpg" alt="Otra vista de la cocina equipada" data-gallery-category="cocina" loading="lazy">
+            <img src="/img/banos/banos-comedor-1.jpg" alt="Comedor de la suite" data-gallery-category="comedor">
+            <img src="/img/banos/banos-comedor-2.jpg" alt="Otra vista del comedor" data-gallery-category="comedor" loading="lazy">
+            <img src="/img/banos/banos-vista-1.jpg" alt="Vista panorámica de Baños de Agua Santa" data-gallery-category="vista">
         </div>
     </div>
 
+    <section class="stay-details" aria-labelledby="banosDetailsTitle">
+        <h2 class="stay-section-title" id="banosDetailsTitle">AMENIDADES Y SERVICIOS INCLUIDOS</h2>
+        <div class="stay-amenities-grid">
+            <article class="stay-amenity-card">
+                <div class="stay-amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18L14 7l-4 6-2-3-5 10Z"/><path d="M14 7l2-3 5 7"/></svg></div>
+                <h4>Vistas a las Montañas</h4>
+                <p>Balcón privado y ventanas panorámicas hacia el paisaje natural y sonido del río.</p>
+            </article>
+            <article class="stay-amenity-card">
+                <div class="stay-amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3m-4 0h8"/></svg></div>
+                <h4>Control con Alexa</h4>
+                <p>Asistente inteligente para música ambiente y entretenimiento en la sala.</p>
+            </article>
+            <article class="stay-amenity-card">
+                <div class="stay-amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="m7 2 5 5 5-5"/></svg></div>
+                <h4>Entretenimiento Smart</h4>
+                <p>Smart TV en sala de estar y variedad de juegos de mesa familiares.</p>
+            </article>
+            <article class="stay-amenity-card">
+                <div class="stay-amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 2v7a4 4 0 0 0 4 4v9M7 2v5m4-5v7a4 4 0 0 1-4 4m10-11v20m0-20c3 2 4 5 4 9h-4"/></svg></div>
+                <h4>Cocina Equipada</h4>
+                <p>Electrodomésticos completos, cafetera, microondas y vajilla para 6 personas.</p>
+            </article>
+            <article class="stay-amenity-card">
+                <div class="stay-amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1zM16 8h4l3 4v4h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                <h4>Parqueadero Doble</h4>
+                <p>Estacionamiento privado y cerrado para 2 vehículos con acceso seguro.</p>
+            </article>
+            <article class="stay-amenity-card">
+                <div class="stay-amenity-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22v-8m0 4c-4 0-7-2-8-6 4 0 7 2 8 6Zm0-4c0-4 2-7 6-9 0 4-2 7-6 9Zm0-5c-2-3-2-6 0-9 2 3 2 6 0 9Z"/></svg></div>
+                <h4>Patio &amp; Balcón</h4>
+                <p>Espacios al aire libre independientes con mobiliario exterior para relajarse.</p>
+            </article>
+        </div>
+
+        <h2 class="stay-section-title">Lujo y Confort en Baños</h2>
+        <p class="stay-info-intro">Disfruta una experiencia de descanso, naturaleza y aventura en una casa moderna e independiente, ideal para familias y amigos.</p>
+        <div class="stay-info-grid">
+            <article class="stay-info-card">
+                <div class="stay-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></svg></div>
+                <h3>ALOJAMIENTO (CASA DE 2 PLANTAS)</h3>
+                <p>Casa moderna e independiente de dos plantas con iluminación natural y vistas al entorno natural.</p>
+                <ul>
+                    <li><strong>Dormitorio 1:</strong> Cama de 2 plazas, clóset, baño completo privado y vista a las montañas.</li>
+                    <li><strong>Dormitorio 2:</strong> Cama de 2 plazas, clóset y balcón privado con vistas a las montañas.</li>
+                    <li><strong>Dormitorio 3:</strong> Litera (cama inferior de 2 plazas + cama superior de 1.5 plazas) y clóset.</li>
+                    <li><strong>Baños:</strong> 2 baños completos (1 privado en Máster + 1 compartido).</li>
+                </ul>
+            </article>
+
+            <article class="stay-info-card">
+                <div class="stay-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11h18l-2 10H5L3 11Z"/><path d="M5 11a7 7 0 0 1 14 0M12 4V2m-4 9h.01M16 9l2-2"/></svg></div>
+                <h3>ESPACIOS &amp; EQUIPAMIENTO</h3>
+                <p>Diseñada para compartir momentos especiales con comodidad y tecnología.</p>
+                <ul>
+                    <li><strong>Primera Planta:</strong> Sala confortable con TV, Alexa y juegos de mesa.</li>
+                    <li><strong>Comedor:</strong> Mesa para 6 personas y desayunador.</li>
+                    <li><strong>Cocina Completa:</strong> Refrigeradora, microondas, cafetera, sanduchera, tostadora y vajilla completa.</li>
+                    <li><strong>Exteriores:</strong> Balcón privado amoblado y patio posterior tranquilo.</li>
+                </ul>
+            </article>
+
+            <article class="stay-info-card">
+                <div class="stay-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/><path d="M2 8h20"/></svg></div>
+                <h3>COMODIDADES &amp; UBICACIÓN</h3>
+                <p>Entorno residencial seguro y de fácil acceso a los atractivos turísticos.</p>
+                <ul>
+                    <li><strong>Parqueadero:</strong> 2 espacios privados y seguros dentro de la propiedad.</li>
+                    <li><strong>Privacidad:</strong> Entrada totalmente independiente.</li>
+                    <li><strong>Ubicación VIP:</strong> A 5 min en auto (12-15 min caminando) del centro.</li>
+                    <li><strong>Cercanía:</strong> A pasos de senderos, río, zoológico y cascadas.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
     <!-- BARRA INFERIOR DE ACCIÓN RÁPIDA -->
     <div class="bottom-bar">
-        <div style="font-weight: 700; font-size: 0.9rem;">Suite Deluxe Jungle & Spa — $69 USD</div>
+        <div style="font-weight: 700; font-size: 0.9rem;">Sede Baños de Agua Santa — $55 USD/noche</div>
         <div style="display: flex; gap: 10px;">
-            <a href="https://wa.me/593999999999" class="btn-direct">RESERVAR DIRECTO</a>
-            <a href="https://airbnb.com" target="_blank" class="btn-airbnb">AIRBNB</a>
+            <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20quisiera%20reservar%20en%20Ba%C3%B1os" class="btn-direct">RESERVAR DIRECTO</a>
+            <a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" class="btn-airbnb">AIRBNB</a>
         </div>
     </div>
     <!-- PIE DE PÁGINA (FOOTER "DARK LUXURY") -->
-    <footer style="background-color: #0c1a14; color: #a3a3a3; padding: 70px 5% 30px 5%; border-top: 1px solid rgba(212, 163, 115, 0.15); font-family: 'Plus Jakarta Sans', sans-serif;">
-        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr 1.1fr; gap: 40px; margin-bottom: 60px;">
-            <div>
-                <div style="margin-bottom: 20px;"><h2 style="font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 4px; color: #ffffff; margin: 0 0 4px 0; font-weight: 700;">LUXURIOUS LODGING</h2><span style="font-size: 0.7rem; letter-spacing: 2.5px; color: #d4a373; text-transform: uppercase; font-weight: 600; display: block;">ECUADOR</span></div>
-                <p style="font-size: 0.9rem; line-height: 1.7; color: #a1a1aa; margin-bottom: 25px; font-weight: 300; max-width: 360px;">El lujo de estar en calma. Suites temáticas de descanso sensorial con jacuzzis privados, acabados en piedra natural y máxima privacidad en Quito y sedes exclusivas.</p>
-                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #d4a373; font-weight: 500;"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Quito · Santo Domingo · Tonsupa · Baños</span></div>
-            </div>
-            <div>
-                <h4 style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #d4a373; margin-bottom: 25px; font-weight: 700;">NAVEGACIÓN</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
-                    <li><a href="/historia" style="color: #d4d4d8; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">Sobre Nosotros (6 Años)</a></li><li><a href="/#suites" style="color: #d4d4d8; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">Cave Suites</a></li><li><a href="/suites/quito" style="color: #d4d4d8; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">Sedes Quito (El Bosque &amp; Condado)</a></li><li><a href="/#resenas" style="color: #d4d4d8; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">Experiencias &amp; Reseñas</a></li>
-                    <li style="display: flex; align-items: center; gap: 8px;"><a href="#" style="color: #d4a373; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Temazcal &amp; Spa Sensorial</a><span style="background: rgba(212, 163, 115, 0.15); border: 1px solid rgba(212, 163, 115, 0.4); color: #d4a373; font-size: 0.65rem; padding: 2px 7px; border-radius: 3px; font-weight: 600;">Próximamente</span></li><li><a href="/#ubicacion" style="color: #d4d4d8; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">Ubicación &amp; FAQs</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #d4a373; margin-bottom: 10px; font-weight: 700;">CANALES OFICIALES</h4><p style="font-size: 0.8rem; color: #71717a; margin-bottom: 20px; line-height: 1.4;">Estadías exclusivamente bajo reserva previa y programada. Sin lobby de paso directo.</p>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="https://wa.me/593986605398" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: background 0.3s;"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #d4a373;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><div><div style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">WhatsApp Oficial Directo</div><div style="font-size: 0.75rem; color: #a1a1aa;">+593 98 660 5398</div></div></a>
-                    <a href="https://www.airbnb.com.ec/rooms/1640189058166955456?search_mode=regular_search&amp;adults=1&amp;check_in=2026-11-01&amp;check_out=2026-11-06&amp;children=0&amp;infants=0&amp;pets=0&amp;photo_id=2780758178&amp;source_impression_id=p3_8f4c07da-7671-458e-98f7-04a65016b085_b4d7f353-3e24-4efe-8cc9-e11f2c4f6eb3_0_1640189058166955456_1&amp;previous_page_section_name=1000&amp;federated_search_id=8f4c07da-7671-458e-98f7-04a65016b085" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: background 0.3s;"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #ff385c;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg><div><div style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">Airbnb Superhost</div><div style="font-size: 0.75rem; color: #a1a1aa;">Perfil Verificado en Airbnb</div></div></a>
-                    <a href="https://www.instagram.com/luxurious_lodging_ec" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: background 0.3s;"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #d4a373;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><div><div style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">Instagram</div><div style="font-size: 0.75rem; color: #a1a1aa;">@luxurious_lodging_ec</div></div></a>
-                    <a href="https://www.tiktok.com/@luxurious_lodging_ec?_r=1" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 16px; border-radius: 6px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: background 0.3s;"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #d4a373;"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.54-1.28 2.53.02 1.13.71 2.17 1.74 2.62 1.05.47 2.33.32 3.25-.37.73-.54 1.16-1.4 1.18-2.31.03-3.66.01-7.32.02-10.98z"/></svg><div><div style="font-weight: 700; color: #ffffff; font-size: 0.85rem;">TikTok</div><div style="font-size: 0.75rem; color: #a1a1aa;">@luxurious_lodging_ec</div></div></a>
-                </div>
-            </div>
+    <footer style="background:#0c1a14;color:#a3a3a3;padding:56px 5% 26px;border-top:1px solid rgba(212,163,115,.15);font-family:'Plus Jakarta Sans',sans-serif;">
+        <div style="max-width:1200px;margin:0 auto 42px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px;">
+            <div><div style="margin-bottom:18px;"><h2 style="font-family:'Cinzel',serif;font-size:1.55rem;letter-spacing:3px;color:#fff;margin:0 0 4px;font-weight:700;">LUXURIOUS LODGING</h2><span style="font-size:.68rem;letter-spacing:2.5px;color:#d4a373;text-transform:uppercase;font-weight:600;">ECUADOR</span></div><p style="font-size:.88rem;line-height:1.65;color:#a1a1aa;margin:0 0 18px;font-weight:300;max-width:360px;">El lujo de estar en calma. Departamentos y suites para descansar con confort, privacidad y atención personalizada.</p><div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:#d4a373;">Quito · Santo Domingo · Tonsupa · Baños</div></div>
+            <div><h3 style="font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#d4a373;margin:0 0 18px;font-weight:700;">NAVEGACIÓN</h3><ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;"><li><a href="/historia" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Sobre Nosotros</a></li><li><a href="/#suites" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Nuestras Sedes</a></li><li><a href="/suites/quito" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Quito · El Bosque y Condado</a></li><li><a href="/suites/santo-domingo" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Santo Domingo</a></li><li><a href="/suites/tonsupa" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Tonsupa</a></li><li><a href="/suites/banos" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Baños de Agua Santa</a></li><li><a href="/#resenas" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Reseñas</a></li></ul></div>
+            <div><h3 style="font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#d4a373;margin:0 0 10px;font-weight:700;">CANALES OFICIALES</h3><p style="font-size:.78rem;color:#92908d;margin:0 0 16px;line-height:1.5;">Atención directa para consultas y reservas.</p><div style="display:grid;gap:10px;"><a href="https://wa.me/593986605398" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><span style="font-size:.84rem;font-weight:700;">WhatsApp Oficial Directo<br><small style="color:#a1a1aa;font-weight:400;">+593 98 660 5398</small></span></a><a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><span style="font-size:.84rem;font-weight:700;">Airbnb Superhost<br><small style="color:#a1a1aa;font-weight:400;">Perfil verificado</small></span></a><a href="https://www.instagram.com/luxurious_lodging_ec" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><span style="font-size:.84rem;font-weight:700;">Instagram<br><small style="color:#a1a1aa;font-weight:400;">@luxurious_lodging_ec</small></span></a><a href="https://www.tiktok.com/@luxurious_lodging_ec?_r=1" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><span style="font-size:.84rem;font-weight:700;">TikTok<br><small style="color:#a1a1aa;font-weight:400;">@luxurious_lodging_ec</small></span></a></div></div>
         </div>
-        <div style="max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.8rem; color: #71717a;"><div>© 2026 Luxurious Lodging Ecuador. Todos los derechos reservados.</div><div>Experiencias Temáticas Boutique</div></div>
+        <div style="max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;color:#71717a;"><span>© 2026 Luxurious Lodging Ecuador. Todos los derechos reservados.</span><span>Experiencias Temáticas Boutique</span></div>
     </footer>
+    <script>
+        function abrirGaleriaBanos() {
+            const modal = document.getElementById('banosGalleryModal');
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            filtrarGaleriaBanos('todas', document.querySelector('.filtro-btn[data-category="todas"]'));
+        }
+
+        function cerrarGaleriaBanos() {
+            const modal = document.getElementById('banosGalleryModal');
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        function filtrarGaleriaBanos(categoria, botonActivo) {
+            const images = [...document.querySelectorAll('#banosGalleryModal .gallery-modal-content img')];
+            images.forEach((image) => {
+                image.hidden = categoria !== 'todas' && image.dataset.galleryCategory !== categoria;
+            });
+            document.querySelectorAll('.gallery-filters .filtro-btn').forEach((button) => {
+                button.classList.toggle('active', button === botonActivo);
+            });
+            const visibleCount = images.filter((image) => !image.hidden).length;
+            document.getElementById('banosGalleryCount').textContent = `${visibleCount} ${visibleCount === 1 ? 'foto' : 'fotos'} de la suite`;
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') cerrarGaleriaBanos();
+        });
+    </script>
 </body>
 </html>
