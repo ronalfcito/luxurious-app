@@ -483,6 +483,26 @@
                 font-size: 0.72rem;
                 white-space: nowrap;
             }
+            .suites-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 18px;
+            }
+            #reviewsContainer {
+                grid-template-columns: minmax(0, 1fr) !important;
+                gap: 16px !important;
+            }
+            footer {
+                padding: 44px 20px 24px !important;
+            }
+            footer > div:first-child {
+                grid-template-columns: minmax(0, 1fr) !important;
+                gap: 32px !important;
+                margin-bottom: 32px !important;
+            }
+            footer > div:last-child {
+                align-items: flex-start !important;
+                flex-direction: column;
+            }
             .location-grid { grid-template-columns: 1fr; }
             .hero-section {
                 min-height: calc(100svh - 60px);
@@ -501,6 +521,13 @@
             .hero-title { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1rem; }
             .social-nav { display: none; }
+        }
+
+        @media (max-width: 420px) {
+            #modalReserva form > div[style*="grid-template-columns"] {
+                grid-template-columns: minmax(0, 1fr) !important;
+                gap: 12px !important;
+            }
         }
     </style>
 </head>
