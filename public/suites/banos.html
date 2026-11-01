@@ -6,7 +6,7 @@
     <title>Sede Baños de Agua Santa | Luxurious Lodging Ecuador</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #fbf9f5; color: #1c1917; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; }
+        body { background-color: #fbf9f5; color: #1c1917; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0 0 90px; }
         header { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e7e5e4; background: #fff; position: sticky; top: 0; z-index: 100; }
         .logo { font-family: 'Cinzel', serif; font-size: 1.4rem; color: #0c0a09; text-decoration: none; font-weight: 700; letter-spacing: 2px; }
         .breadcrumb { font-size: 0.85rem; color: #78716c; text-align: center; margin: 30px 0 15px 0; }
@@ -50,9 +50,13 @@
         .stay-amenity-card h4 { margin-bottom: 7px; color: #0c0a09; font-size: 0.95rem; }
         .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid #e7e5e4; padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; }
         @media (max-width: 768px) {
-            header { gap: 12px; }
+            body { padding-bottom: 142px; }
+            header { flex-wrap: wrap; gap: 12px; }
             header .logo { font-size: 0.95rem; text-align: center; }
-            header .btn-direct { padding: 10px 12px; font-size: 0.75rem; }
+            header .btn-direct { flex: 1 1 100%; box-sizing: border-box; min-width: 0; min-height: 44px; padding: 10px 12px; font-size: 0.75rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+            .action-bar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 16px; }
+            .action-bar > div:first-child { grid-column: 1 / -1; padding: 9px 12px !important; text-align: center; font-size: 0.8rem !important; }
+            .action-bar .btn-direct, .action-bar .btn-airbnb { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 10px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
             .gallery { grid-template-columns: 1fr; }
             .gallery img { height: 280px; }
             .gallery-side { display: none; }
@@ -60,9 +64,16 @@
             .gallery-modal-content { grid-template-columns: 1fr; }
             .stay-info-grid, .stay-amenities-grid { grid-template-columns: minmax(0, 1fr); }
             .stay-section-title { font-size: 1.55rem; }
-            .bottom-bar { gap: 10px; }
-            .bottom-bar > div:first-child { font-size: 0.75rem !important; }
-            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb { padding: 9px 10px; font-size: 0.7rem; }
+            .bottom-bar {
+                box-sizing: border-box;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 8px;
+                padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
+            }
+            .bottom-bar > div:first-child { min-width: 0; font-size: 0.78rem !important; line-height: 1.25; }
+            .bottom-bar > div:last-child { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; }
+            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 9px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
             footer { padding: 44px 20px 24px !important; }
             footer > div:first-child { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; margin-bottom: 32px !important; }
             footer > div:last-child { align-items: flex-start !important; flex-direction: column; }

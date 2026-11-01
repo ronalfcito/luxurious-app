@@ -94,6 +94,11 @@
         .highlight-card h4 { font-family: 'Cinzel', serif; font-size: 1.05rem; font-weight: 700; color: #0c0a09; margin: 10px 0 12px 0; }
         @media (max-width: 768px) {
             .info-grid { grid-template-columns: minmax(0, 1fr); }
+            header { flex-wrap: wrap; }
+            header .btn-direct-nav { flex: 1 1 100%; box-sizing: border-box; min-width: 0; min-height: 44px; text-align: center; white-space: normal; overflow-wrap: anywhere; line-height: 1.2; }
+            .action-bar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 16px; }
+            .action-bar .price-tag { grid-column: 1 / -1; padding: 9px 12px; text-align: center; font-size: 0.8rem; }
+            .action-bar .btn-direct, .action-bar .btn-airbnb { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 10px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
             footer { padding: 44px 20px 24px !important; }
             footer > div:first-child { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; margin-bottom: 32px !important; }
             footer > div:last-child { align-items: flex-start !important; flex-direction: column; }
@@ -103,12 +108,17 @@
         .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; }
 
         @media (max-width: 768px) {
+            body { padding-bottom: 132px; }
             .gallery { grid-template-columns: 1fr; }
             .gallery img { height: 280px; }
             .gallery-side { display: none; }
             h1 { font-size: 1.8rem; }
             .info-grid { grid-template-columns: minmax(0, 1fr); }
             .amenities-title { font-size: 1.25rem; }
+            .bottom-bar { box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 9px 12px calc(9px + env(safe-area-inset-bottom)); }
+            .bottom-bar > div:first-child { min-width: 0; font-size: 0.78rem !important; line-height: 1.25; }
+            .bottom-bar > div:last-child { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; }
+            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 9px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
         }
     </style>
 </head>
