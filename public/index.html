@@ -1044,7 +1044,7 @@
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
                         <a href="/suites/arreglos.html" style="text-align: center; text-decoration: none; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 10px; border-radius: 4px; font-weight: 600; font-size: 0.82rem;">VER DETALLES</a>
-                        <a class="btn-gold" href="/?reserva=arreglos" style="padding: 10px; font-size: 0.82rem; text-align: center;">SOLICITAR AHORA</a>
+                        <a class="btn-gold" href="/?reserva=arreglos" onclick="sessionStorage.setItem('luxurious:open-reservation', 'arreglos')" style="padding: 10px; font-size: 0.82rem; text-align: center;">SOLICITAR AHORA</a>
                     </div>
                 </div>
             </div>
@@ -1142,7 +1142,9 @@
 
             const opcionesReserva = { 'el-bosque': 0, condado: 1, tonsupa: 2, banos: 3, arreglos: 4 };
             const reservaSolicitada = new URLSearchParams(window.location.search).get('reserva');
-            if (Object.prototype.hasOwnProperty.call(opcionesReserva, reservaSolicitada)) {
+            const abrirFormularioSolicitado = sessionStorage.getItem('luxurious:open-reservation') === reservaSolicitada;
+            sessionStorage.removeItem('luxurious:open-reservation');
+            if (abrirFormularioSolicitado && Object.prototype.hasOwnProperty.call(opcionesReserva, reservaSolicitada)) {
                 document.getElementById('selectSuite').selectedIndex = opcionesReserva[reservaSolicitada];
                 actualizarCalculoModal();
                 document.getElementById('modalReserva').classList.add('active');

@@ -115,7 +115,7 @@
     <header>
         <a href="/" style="text-decoration:none; color:#1c1917; font-weight:600;">&larr; Volver al inicio</a>
         <a href="/" class="logo">LUXURIOUS LODGING · QUITO</a>
-        <a href="/?reserva=el-bosque" class="btn-direct-nav">Reservar Directo</a>
+        <a href="/?reserva=el-bosque" onclick="sessionStorage.setItem('luxurious:open-reservation', 'el-bosque')" class="btn-direct-nav">Reservar Directo</a>
     </header>
 
     <div class="breadcrumb">Inicio / Quito / Selecciona tu Sede Preferida</div>
@@ -141,7 +141,7 @@
 
         <div class="action-bar">
             <div class="price-tag">DESDE <span style="font-size: 1.2rem; color: #0c0a09;">$55</span> / noche</div>
-            <a href="/?reserva=el-bosque" class="btn-direct">RESERVAR DIRECTO</a>
+            <a href="/?reserva=el-bosque" onclick="sessionStorage.setItem('luxurious:open-reservation', 'el-bosque')" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://www.airbnb.com.ec/rooms/856086692471685730?source_impression_id=p3_1793413008_P3TZfi_DElGwJ9uS" target="_blank" rel="noopener noreferrer" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
@@ -268,7 +268,7 @@
 
         <div class="action-bar">
             <div class="price-tag">DESDE <span style="font-size: 1.2rem; color: #0c0a09;">$55</span> / noche</div>
-            <a href="/?reserva=condado" class="btn-direct">RESERVAR DIRECTO</a>
+            <a href="/?reserva=condado" onclick="sessionStorage.setItem('luxurious:open-reservation', 'condado')" class="btn-direct">RESERVAR DIRECTO</a>
             <a href="https://www.airbnb.com.ec/rooms/1640189058166955456?source_impression_id=p3_1793413008_P3I4G8DdXF_2X_Y8" target="_blank" rel="noopener noreferrer" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
@@ -420,7 +420,7 @@
     <div class="bottom-bar">
         <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito (desde $55/noche)</div>
         <div style="display: flex; gap: 10px;">
-            <a id="bottomBarReserveLink" href="/?reserva=el-bosque" class="btn-direct">RESERVAR DIRECTO</a>
+            <a id="bottomBarReserveLink" href="/?reserva=el-bosque" onclick="sessionStorage.setItem('luxurious:open-reservation', new URL(this.href).searchParams.get('reserva'))" class="btn-direct">RESERVAR DIRECTO</a>
             <a id="bottomBarAirbnbLink" href="https://www.airbnb.com.ec/rooms/856086692471685730?source_impression_id=p3_1793413008_P3TZfi_DElGwJ9uS" target="_blank" rel="noopener noreferrer" class="btn-airbnb">AIRBNB</a>
         </div>
     </div>
