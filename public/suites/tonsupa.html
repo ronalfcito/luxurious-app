@@ -18,7 +18,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 90px; }
+        body { background-color: var(--bg-light); color: var(--text-dark); }
 
         /* HEADER */
         header { padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); background: #fff; position: sticky; top: 0; z-index: 100; }
@@ -108,10 +108,7 @@
             border-color: #0c0a09 !important;
         }
 
-        .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; }
-
         @media (max-width: 768px) {
-            body { padding-bottom: 132px; }
             header { flex-wrap: wrap; }
             header .btn-direct-nav { flex: 1 1 100%; box-sizing: border-box; min-width: 0; min-height: 44px; text-align: center; white-space: normal; overflow-wrap: anywhere; line-height: 1.2; }
             .action-bar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 16px; }
@@ -121,10 +118,6 @@
             .gallery img { height: 280px; }
             .gallery-side { display: none; }
             h1 { font-size: 1.8rem; }
-            .bottom-bar { box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 9px 12px calc(9px + env(safe-area-inset-bottom)); }
-            .bottom-bar > div:first-child { min-width: 0; font-size: 0.78rem !important; line-height: 1.25; }
-            .bottom-bar > div:last-child { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; }
-            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb, .bottom-bar .btn-calendar { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 9px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
         }
     </style>
 </head>
@@ -303,16 +296,6 @@
         </div>
 
         <div id="contenedorFotosEspecial" class="gallery-modal-content"></div>
-    </div>
-
-    <!-- BARRA INFERIOR FLOTANTE -->
-    <div class="bottom-bar">
-        <div style="font-weight: 700; font-size: 0.9rem;">Sede Tonsupa — Playa & Piscina ($55/noche)</div>
-        <div style="display: flex; gap: 10px;">
-            <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20deseo%20reservar%20en%20Tonsupa" class="btn-direct">RESERVAR DIRECTO</a>
-            <a href="/disponibilidad?sede=tonsupa" class="btn-calendar">CALENDARIO</a>
-            <a href="https://www.airbnb.com.ec/rooms/53661873?source_impression_id=p3_1793413008_P3JQcrfMKMnGfNQM" target="_blank" rel="noopener noreferrer" class="btn-airbnb">AIRBNB</a>
-        </div>
     </div>
 
     <!-- PIE DE PÁGINA (FOOTER DARK LUXURY) -->

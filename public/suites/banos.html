@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/button-effects.css">
     <style>
-        body { background-color: #fbf9f5; color: #1c1917; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0 0 90px; }
+        body { background-color: #fbf9f5; color: #1c1917; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; }
         header { padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e7e5e4; background: #fff; position: sticky; top: 0; z-index: 100; }
         .logo { font-family: 'Cinzel', serif; font-size: 1.4rem; color: #0c0a09; text-decoration: none; font-weight: 700; letter-spacing: 2px; }
         .btn-direct-nav { box-sizing: border-box; background: #143828; color: #fff; padding: 10px 20px; text-decoration: none; font-weight: 700; font-size: 0.82rem; border-radius: 3px; }
@@ -59,11 +59,7 @@
         .creator-recommendation-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
         .creator-recommendation-link { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: 12px 20px; border-radius: 4px; background: #143828; color: #fff; font-size: 0.85rem; font-weight: 700; text-decoration: none; }
         .creator-recommendation-link:hover { background: #0c1a14; }
-        .bottom-bar { box-sizing: border-box; position: fixed; bottom: 0; left: 0; width: 100%; min-width: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid #e7e5e4; padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; gap: 18px; z-index: 99; }
-        .bottom-bar > div:first-child { min-width: 0; }
-        .bottom-bar > div:last-child { min-width: 0; }
         @media (max-width: 768px) {
-            body { padding-bottom: 142px; }
             header { flex-wrap: wrap; gap: 12px; }
             header .logo { font-size: 0.95rem; text-align: center; }
             header .btn-direct-nav { flex: 1 1 100%; box-sizing: border-box; min-width: 0; min-height: 44px; text-align: center; white-space: normal; overflow-wrap: anywhere; line-height: 1.2; }
@@ -77,16 +73,6 @@
             .gallery-modal-content { grid-template-columns: 1fr; }
             .stay-info-grid, .stay-amenities-grid { grid-template-columns: minmax(0, 1fr); }
             .stay-section-title { font-size: 1.55rem; }
-            .bottom-bar {
-                box-sizing: border-box;
-                display: grid;
-                grid-template-columns: minmax(0, 1fr);
-                gap: 8px;
-                padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
-            }
-            .bottom-bar > div:first-child { min-width: 0; font-size: 0.78rem !important; line-height: 1.25; }
-            .bottom-bar > div:last-child { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; }
-            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb, .bottom-bar .btn-calendar { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 9px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
             footer { padding: 44px 20px 24px !important; }
             footer > div:first-child { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; margin-bottom: 32px !important; }
             footer > div:last-child { align-items: flex-start !important; flex-direction: column; }
@@ -249,15 +235,6 @@
         </div>
     </section>
 
-    <!-- BARRA INFERIOR DE ACCIÓN RÁPIDA -->
-    <div class="bottom-bar">
-        <div style="font-weight: 700; font-size: 0.9rem;">Sede Baños de Agua Santa — $55 USD/noche</div>
-        <div style="display: flex; gap: 10px;">
-            <a href="/?reserva=banos" onclick="sessionStorage.setItem('luxurious:open-reservation', 'banos')" class="btn-direct">RESERVAR DIRECTO</a>
-            <span class="btn-calendar" aria-disabled="true" title="Calendario próximamente">CALENDARIO PRÓXIMAMENTE</span>
-            <a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" class="btn-airbnb">AIRBNB</a>
-        </div>
-    </div>
     <!-- PIE DE PÁGINA (FOOTER "DARK LUXURY") -->
     <footer style="background:#0c1a14;color:#a3a3a3;padding:56px 5% 26px;border-top:1px solid rgba(212,163,115,.15);font-family:'Plus Jakarta Sans',sans-serif;">
         <div style="max-width:1200px;margin:0 auto 42px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px;">

@@ -18,7 +18,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 90px; }
+        body { background-color: var(--bg-light); color: var(--text-dark); }
 
         /* HEADER */
         header { padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); background: #fff; position: sticky; top: 0; z-index: 100; }
@@ -93,17 +93,13 @@
         .creator-recommendation-link:hover { background: #0c1a14; }
         .monochrome-emoji { display: inline-block; filter: grayscale(1); }
 
-        /* BARRA FLOTANTE INFERIOR */
-        .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; }
-
         @media (max-width: 768px) {
-            body { padding-bottom: 132px; }
             header { flex-wrap: wrap; }
             header .btn-direct-nav { flex: 1 1 100%; box-sizing: border-box; min-width: 0; min-height: 44px; text-align: center; white-space: normal; overflow-wrap: anywhere; line-height: 1.2; }
             .action-bar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 16px; }
             .action-bar .price-tag { grid-column: 1 / -1; padding: 9px 12px; text-align: center; font-size: 0.8rem; }
             .action-bar .btn-direct, .action-bar .btn-airbnb, .action-bar .btn-calendar { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 10px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
-            .action-bar .btn-airbnb, .bottom-bar .btn-airbnb { grid-column: 1 / -1; }
+            .action-bar .btn-airbnb { grid-column: 1 / -1; }
             .gallery { grid-template-columns: 1fr !important; }
             .gallery img { height: 280px !important; }
             .gallery-side { display: none !important; }
@@ -112,10 +108,6 @@
             .gallery-modal-header { grid-template-columns: 1fr auto; }
             .gallery-modal-title { grid-column: 1 / -1; grid-row: 2; justify-self: center; }
             .gallery-modal-content { grid-template-columns: 1fr; }
-            .bottom-bar { box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 9px 12px calc(9px + env(safe-area-inset-bottom)); }
-            .bottom-bar > div:first-child { min-width: 0; font-size: 0.78rem !important; line-height: 1.25; }
-            .bottom-bar > div:last-child { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; }
-            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb, .bottom-bar .btn-calendar { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 9px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
         }
     </style>
 </head>
@@ -449,16 +441,6 @@
         <div id="contenedorFotosEspecial" class="gallery-modal-content" aria-live="polite"></div>
     </div>
 
-    <!-- BARRA DE ACCIÓN FLOTANTE (INFERIOR) -->
-    <div class="bottom-bar">
-        <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito (desde $55/noche)</div>
-        <div style="display: flex; gap: 10px;">
-            <a id="bottomBarReserveLink" href="/?reserva=el-bosque" onclick="sessionStorage.setItem('luxurious:open-reservation', new URL(this.href).searchParams.get('reserva'))" class="btn-direct">RESERVAR DIRECTO</a>
-            <a id="bottomBarCalendarLink" href="/disponibilidad?sede=el-bosque" class="btn-calendar">CALENDARIO</a>
-            <a id="bottomBarAirbnbLink" href="https://www.airbnb.com.ec/rooms/856086692471685730?source_impression_id=p3_1793413008_P3TZfi_DElGwJ9uS" target="_blank" rel="noopener noreferrer" class="btn-airbnb">AIRBNB</a>
-        </div>
-    </div>
-
     <script>
         const listaFotosSuite = [
             { src: '/suites/img-bosque/bosque-piscina-dia.jpg.jpeg', categoria: 'jacuzzi', titulo: 'Piscina Temperada (Día)' },
@@ -616,17 +598,6 @@
             document.getElementById(sedeId).classList.add('active');
             element.classList.add('active');
 
-            if (sedeId === 'bosque') {
-                document.getElementById('bottomBarTitle').innerText = "Sede El Bosque — Quito (desde $55/noche)";
-                document.getElementById('bottomBarReserveLink').href = '/?reserva=el-bosque';
-                document.getElementById('bottomBarCalendarLink').href = '/disponibilidad?sede=el-bosque';
-                document.getElementById('bottomBarAirbnbLink').href = 'https://www.airbnb.com.ec/rooms/856086692471685730?source_impression_id=p3_1793413008_P3TZfi_DElGwJ9uS';
-            } else {
-                document.getElementById('bottomBarTitle').innerText = "Sede Condado Shopping — Quito (desde $55/noche)";
-                document.getElementById('bottomBarReserveLink').href = '/?reserva=condado';
-                document.getElementById('bottomBarCalendarLink').href = '/disponibilidad?sede=condado';
-                document.getElementById('bottomBarAirbnbLink').href = 'https://www.airbnb.com.ec/rooms/1640189058166955456?source_impression_id=p3_1793413008_P3I4G8DdXF_2X_Y8';
-            }
         }
 
         if (new URLSearchParams(window.location.search).get('sede') === 'condado') {

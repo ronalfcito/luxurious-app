@@ -20,7 +20,7 @@
         }
 
         * { box-sizing: border-box; margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { padding-bottom: 88px; background: var(--bg-light); color: var(--text-dark); }
+        body { background: var(--bg-light); color: var(--text-dark); }
         a { color: inherit; }
 
         .page-header {
@@ -101,23 +101,6 @@
         .detail-card p, .coordination-note { color: var(--text-muted); font-size: 0.86rem; line-height: 1.6; }
         .coordination-note { margin-top: 22px; padding: 18px 20px; border: 1px dashed #fdba74; border-radius: 6px; background: #fff3ed; color: #9a3412; }
 
-        .bottom-bar {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 30;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-            padding: 12px 5%;
-            border-top: 1px solid var(--border-color);
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(10px);
-        }
-        .bottom-title { font-size: 0.9rem; font-weight: 700; }
-
         .gallery-dialog { width: min(100%, 1000px); max-width: none; max-height: min(92dvh, 900px); margin: auto; padding: 0; overflow: auto; border: 0; background: var(--bg-light); color: var(--text-dark); }
         .gallery-dialog::backdrop { background: rgba(12, 10, 9, 0.78); }
         .dialog-header { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--border-color); background: var(--bg-light); }
@@ -180,7 +163,6 @@
         }
 
         @media (max-width: 768px) {
-            body { padding-bottom: 126px; }
             .page-header { flex-wrap: wrap; gap: 10px; padding: 12px 16px; }
             .back-link { order: 1; }
             .logo { order: 0; width: 100%; font-size: 1rem; }
@@ -196,9 +178,6 @@
             .gallery-side img { height: 180px; }
             .show-photos { right: 10px; bottom: 10px; }
             .details-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .bottom-bar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 9px 12px calc(9px + env(safe-area-inset-bottom)); }
-            .bottom-title { font-size: 0.78rem; }
-            .bottom-bar .btn-contact { width: 100%; }
         }
         @media (max-width: 480px) {
             .details-grid { grid-template-columns: minmax(0, 1fr); }
@@ -284,11 +263,6 @@
             <img src="/suites/img-arreglos/evento-condado-2.jpeg" alt="Servicio de arreglos para cumpleaños y ocasiones especiales">
         </div>
     </dialog>
-
-    <div class="bottom-bar">
-        <div class="bottom-title">Arreglos y detalles VIP · servicio adicional</div>
-        <a class="btn-contact" href="/?reserva=arreglos" onclick="sessionStorage.setItem('luxurious:open-reservation', 'arreglos')">CONSULTAR Y RESERVAR</a>
-    </div>
 
     <footer class="site-footer">
     <div class="footer-grid">
