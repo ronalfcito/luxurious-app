@@ -165,6 +165,10 @@ app.get('/historia', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'historia.html'));
 });
 
+app.get('/disponibilidad', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'disponibilidad.html'));
+});
+
 // Rutas para las 4 sedes
 app.get('/suites/quito', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'suites', 'quito.html'));

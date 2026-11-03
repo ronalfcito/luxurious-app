@@ -46,6 +46,7 @@
         .price-tag { border: 1px solid #d6d3d1; padding: 10px 20px; font-weight: 700; font-size: 0.9rem; background: #fff; }
         .btn-direct { background: var(--accent-green); color: #fff; padding: 12px 24px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border-radius: 3px; border: none; cursor: pointer; }
         .btn-airbnb { background: var(--airbnb-red); color: #fff; padding: 12px 24px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border-radius: 3px; }
+        .btn-calendar { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; box-sizing: border-box; background: var(--accent-green); color: #fff; padding: 12px 24px; text-decoration: none; font-weight: 700; font-size: 0.85rem; border-radius: 3px; }
 
         /* GALERÍA DE FOTOS */
         .gallery { max-width: 1050px; margin: 0 auto 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 15px; }
@@ -93,7 +94,7 @@
             header .btn-direct-nav { flex: 1 1 100%; box-sizing: border-box; min-width: 0; min-height: 44px; text-align: center; white-space: normal; overflow-wrap: anywhere; line-height: 1.2; }
             .action-bar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 16px; }
             .action-bar .price-tag { grid-column: 1 / -1; padding: 9px 12px; text-align: center; font-size: 0.8rem; }
-            .action-bar .btn-direct, .action-bar .btn-airbnb { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 10px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+            .action-bar .btn-direct, .action-bar .btn-airbnb, .action-bar .btn-calendar { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 10px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
             .gallery { grid-template-columns: 1fr !important; }
             .gallery img { height: 280px !important; }
             .gallery-side { display: none !important; }
@@ -105,7 +106,7 @@
             .bottom-bar { box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 9px 12px calc(9px + env(safe-area-inset-bottom)); }
             .bottom-bar > div:first-child { min-width: 0; font-size: 0.78rem !important; line-height: 1.25; }
             .bottom-bar > div:last-child { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; }
-            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 9px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb, .bottom-bar .btn-calendar { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 9px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
         }
     </style>
 </head>
@@ -142,6 +143,7 @@
         <div class="action-bar">
             <div class="price-tag">DESDE <span style="font-size: 1.2rem; color: #0c0a09;">$55</span> / noche</div>
             <a href="/?reserva=el-bosque" onclick="sessionStorage.setItem('luxurious:open-reservation', 'el-bosque')" class="btn-direct">RESERVAR DIRECTO</a>
+            <a href="/disponibilidad?sede=el-bosque" class="btn-calendar">CALENDARIO</a>
             <a href="https://www.airbnb.com.ec/rooms/856086692471685730?source_impression_id=p3_1793413008_P3TZfi_DElGwJ9uS" target="_blank" rel="noopener noreferrer" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
@@ -269,6 +271,7 @@
         <div class="action-bar">
             <div class="price-tag">DESDE <span style="font-size: 1.2rem; color: #0c0a09;">$55</span> / noche</div>
             <a href="/?reserva=condado" onclick="sessionStorage.setItem('luxurious:open-reservation', 'condado')" class="btn-direct">RESERVAR DIRECTO</a>
+            <a href="/disponibilidad?sede=condado" class="btn-calendar">CALENDARIO</a>
             <a href="https://www.airbnb.com.ec/rooms/1640189058166955456?source_impression_id=p3_1793413008_P3I4G8DdXF_2X_Y8" target="_blank" rel="noopener noreferrer" class="btn-airbnb">VER EN AIRBNB</a>
         </div>
 
@@ -421,6 +424,7 @@
         <div style="font-weight: 700; font-size: 0.9rem;" id="bottomBarTitle">Sede El Bosque — Quito (desde $55/noche)</div>
         <div style="display: flex; gap: 10px;">
             <a id="bottomBarReserveLink" href="/?reserva=el-bosque" onclick="sessionStorage.setItem('luxurious:open-reservation', new URL(this.href).searchParams.get('reserva'))" class="btn-direct">RESERVAR DIRECTO</a>
+            <a id="bottomBarCalendarLink" href="/disponibilidad?sede=el-bosque" class="btn-calendar">CALENDARIO</a>
             <a id="bottomBarAirbnbLink" href="https://www.airbnb.com.ec/rooms/856086692471685730?source_impression_id=p3_1793413008_P3TZfi_DElGwJ9uS" target="_blank" rel="noopener noreferrer" class="btn-airbnb">AIRBNB</a>
         </div>
     </div>
@@ -585,10 +589,12 @@
             if (sedeId === 'bosque') {
                 document.getElementById('bottomBarTitle').innerText = "Sede El Bosque — Quito (desde $55/noche)";
                 document.getElementById('bottomBarReserveLink').href = '/?reserva=el-bosque';
+                document.getElementById('bottomBarCalendarLink').href = '/disponibilidad?sede=el-bosque';
                 document.getElementById('bottomBarAirbnbLink').href = 'https://www.airbnb.com.ec/rooms/856086692471685730?source_impression_id=p3_1793413008_P3TZfi_DElGwJ9uS';
             } else {
                 document.getElementById('bottomBarTitle').innerText = "Sede Condado Shopping — Quito (desde $55/noche)";
                 document.getElementById('bottomBarReserveLink').href = '/?reserva=condado';
+                document.getElementById('bottomBarCalendarLink').href = '/disponibilidad?sede=condado';
                 document.getElementById('bottomBarAirbnbLink').href = 'https://www.airbnb.com.ec/rooms/1640189058166955456?source_impression_id=p3_1793413008_P3I4G8DdXF_2X_Y8';
             }
         }

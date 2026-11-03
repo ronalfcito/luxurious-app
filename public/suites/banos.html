@@ -16,9 +16,11 @@
         .rating { font-size: 0.9rem; color: #855b32; font-weight: 600; margin-left: 10px; }
         h1 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: #0c0a09; margin: 15px 0 10px 0; }
         .action-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-bottom: 35px; }
-        .btn-direct, .btn-airbnb { box-sizing: border-box; display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 12px 24px; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.85rem; line-height: 1.2; text-align: center; border-radius: 3px; }
+        .btn-direct, .btn-airbnb, .btn-calendar { box-sizing: border-box; display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 12px 24px; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.85rem; line-height: 1.2; text-align: center; border-radius: 3px; }
         .btn-direct { background: #143828; border: none; cursor: pointer; }
         .btn-airbnb { background: #ff385c; }
+        .btn-calendar { background: #143828; }
+        .btn-calendar[aria-disabled="true"] { opacity: 0.65; cursor: not-allowed; }
         .gallery { max-width: 1050px; margin: 0 auto 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 15px; position: relative; }
         .gallery img { display: block; width: 100%; height: 420px; object-fit: cover; border-radius: 8px; }
         .gallery-side { display: flex; flex-direction: column; gap: 15px; }
@@ -60,7 +62,7 @@
             header .btn-direct-nav { flex: 1 1 100%; box-sizing: border-box; min-width: 0; min-height: 44px; text-align: center; white-space: normal; overflow-wrap: anywhere; line-height: 1.2; }
             .action-bar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 16px; }
             .action-bar > div:first-child { grid-column: 1 / -1; padding: 9px 12px !important; text-align: center; font-size: 0.8rem !important; }
-            .action-bar .btn-direct, .action-bar .btn-airbnb { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 10px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+            .action-bar .btn-direct, .action-bar .btn-airbnb, .action-bar .btn-calendar { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 10px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
             .gallery { grid-template-columns: 1fr; }
             .gallery img { height: 280px; }
             .gallery-side { display: none; }
@@ -77,7 +79,7 @@
             }
             .bottom-bar > div:first-child { min-width: 0; font-size: 0.78rem !important; line-height: 1.25; }
             .bottom-bar > div:last-child { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; }
-            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 9px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+            .bottom-bar .btn-direct, .bottom-bar .btn-airbnb, .bottom-bar .btn-calendar { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 9px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
             footer { padding: 44px 20px 24px !important; }
             footer > div:first-child { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; margin-bottom: 32px !important; }
             footer > div:last-child { align-items: flex-start !important; flex-direction: column; }
@@ -105,6 +107,7 @@
             TARIFA DESDE <span style="font-size: 1.1rem; color: #0c0a09;">$55</span> / noche
         </div>
         <a href="/?reserva=banos" onclick="sessionStorage.setItem('luxurious:open-reservation', 'banos')" class="btn-direct">RESERVAR DIRECTO</a>
+        <span class="btn-calendar" aria-disabled="true" title="Calendario próximamente">CALENDARIO PRÓXIMAMENTE</span>
         <a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" class="btn-airbnb">VER EN AIRBNB</a>
     </div>
 
@@ -235,6 +238,7 @@
         <div style="font-weight: 700; font-size: 0.9rem;">Sede Baños de Agua Santa — $55 USD/noche</div>
         <div style="display: flex; gap: 10px;">
             <a href="/?reserva=banos" onclick="sessionStorage.setItem('luxurious:open-reservation', 'banos')" class="btn-direct">RESERVAR DIRECTO</a>
+            <span class="btn-calendar" aria-disabled="true" title="Calendario próximamente">CALENDARIO PRÓXIMAMENTE</span>
             <a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" class="btn-airbnb">AIRBNB</a>
         </div>
     </div>
