@@ -84,6 +84,7 @@
         .highlight-card p { font-size: 0.85rem; color: #57534e; line-height: 1.5; }
 
         .promo-banner { background: #fff3ed; border: 1px dashed #fdba74; padding: 20px; border-radius: 6px; margin-top: 30px; font-size: 0.88rem; color: #9a3412; line-height: 1.6; }
+        .monochrome-emoji { display: inline-block; filter: grayscale(1); }
 
         /* BARRA FLOTANTE INFERIOR */
         .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 99; }
@@ -95,6 +96,7 @@
             .action-bar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 16px; }
             .action-bar .price-tag { grid-column: 1 / -1; padding: 9px 12px; text-align: center; font-size: 0.8rem; }
             .action-bar .btn-direct, .action-bar .btn-airbnb, .action-bar .btn-calendar { display: flex; min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 10px 8px; font-size: 0.72rem; line-height: 1.2; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+            .action-bar .btn-airbnb, .bottom-bar .btn-airbnb { grid-column: 1 / -1; }
             .gallery { grid-template-columns: 1fr !important; }
             .gallery img { height: 280px !important; }
             .gallery-side { display: none !important; }
@@ -210,48 +212,48 @@
             </div>
         </div>
         <div style="margin-top: 40px;">
-            <h2 class="section-header-title">🏔️ Lujo y Confort en Quito</h2>
+            <h2 class="section-header-title"><span class="monochrome-emoji">🏔️</span> Lujo y Confort en Quito</h2>
             <p style="color: #57534e; font-size: 0.95rem; margin-bottom: 25px;">
-                ✨ ¡Disfruta una experiencia VIP ideal para parejas, familias, turistas y ejecutivos!
+                <span class="monochrome-emoji">✨</span> ¡Disfruta una experiencia VIP ideal para parejas, familias, turistas y ejecutivos!
             </p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
                 <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 8px; padding: 24px;">
-                    <div style="font-size: 1.2rem; margin-bottom: 8px;">🏡</div>
+                    <div style="font-size: 1.2rem; margin-bottom: 8px;"><span class="monochrome-emoji">🏡</span></div>
                     <h4 style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #0c0a09; margin-bottom: 12px;">Alojamiento (Hasta 6 Huéspedes)</h4>
                     <p style="font-size: 0.82rem; color: #78716c; margin-bottom: 12px; line-height: 1.4;">Departamento en el 5.º piso con ascensor. Capacidad recomendada: hasta 5 adultos o 4 adultos y 2 niños.</p>
                     <ul style="list-style: none; font-size: 0.85rem; color: #44403c; line-height: 1.6; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 6px;">🛏️ <strong>Dormitorio principal:</strong> Cama de 2,5 plazas y ventanas dobles antirruido.</li>
-                        <li style="margin-bottom: 6px;">🛏️ <strong>Segundo dormitorio:</strong> 2 camas de 1,5 plazas.</li>
-                        <li>🛋️ <strong>Sala:</strong> 2 sofás cama individuales.</li>
+                        <li style="margin-bottom: 6px;"><span class="monochrome-emoji">🛏️</span> <strong>Dormitorio principal:</strong> Cama de 2,5 plazas y ventanas dobles antirruido.</li>
+                        <li style="margin-bottom: 6px;"><span class="monochrome-emoji">🛏️</span> <strong>Segundo dormitorio:</strong> 2 camas de 1,5 plazas.</li>
+                        <li><span class="monochrome-emoji">🛋️</span> <strong>Sala:</strong> 2 sofás cama individuales.</li>
                     </ul>
                 </div>
 
                 <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 8px; padding: 24px;">
-                    <div style="font-size: 1.2rem; margin-bottom: 8px;">🧴</div>
+                    <div style="font-size: 1.2rem; margin-bottom: 8px;"><span class="monochrome-emoji">🧴</span></div>
                     <h4 style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #0c0a09; margin-bottom: 12px;">Comodidades e Instalaciones</h4>
                     <ul style="list-style: none; font-size: 0.85rem; color: #44403c; line-height: 1.6; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 8px;">✨ Sábanas, cobijas, toallas, champú, jabones, papel higiénico, batas SPA y gorros de baño.</li>
-                        <li style="margin-bottom: 8px;">💪 Gimnasio equipado, coworking y juegos infantiles en terraza.</li>
-                        <li>💦 <strong>SPA Comunal:</strong> Sin reserva previa ni límite de sesiones, respetando horarios, aforo y normas del edificio.</li>
+                        <li style="margin-bottom: 8px;"><span class="monochrome-emoji">✨</span> Sábanas, cobijas, toallas, champú, jabones, papel higiénico, batas SPA y gorros de baño.</li>
+                        <li style="margin-bottom: 8px;"><span class="monochrome-emoji">💪</span> Gimnasio equipado, coworking y juegos infantiles en terraza.</li>
+                        <li><span class="monochrome-emoji">💦</span> <strong>SPA Comunal:</strong> Sin reserva previa ni límite de sesiones, respetando horarios, aforo y normas del edificio.</li>
                     </ul>
                 </div>
 
                 <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 8px; padding: 24px;">
-                    <div style="font-size: 1.2rem; margin-bottom: 8px;">🎉</div>
+                    <div style="font-size: 1.2rem; margin-bottom: 8px;"><span class="monochrome-emoji">🎉</span></div>
                     <h4 style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #0c0a09; margin-bottom: 12px;">Servicios Adicionales</h4>
                     <ul style="list-style: none; font-size: 0.85rem; color: #44403c; line-height: 1.6; padding: 0; margin: 0 0 12px 0;">
-                        <li style="margin-bottom: 6px;">🍖 <strong>BBQ privado:</strong> $15 por concepto de limpieza.</li>
-                        <li>🎱 <strong>Sala de juegos privada:</strong> $25 por concepto de limpieza.</li>
+                        <li style="margin-bottom: 6px;"><span class="monochrome-emoji">🍖</span> <strong>BBQ privado:</strong> $15 por concepto de limpieza.</li>
+                        <li><span class="monochrome-emoji">🎱</span> <strong>Sala de juegos privada:</strong> $25 por concepto de limpieza.</li>
                     </ul>
-                    <div style="font-size: 0.78rem; color: #b45309; background: #fffbeb; border: 1px solid #fef3c7; padding: 8px 10px; border-radius: 4px;">⚠️ Reservar con 48 h de anticipación. Sujeto a disponibilidad.</div>
+                    <div style="font-size: 0.78rem; color: #b45309; background: #fffbeb; border: 1px solid #fef3c7; padding: 8px 10px; border-radius: 4px;"><span class="monochrome-emoji">⚠️</span> Reservar con 48 h de anticipación. Sujeto a disponibilidad.</div>
                 </div>
             </div>
 
             <div class="promo-banner">
-                🔥 <strong>OPCIONALES CON RESERVA PREVIA:</strong> Zona de BBQ privada ($15) y salón social ($25).<br>
-                🔶 <strong>PROMOS PAGO DIRECTO AL WHATSAPP:</strong> Reserva con Recepción para coordinar transferencia sin recargos.<br><br>
-                ❤️ <strong>¡TU ESCAPADA DE LUJO TE ESPERA!</strong> ✨ <em>LUXURIOUS LODGING ECUADOR — Más que hospedaje, una experiencia inolvidable.</em>
+                <span class="monochrome-emoji">🔥</span> <strong>OPCIONALES CON RESERVA PREVIA:</strong> Zona de BBQ privada ($15) y salón social ($25).<br>
+                <span class="monochrome-emoji">🔶</span> <strong>PROMOS PAGO DIRECTO AL WHATSAPP:</strong> Reserva con Recepción para coordinar transferencia sin recargos.<br><br>
+                <span class="monochrome-emoji">❤️</span> <strong>¡TU ESCAPADA DE LUJO TE ESPERA!</strong> <span class="monochrome-emoji">✨</span> <em>LUXURIOUS LODGING ECUADOR — Más que hospedaje, una experiencia inolvidable.</em>
             </div>
         </div>
     </div>
