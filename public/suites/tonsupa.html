@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sede Tonsupa | Luxurious Lodging Ecuador</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/button-effects.css">
     <style>
         :root {
             --bg-light: #fbf9f5;
@@ -78,6 +79,12 @@
         .highlight-card p { font-size: 0.85rem; color: #57534e; line-height: 1.5; }
 
         .promo-banner { background: #fff3ed; border: 1px dashed #fdba74; padding: 20px; border-radius: 6px; margin-top: 30px; font-size: 0.88rem; color: #9a3412; line-height: 1.6; }
+        .creator-recommendation { max-width: 1050px; margin: 0 auto 48px; padding: 28px 24px; border: 1px solid #e7e5e4; border-radius: 8px; background: #fff; text-align: center; }
+        .creator-recommendation h2 { margin: 0 0 12px; color: #143828; font-family: 'Cinzel', serif; font-size: 1.5rem; }
+        .creator-recommendation p { max-width: 760px; margin: 0 auto 20px; color: #57534e; font-size: 0.95rem; line-height: 1.7; }
+        .creator-recommendation-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+        .creator-recommendation-link { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: 12px 20px; border-radius: 4px; background: #143828; color: #fff; font-size: 0.85rem; font-weight: 700; text-decoration: none; }
+        .creator-recommendation-link:hover { background: #0c1a14; }
 
         .filtro-btn {
             appearance: none;
@@ -267,6 +274,14 @@
         </div>
 
     </div>
+
+    <section class="creator-recommendation" aria-label="Experiencias de nuestros creadores">
+        <h2>ELLOS YA LO VIVIERON. TU EXPERIENCIA COMIENZA AQUÍ.</h2>
+        <p>Descubre este alojamiento a través de los creadores que nos visitaron. Déjate inspirar con estos videos por medio de sus experiencias y reserva tu próxima escapada con Luxurious Lodging Ecuador.</p>
+        <div class="creator-recommendation-links">
+            <a class="creator-recommendation-link" href="https://www.instagram.com/reel/DeAJAwrRqPT/?cplk=MXRpM3VpeTBpNTludw==" target="_blank" rel="noopener noreferrer">@datos_con_alejo</a>
+        </div>
+    </section>
 
     <!-- MODAL DE GALERÍA CATEGORIZADA -->
     <div id="modalGaleriaFotos" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fbf9f5; z-index: 2000; display: none; overflow-y: auto;">
