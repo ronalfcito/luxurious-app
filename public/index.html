@@ -640,14 +640,26 @@
             line-height: 1.55;
         }
 
-        .reservation-availability-notice strong {
-            display: block;
-            margin-bottom: 4px;
+        .reservation-availability-notice p.reservation-availability-notice-title {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin: 0 0 6px;
             color: #92400e;
+            font-weight: 700;
+        }
+
+        .reservation-availability-notice-title span {
+            flex: 0 0 auto;
+            line-height: 1;
         }
 
         .reservation-availability-notice p {
             margin: 0;
+        }
+
+        .reservation-availability-notice p + p {
+            margin-top: 6px;
         }
 
         .reservation-calendar-link {
@@ -1112,8 +1124,9 @@
             <h2 style="font-family: 'Cinzel', serif; font-size: 2.1rem; color: #0c0a09; font-weight: 400; margin-bottom: 8px; line-height: 1.1;">Reserva</h2>
             <p id="modalDescripcion" style="font-size: 0.88rem; color: #78716c; margin-bottom: 18px; line-height: 1.4;">Cotiza tu estadía y coordina al instante con Recepción vía WhatsApp.</p>
             <aside class="reservation-availability-notice" role="note">
-                <strong>Antes de solicitar tu reserva</strong>
-                <p>Consulta el calendario para confirmar que tus fechas estén disponibles. Así podremos atenderte más rápido: solo gestionamos solicitudes para fechas que aparecen libres.</p>
+                <p class="reservation-availability-notice-title"><span aria-hidden="true">📅</span><strong>Antes de solicitar tu reserva</strong></p>
+                <p>Te invitamos a consultar nuestro calendario de disponibilidad antes de enviar tu solicitud.</p>
+                <p>✨ Para brindarte una atención más ágil y personalizada, gestionamos únicamente solicitudes para fechas disponibles.</p>
                 <a class="reservation-calendar-link" id="reservationCalendarLink" href="/disponibilidad" target="_blank" rel="noopener noreferrer">Revisar calendario de disponibilidad</a>
             </aside>
             <form onsubmit="procesarReserva(event)">
