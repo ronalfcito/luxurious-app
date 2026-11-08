@@ -1,0 +1,23 @@
+.stay-booking-notice {
+    margin: 0 0 24px;
+    padding: 16px 18px;
+    border: 1px solid #fdba74;
+    border-radius: 6px;
+    background: #fff3ed;
+    color: #7c2d12;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+.stay-booking-notice strong {
+    color: #9a3412;
+}
+
+@media (max-width: 600px) {
+    .stay-booking-notice {
+        padding: 14px;
+        font-size: 0.88rem;
+        line-height: 1.6;
+    }
+}

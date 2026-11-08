@@ -628,6 +628,42 @@
             color: #78716c;
         }
 
+        .reservation-availability-notice {
+            margin: 0 0 18px;
+            padding: 14px 16px;
+            border: 1px solid #f59e0b;
+            border-left: 4px solid #d97706;
+            border-radius: 4px;
+            background: #fffbeb;
+            color: #78350f;
+            font-size: 0.84rem;
+            line-height: 1.55;
+        }
+
+        .reservation-availability-notice strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #92400e;
+        }
+
+        .reservation-calendar-link {
+            display: inline-flex;
+            min-height: 42px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            padding: 9px 14px;
+            border: 1px solid #92400e;
+            border-radius: 3px;
+            background: #92400e;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: center;
+            text-decoration: none;
+        }
+
         .btn-submit-whatsapp {
             width: 100%;
             background: #143828;
@@ -1063,6 +1099,11 @@
             </div>
             <h2 style="font-family: 'Cinzel', serif; font-size: 2.1rem; color: #0c0a09; font-weight: 400; margin-bottom: 8px; line-height: 1.1;">Reserva</h2>
             <p id="modalDescripcion" style="font-size: 0.88rem; color: #78716c; margin-bottom: 18px; line-height: 1.4;">Cotiza tu estadía y coordina al instante con Recepción vía WhatsApp.</p>
+            <aside class="reservation-availability-notice" role="note">
+                <strong>¡Importante antes de enviar tu solicitud!</strong>
+                Para brindarte una mejor experiencia y evitar esperas, te sugerimos revisar nuestro calendario de fechas disponibles antes de completar el formulario. Únicamente procesamos reservas para fechas libres en la plataforma.
+                <a class="reservation-calendar-link" id="reservationCalendarLink" href="/disponibilidad" target="_blank" rel="noopener noreferrer">Revisar calendario de disponibilidad</a>
+            </aside>
             <form onsubmit="procesarReserva(event)">
                 <div style="margin-bottom: 16px;">
                     <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #292524; margin-bottom: 6px;">Suite deseada</label>
@@ -1176,6 +1217,16 @@
 
         function actualizarCalculoModal() {
             const suite = document.getElementById('selectSuite').value;
+            const calendarSites = {
+                'Sede Quito — El Bosque (Spa VIP & Vista 360°)': 'el-bosque',
+                'Sede Quito — Condado Shopping (Dpto VIP & Jacuzzi)': 'condado',
+                'Sede Tonsupa — Suite Playa & Relax': 'tonsupa'
+            };
+            const calendarLink = document.getElementById('reservationCalendarLink');
+            const calendarSite = calendarSites[suite];
+            calendarLink.href = calendarSite
+                ? `/disponibilidad?sede=${encodeURIComponent(calendarSite)}`
+                : '/disponibilidad';
             const detalleNoches = document.getElementById('detalleNoches');
             const descripcionModal = document.getElementById('modalDescripcion');
             const esServicioArreglos = suite === 'Servicio de Arreglos y Detalles VIP';
