@@ -1058,7 +1058,7 @@
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
                         <a href="/suites/santo-domingo" style="text-align: center; text-decoration: none; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 10px; border-radius: 4px; font-weight: 600; font-size: 0.82rem; transition: background 0.3s;">VER DETALLES</a>
-                        <a class="btn-gold" href="https://wa.me/593986605398?text=Hola%20Luxurious,%20quisiera%20reservar%20en%20Santo%20Domingo" style="padding: 10px; font-size: 0.82rem; text-align: center;">RESERVAR DIRECTO</a>
+                        <button class="btn-gold" style="padding: 10px; font-size: 0.82rem;" onclick="abrirModalReserva('Sede Santo Domingo — Eco Resort &amp; Spa', 55)">RESERVAR DIRECTO</button>
                     </div>
                 </div>
             </div>
@@ -1135,6 +1135,7 @@
                     <select id="selectSuite" onchange="actualizarCalculoModal()" style="width: 100%; padding: 11px 12px; border: 1px solid #d6d3d1; border-radius: 3px; background: #ffffff; font-size: 0.88rem; color: #1c1917; outline: none;">
                         <option value="Sede Quito — El Bosque (Spa VIP &amp; Vista 360°)">Quito · El Bosque</option>
                         <option value="Sede Quito — Condado Shopping (Dpto VIP &amp; Jacuzzi)">Quito · Condado Shopping</option>
+                        <option value="Sede Santo Domingo — Eco Resort &amp; Spa">Santo Domingo · Eco Resort</option>
                         <option value="Sede Tonsupa — Suite Playa &amp; Relax">Tonsupa · Suite Playa</option>
                         <option value="Sede Baños de Agua Santa — Casa de Montaña">Baños · Casa de Montaña</option>
                         <option value="Servicio de Arreglos y Detalles VIP">Arreglos y Detalles VIP · $45</option>
@@ -1208,12 +1209,21 @@
             document.getElementById('inputCheckIn').value = hoy.toISOString().split('T')[0];
             document.getElementById('inputCheckOut').value = manana.toISOString().split('T')[0];
 
-            const opcionesReserva = { 'el-bosque': 0, condado: 1, tonsupa: 2, banos: 3, arreglos: 4 };
+            const opcionesReserva = {
+                'el-bosque': 'Sede Quito — El Bosque (Spa VIP & Vista 360°)',
+                condado: 'Sede Quito — Condado Shopping (Dpto VIP & Jacuzzi)',
+                'santo-domingo': 'Sede Santo Domingo — Eco Resort & Spa',
+                tonsupa: 'Sede Tonsupa — Suite Playa & Relax',
+                banos: 'Sede Baños de Agua Santa — Casa de Montaña',
+                arreglos: 'Servicio de Arreglos y Detalles VIP'
+            };
             const reservaSolicitada = new URLSearchParams(window.location.search).get('reserva');
             const abrirFormularioSolicitado = sessionStorage.getItem('luxurious:open-reservation') === reservaSolicitada;
             sessionStorage.removeItem('luxurious:open-reservation');
             if (abrirFormularioSolicitado && Object.prototype.hasOwnProperty.call(opcionesReserva, reservaSolicitada)) {
-                document.getElementById('selectSuite').selectedIndex = opcionesReserva[reservaSolicitada];
+                const suiteOptions = document.getElementById('selectSuite').options;
+                const suiteIndex = Array.from(suiteOptions).findIndex(option => option.value === opcionesReserva[reservaSolicitada]);
+                if (suiteIndex !== -1) document.getElementById('selectSuite').selectedIndex = suiteIndex;
                 actualizarCalculoModal();
                 document.getElementById('modalReserva').classList.add('active');
             }
@@ -1245,6 +1255,7 @@
             const calendarSites = {
                 'Sede Quito — El Bosque (Spa VIP & Vista 360°)': 'el-bosque',
                 'Sede Quito — Condado Shopping (Dpto VIP & Jacuzzi)': 'condado',
+                'Sede Santo Domingo — Eco Resort & Spa': 'santo-domingo',
                 'Sede Tonsupa — Suite Playa & Relax': 'tonsupa'
             };
             const calendarLink = document.getElementById('reservationCalendarLink');

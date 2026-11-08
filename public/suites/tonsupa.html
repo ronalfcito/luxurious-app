@@ -128,7 +128,7 @@
     <header>
         <a href="/" style="text-decoration:none; color:#1c1917; font-weight:600;">&larr; Volver al inicio</a>
         <a href="/" class="logo">LUXURIOUS LODGING · TONSUPA</a>
-        <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20quisiera%20reservar%20en%20Tonsupa" class="btn-direct-nav">Reservar Directo</a>
+        <a href="/?reserva=tonsupa" onclick="sessionStorage.setItem('luxurious:open-reservation', 'tonsupa')" class="btn-direct-nav">Reservar Directo</a>
     </header>
 
     <div class="breadcrumb">Inicio / Esmeraldas / Sede Tonsupa</div>
@@ -145,7 +145,7 @@
     <!-- BARRA DE ACCIÓN -->
     <div class="action-bar">
         <div class="price-tag">TARIFA DESDE <span style="font-size: 1.2rem; color: #0c0a09;">$55</span> / noche</div>
-        <a href="https://wa.me/593986605398?text=Hola%20Luxurious,%20quisiera%20reservar%20la%20Sede%20Tonsupa" class="btn-direct">RESERVAR DIRECTO POR WHATSAPP</a>
+        <a href="/?reserva=tonsupa" onclick="sessionStorage.setItem('luxurious:open-reservation', 'tonsupa')" class="btn-direct">RESERVAR DIRECTO</a>
         <a href="/disponibilidad?sede=tonsupa" class="btn-calendar">CALENDARIO</a>
         <a href="https://www.airbnb.com.ec/rooms/53661873?source_impression_id=p3_1793413008_P3JQcrfMKMnGfNQM" target="_blank" rel="noopener noreferrer" class="btn-airbnb">VER EN AIRBNB</a>
     </div>
