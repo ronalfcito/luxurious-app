@@ -165,6 +165,10 @@ app.get('/historia', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'historia.html'));
 });
 
+app.get('/aviso-legal', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'aviso-legal.html'));
+});
+
 app.get('/disponibilidad', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'disponibilidad.html'));
 });
