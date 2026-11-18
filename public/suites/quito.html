@@ -118,7 +118,7 @@
     <header>
         <a href="/" style="text-decoration:none; color:#1c1917; font-weight:600;">&larr; Volver al inicio</a>
         <a href="/" class="logo">LUXURIOUS LODGING · QUITO</a>
-        <a href="/?reserva=el-bosque" onclick="sessionStorage.setItem('luxurious:open-reservation', 'el-bosque')" class="btn-direct-nav">Reservar Directo</a>
+        <a id="quitoReserveButton" href="/?reserva=el-bosque" onclick="sessionStorage.setItem('luxurious:open-reservation', 'el-bosque')" class="btn-direct-nav">Reservar Directo</a>
     </header>
 
     <div class="breadcrumb">Inicio / Quito / Selecciona tu Sede Preferida</div>
@@ -601,6 +601,12 @@
             document.getElementById(sedeId).classList.add('active');
             element.classList.add('active');
 
+            const reservaId = sedeId === 'condado' ? 'condado' : 'el-bosque';
+            const botonReservar = document.getElementById('quitoReserveButton');
+            botonReservar.href = `/?reserva=${reservaId}`;
+            botonReservar.onclick = () => {
+                sessionStorage.setItem('luxurious:open-reservation', reservaId);
+            };
         }
 
         if (new URLSearchParams(window.location.search).get('sede') === 'condado') {
