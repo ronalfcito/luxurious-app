@@ -8,15 +8,73 @@
 
     <!-- METADATOS WHATSAPP -->
     <meta name="description" content="✦ Suites VIP &amp; Jacuzzi Privado ✦ El refugio perfecto de elegancia, romance y descanso sensorial en Quito, Tonsupa y Santo Domingo.">
+    <link rel="canonical" href="https://luxuriouslodgingecuador.com/">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://luxurious-lodging-app.vercel.app/">
+    <meta property="og:url" content="https://luxuriouslodgingecuador.com/">
     <meta property="og:title" content="Luxurious Lodging Ecuador">
     <meta property="og:description" content="✦ Suites VIP &amp; Jacuzzi Privado ✦ El refugio perfecto de elegancia, romance y descanso sensorial en Quito, Tonsupa y Santo Domingo.">
-    <meta property="og:image" content="https://luxurious-lodging-app.vercel.app/suites/img-bosque/social-preview.jpg">
+    <meta property="og:image" content="https://luxuriouslodgingecuador.com/suites/img-bosque/social-preview.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["Organization", "LodgingBusiness"],
+          "@id": "https://luxuriouslodgingecuador.com/#business",
+          "name": "Luxurious Lodging Ecuador",
+          "url": "https://luxuriouslodgingecuador.com/",
+          "description": "Alojamientos y suites en Quito, Santo Domingo, Tonsupa y Baños de Agua Santa, Ecuador.",
+          "logo": "https://luxuriouslodgingecuador.com/suites/img-bosque/logo%20grande.jpg",
+          "telephone": "+593986605398",
+          "email": "lodginglux@gmail.com",
+          "sameAs": [
+            "https://www.airbnb.com.ec/users/show/101442958",
+            "https://www.instagram.com/luxurious_lodging_ec",
+            "https://www.tiktok.com/@luxurious_lodging_ec"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "reservas y atención al cliente",
+            "telephone": "+593986605398",
+            "email": "lodginglux@gmail.com",
+            "availableLanguage": "Spanish"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://luxuriouslodgingecuador.com/#website",
+          "url": "https://luxuriouslodgingecuador.com/",
+          "name": "Luxurious Lodging Ecuador",
+          "publisher": { "@id": "https://luxuriouslodgingecuador.com/#business" },
+          "inLanguage": "es-EC"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://luxuriouslodgingecuador.com/#webpage",
+          "url": "https://luxuriouslodgingecuador.com/",
+          "name": "Luxurious Lodging Ecuador",
+          "isPartOf": { "@id": "https://luxuriouslodgingecuador.com/#website" },
+          "about": { "@id": "https://luxuriouslodgingecuador.com/#business" },
+          "inLanguage": "es-EC"
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://luxuriouslodgingecuador.com/#lodgings",
+          "name": "Sedes y alojamientos",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Quito · El Bosque y Condado Shopping", "url": "https://luxuriouslodgingecuador.com/suites/quito" },
+            { "@type": "ListItem", "position": 2, "name": "Santo Domingo", "url": "https://luxuriouslodgingecuador.com/suites/santo-domingo" },
+            { "@type": "ListItem", "position": 3, "name": "Tonsupa", "url": "https://luxuriouslodgingecuador.com/suites/tonsupa" },
+            { "@type": "ListItem", "position": 4, "name": "Baños de Agua Santa", "url": "https://luxuriouslodgingecuador.com/suites/banos" }
+          ]
+        }
+      ]
+    }
+    </script>
     
     <!-- Fuentes Elegantes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -955,6 +1013,8 @@
                 </div>
             </div>
             <a href="/disponibilidad">Disponibilidad</a>
+            <a href="/historia">Sobre nosotros</a>
+            <a href="#contacto">Contacto</a>
             <a href="#resenas">Reseñas</a>
             <!-- Redes Sociales Oficiales -->
             <div class="social-nav">
@@ -1328,9 +1388,10 @@
             } catch (err) {}
 
             const numeroTelefono = "593986605398";
+            const suiteMensaje = suite.replace(/\s*\([^)]*\)/g, '').replace(/ — Eco Resort & Spa$/, '').trim();
             const textoMensaje = `🌿 SOLICITUD DE RESERVA DIRECTA | LUXURIOUS LODGING ECUADOR 🌿
 
-🛎️ Suite: ${suite}
+🛎️ Suite: ${suiteMensaje}
 📅 Entrada (2:00 pm): ${checkIn}
 📅 Salida (11 am del día siguiente): ${checkOut}
 👥 Huéspedes: ${huespedes}
@@ -1462,7 +1523,7 @@ _Hola, quiero consultar la disponibilidad para estas fechas y los datos de cuent
     </section>
 
     <!-- PIE DE PÁGINA (FOOTER "DARK LUXURY") -->
-    <footer style="background:#0c1a14;color:#a3a3a3;padding:56px 5% 26px;border-top:1px solid rgba(212,163,115,.15);font-family:'Plus Jakarta Sans',sans-serif;">
+    <footer id="contacto" style="background:#0c1a14;color:#a3a3a3;padding:56px 5% 26px;border-top:1px solid rgba(212,163,115,.15);font-family:'Plus Jakarta Sans',sans-serif;">
       <div style="max-width:1200px;margin:0 auto 42px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px;">
         <div>
           <div style="margin-bottom:18px;"><h2 style="font-family:'Cinzel',serif;font-size:1.55rem;letter-spacing:3px;color:#fff;margin:0 0 4px;font-weight:700;">LUXURIOUS LODGING</h2><span style="font-size:.68rem;letter-spacing:2.5px;color:#d4a373;text-transform:uppercase;font-weight:600;">ECUADOR</span></div>
@@ -1485,6 +1546,8 @@ _Hola, quiero consultar la disponibilidad para estas fechas y los datos de cuent
           <h3 style="font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#d4a373;margin:0 0 10px;font-weight:700;">CANALES OFICIALES</h3>
           <p style="font-size:.78rem;color:#92908d;margin:0 0 16px;line-height:1.5;">Atención directa para consultas y reservas.</p>
           <div style="display:grid;gap:10px;">
+            <a href="mailto:lodginglux@gmail.com" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Correo · lodginglux@gmail.com</a>
+            <a href="tel:+593986605398" style="color:#d4d4d8;text-decoration:none;font-size:.88rem;">Teléfono · +593 98 660 5398</a>
             <a href="https://wa.me/593986605398" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:none;stroke:#d4a373;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.9A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 9c.7 2.2 2.3 3.8 4.5 4.5"/></svg><span style="font-size:.84rem;font-weight:700;">WhatsApp Oficial Directo<br><small style="color:#a1a1aa;font-weight:400;">+593 98 660 5398</small></span></a>
             <a href="https://www.airbnb.com.ec/users/show/101442958" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:none;stroke:#ff385c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M12 3c1 3 3 4 6 4"/></svg><span style="font-size:.84rem;font-weight:700;">Airbnb Superhost<br><small style="color:#a1a1aa;font-weight:400;">Perfil verificado</small></span></a>
             <a href="https://www.instagram.com/luxurious_lodging_ec" target="_blank" rel="noopener noreferrer" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:11px 13px;border-radius:5px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:none;stroke:#d4a373;stroke-width:1.8;"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#d4a373"/></svg><span style="font-size:.84rem;font-weight:700;">Instagram<br><small style="color:#a1a1aa;font-weight:400;">@luxurious_lodging_ec</small></span></a>
@@ -1523,6 +1586,44 @@ _Hola, quiero consultar la disponibilidad para estas fechas y los datos de cuent
             }
         });
 
+    </script>
+    <script>
+        (function() {
+            const modelContext = document.modelContext || navigator.modelContext;
+            if (!modelContext || typeof modelContext.registerTool !== 'function') return;
+
+            Promise.resolve(modelContext.registerTool({
+                name: 'get_luxurious_lodging_information',
+                description: 'Returns public contact information and links to Luxurious Lodging Ecuador locations. Does not check availability or confirm reservations.',
+                inputSchema: {
+                    type: 'object',
+                    properties: {},
+                    additionalProperties: false
+                },
+                execute: function() {
+                    return {
+                        content: [{
+                            type: 'text',
+                            text: JSON.stringify({
+                                name: 'Luxurious Lodging Ecuador',
+                                email: 'lodginglux@gmail.com',
+                                telephone: '+593986605398',
+                                whatsapp: 'https://wa.me/593986605398',
+                                locations: [
+                                    { name: 'Quito', url: 'https://luxuriouslodgingecuador.com/suites/quito' },
+                                    { name: 'Santo Domingo', url: 'https://luxuriouslodgingecuador.com/suites/santo-domingo' },
+                                    { name: 'Tonsupa', url: 'https://luxuriouslodgingecuador.com/suites/tonsupa' },
+                                    { name: 'Baños de Agua Santa', url: 'https://luxuriouslodgingecuador.com/suites/banos' }
+                                ],
+                                availabilityUrl: 'https://luxuriouslodgingecuador.com/disponibilidad'
+                            })
+                        }]
+                    };
+                }
+            })).catch(function(error) {
+                console.error('No se pudo registrar la herramienta WebMCP.', error);
+            });
+        })();
     </script>
 </body>
 </html>

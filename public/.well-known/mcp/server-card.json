@@ -1,0 +1,13 @@
+{
+  "name": "Luxurious Lodging Ecuador",
+  "version": "1.0.0",
+  "description": "Información pública de contacto y sedes de Luxurious Lodging Ecuador.",
+  "endpoint": "https://luxuriouslodgingecuador.com/api/mcp",
+  "capabilities": {
+    "tools": [
+      "get_business_contact",
+      "list_lodgings"
+    ],
+    "readOnly": true
+  }
+}
